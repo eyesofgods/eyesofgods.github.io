@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[初识Python的requests库]]></title>
+    <title><![CDATA[菜鸟初学python爬虫]]></title>
     <url>%2F2018%2F10%2F22%2F%E8%8F%9C%E9%B8%9F%E5%88%9D%E5%AD%A6python%E7%88%AC%E8%99%AB%2F</url>
     <content type="text"><![CDATA[菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/用到的模块 requests BeautifulSoup os 找到当前页面图片地址首先打开网站，右键图片点击检查，发现图片地址在p标签下的img标签中储存。先用get方法获取页面内容，再用BeautifulSoup煲汤。1234567import requestsfrom bs4 import BeautifulSoupr = requests.get('http://www.mzitu.com/zipai/')soup = BeautifulSoup(r.text,'lxml') #需要 pip install lxmllist1 = []list1 = soup.select('p &gt; img') 然后再用for循环提取出img的属性1234list2 =[]for i in list1: list2.append(i.get('src')) print(i.get('src')) 下载图片123456789import osos.mkdir('D:/妹子图')os.chdir('D:/妹子图')for i in list2: img = requests.get(i) filename = i.split('/')[-1] with open(filename,'wb') as f: f.write(img.content) 循环每个页面很容易可以观察到，地址的格式是”http://www.mzitu.com/zipai/comment-page-&quot;+ 页数+”/#comments”因此写个for循环即可遍历地址12for i in range(1,365): url ="http://www.mzitu.com/zipai/comment-page-"+ str(i)+"/#comments" 再把url传入上面的方法即可。 小问题因为本人是菜鸡，怠惰于面向对象编程，所以把代码写在一团，实际可以定义多个函数，提升代码的可读性和美观性。下面贴上完整代码，大佬勿喷，哈哈。1234567891011121314151617181920import requestsfrom bs4 import BeautifulSoupimport osos.mkdir('D:/妹子图')os.chdir('D:/妹子图')for i in range(1,365): url ="http://www.mzitu.com/zipai/comment-page-"+ str(i)+"/#comments" r = requests.get(url) soup = BeautifulSoup(r.text,'lxml') list1 = soup.select('p &gt; img') list2 =[] for i in list1: list2.append(i.get('src')) print(i.get('src')) for i in list2: img = requests.get(i) filename = i.split('/')[-1] with open(filename,'wb') as f: f.write(img.content)]]></content>
       <categories>
-        <category>Python初学笔记</category>
+        <category>python初学笔记</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>爬虫</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
