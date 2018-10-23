@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
+<meta name="description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
 <meta name="keywords" content="爬虫,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="菜鸟初学python爬虫">
 <meta property="og:url" content="http://yoursite.com/2018/10/22/菜鸟初学python爬虫/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
-<meta property="og:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
+<meta property="og:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
-<meta property="og:updated_time" content="2018-10-23T15:50:00.376Z">
+<meta property="og:updated_time" content="2018-10-23T15:53:55.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="菜鸟初学python爬虫">
-<meta name="twitter:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
+<meta name="twitter:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
 <meta name="twitter:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
 
 
@@ -399,7 +399,8 @@
       
 
       
-        <h1 id="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http-www-mzitu-com-zipai"><a href="#菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http-www-mzitu-com-zipai" class="headerlink" title="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/"></a>菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。<a href="http://www.mzitu.com/zipai/" target="_blank" rel="noopener">http://www.mzitu.com/zipai/</a></h1><h2 id="用到的模块"><a href="#用到的模块" class="headerlink" title="用到的模块"></a>用到的模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+        <p>菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。<a href="http://www.mzitu.com/zipai/" target="_blank" rel="noopener">http://www.mzitu.com/zipai/</a></p>
+<h2 id="用到的模块"><a href="#用到的模块" class="headerlink" title="用到的模块"></a>用到的模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="找到当前页面图片地址"><a href="#找到当前页面图片地址" class="headerlink" title="找到当前页面图片地址"></a>找到当前页面图片地址</h2><p>首先打开网站，右键图片点击检查，发现图片地址在p标签下的img标签中储存。<br><img src="http://i4.bvimg.com/665720/11eb941007bbf352.png" alt="右键图片点击检查"><br>先用get方法获取页面内容，再用BeautifulSoup煲汤。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(<span class="string">'http://www.mzitu.com/zipai/'</span>)</span><br><span class="line">soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>) <span class="comment">#需要 pip install lxml</span></span><br><span class="line">list1 = []</span><br><span class="line">list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br></pre></td></tr></table></figure></p>
 <p>然后再用for循环提取出img的属性<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list2 =[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">    list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">    print(i.get(<span class="string">'src'</span>))</span><br></pre></td></tr></table></figure></p>
@@ -655,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http-www-mzitu-com-zipai"><span class="nav-number">1.</span> <span class="nav-text">菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的模块"><span class="nav-number">1.1.</span> <span class="nav-text">用到的模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找到当前页面图片地址"><span class="nav-number">1.2.</span> <span class="nav-text">找到当前页面图片地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载图片"><span class="nav-number">1.3.</span> <span class="nav-text">下载图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环每个页面"><span class="nav-number">1.4.</span> <span class="nav-text">循环每个页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小问题"><span class="nav-number">1.5.</span> <span class="nav-text">小问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的模块"><span class="nav-number">1.</span> <span class="nav-text">用到的模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找到当前页面图片地址"><span class="nav-number">2.</span> <span class="nav-text">找到当前页面图片地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载图片"><span class="nav-number">3.</span> <span class="nav-text">下载图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环每个页面"><span class="nav-number">4.</span> <span class="nav-text">循环每个页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小问题"><span class="nav-number">5.</span> <span class="nav-text">小问题</span></a></li></ol></div>
             
 
           </div>
