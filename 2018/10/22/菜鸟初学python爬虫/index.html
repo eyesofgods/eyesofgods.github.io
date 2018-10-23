@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="#菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ ##用到的模块  requests BeautifulSoup os">
+<meta name="description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/用到的模块 requests BeautifulSoup os">
 <meta name="keywords" content="Python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识Python的requests库">
 <meta property="og:url" content="http://yoursite.com/2018/10/22/菜鸟初学python爬虫/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
-<meta property="og:description" content="#菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ ##用到的模块  requests BeautifulSoup os">
+<meta property="og:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/用到的模块 requests BeautifulSoup os">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
-<meta property="og:updated_time" content="2018-10-23T15:33:22.134Z">
+<meta property="og:updated_time" content="2018-10-23T15:37:14.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Python的requests库">
-<meta name="twitter:description" content="#菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ ##用到的模块  requests BeautifulSoup os">
+<meta name="twitter:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/用到的模块 requests BeautifulSoup os">
 <meta name="twitter:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
 
 
@@ -399,21 +399,18 @@
       
 
       
-        <p>#菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。<a href="http://www.mzitu.com/zipai/" target="_blank" rel="noopener">http://www.mzitu.com/zipai/</a></p>
-<p>##用到的模块</p>
-<ol>
+        <h1 id="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http-www-mzitu-com-zipai"><a href="#菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http-www-mzitu-com-zipai" class="headerlink" title="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/"></a>菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。<a href="http://www.mzitu.com/zipai/" target="_blank" rel="noopener">http://www.mzitu.com/zipai/</a></h1><h2 id="用到的模块"><a href="#用到的模块" class="headerlink" title="用到的模块"></a>用到的模块</h2><ol>
 <li>requests</li>
 <li>BeautifulSoup</li>
 <li>os<a id="more"></a>
-##找到当前页面图片地址<br>首先打开网站，右键图片点击检查，发现图片地址在p标签下的img标签中储存。<br><img src="http://i4.bvimg.com/665720/11eb941007bbf352.png" alt="右键图片点击检查"><br>先用get方法获取页面内容，再用BeautifulSoup煲汤。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">'http://www.mzitu.com/zipai/'</span>)</span><br><span class="line">soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>) <span class="comment">#需要 pip install lxml</span></span><br><span class="line">list1 = []</span><br><span class="line">list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="找到当前页面图片地址"><a href="#找到当前页面图片地址" class="headerlink" title="找到当前页面图片地址"></a>找到当前页面图片地址</h2>首先打开网站，右键图片点击检查，发现图片地址在p标签下的img标签中储存。<br><img src="http://i4.bvimg.com/665720/11eb941007bbf352.png" alt="右键图片点击检查"><br>先用get方法获取页面内容，再用BeautifulSoup煲汤。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">'http://www.mzitu.com/zipai/'</span>)</span><br><span class="line">soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>) <span class="comment">#需要 pip install lxml</span></span><br><span class="line">list1 = []</span><br><span class="line">list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>然后再用for循环提取出img的属性<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list2 =[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">    list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">    print(i.get(<span class="string">'src'</span>))</span><br></pre></td></tr></table></figure></p>
-<p>##下载图片<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">    img = requests.get(i)</span><br><span class="line">    filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(img.content)</span><br></pre></td></tr></table></figure></p>
-<p>##循环每个页面<br>很容易可以观察到，地址的格式是”<a href="http://www.mzitu.com/zipai/comment-page-&quot;+" target="_blank" rel="noopener">http://www.mzitu.com/zipai/comment-page-&quot;+</a> 页数+”/#comments”<br>因此写个for循环即可遍历地址<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">    img = requests.get(i)</span><br><span class="line">    filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(img.content)</span><br></pre></td></tr></table></figure>
+<h2 id="循环每个页面"><a href="#循环每个页面" class="headerlink" title="循环每个页面"></a>循环每个页面</h2><p>很容易可以观察到，地址的格式是”<a href="http://www.mzitu.com/zipai/comment-page-&quot;+" target="_blank" rel="noopener">http://www.mzitu.com/zipai/comment-page-&quot;+</a> 页数+”/#comments”<br>因此写个for循环即可遍历地址<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span></span><br></pre></td></tr></table></figure></p>
 <p>再把url传入上面的方法即可。</p>
-<p>##小问题</p>
-<p>因为本人是菜鸡，怠惰于面向对象编程，所以把代码写在一团，实际可以定义多个函数，提升代码的可读性和美观性。<br>下面贴上完整代码，大佬勿喷，哈哈。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span> </span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>)</span><br><span class="line">    list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br><span class="line">    list2 =[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">        list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">        print(i.get(<span class="string">'src'</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">        img = requests.get(i)</span><br><span class="line">        filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(img.content)</span><br></pre></td></tr></table></figure></p>
+<h2 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h2><p>因为本人是菜鸡，怠惰于面向对象编程，所以把代码写在一团，实际可以定义多个函数，提升代码的可读性和美观性。<br>下面贴上完整代码，大佬勿喷，哈哈。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span> </span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>)</span><br><span class="line">    list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br><span class="line">    list2 =[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">        list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">        print(i.get(<span class="string">'src'</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">        img = requests.get(i)</span><br><span class="line">        filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(img.content)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -540,8 +537,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -643,6 +649,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http-www-mzitu-com-zipai"><span class="nav-number">1.</span> <span class="nav-text">菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的模块"><span class="nav-number">1.1.</span> <span class="nav-text">用到的模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找到当前页面图片地址"><span class="nav-number">1.2.</span> <span class="nav-text">找到当前页面图片地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载图片"><span class="nav-number">1.3.</span> <span class="nav-text">下载图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环每个页面"><span class="nav-number">1.4.</span> <span class="nav-text">循环每个页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小问题"><span class="nav-number">1.5.</span> <span class="nav-text">小问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
