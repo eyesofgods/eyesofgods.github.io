@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
+<meta name="description" content="昨天学了正则，有点膨胀，来爬爬猫眼电影top100试试看。http://maoyan.com/board/4 用到的模块12import requestsimport re">
 <meta name="keywords" content="python,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="菜鸟初学python爬虫">
-<meta property="og:url" content="http://yoursite.com/2018/10/22/菜鸟初学python爬虫/index.html">
+<meta property="og:title" content="爬取猫眼电影top100">
+<meta property="og:url" content="http://yoursite.com/2018/10/26/爬取猫眼电影top100/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
-<meta property="og:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
+<meta property="og:description" content="昨天学了正则，有点膨胀，来爬爬猫眼电影top100试试看。http://maoyan.com/board/4 用到的模块12import requestsimport re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
-<meta property="og:updated_time" content="2018-10-24T00:03:33.269Z">
+<meta property="og:image" content="http://i1.fuimg.com/665720/60804d00d7b1ebd8.png">
+<meta property="og:updated_time" content="2018-10-26T05:12:36.414Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="菜鸟初学python爬虫">
-<meta name="twitter:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
-<meta name="twitter:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
+<meta name="twitter:title" content="爬取猫眼电影top100">
+<meta name="twitter:description" content="昨天学了正则，有点膨胀，来爬爬猫眼电影top100试试看。http://maoyan.com/board/4 用到的模块12import requestsimport re">
+<meta name="twitter:image" content="http://i1.fuimg.com/665720/60804d00d7b1ebd8.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/22/菜鸟初学python爬虫/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/26/爬取猫眼电影top100/"/>
 
 
 
 
 
-  <title>菜鸟初学python爬虫 | 晨曦远的博客</title>
+  <title>爬取猫眼电影top100 | 晨曦远的博客</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/22/菜鸟初学python爬虫/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/爬取猫眼电影top100/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="晨曦远">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">菜鸟初学python爬虫</h1>
+          <h1 class="post-title" itemprop="name headline">爬取猫眼电影top100</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T22:02:59+08:00">
-                2018-10-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-26T11:21:55+08:00">
+                2018-10-26
               </time>
             
 
@@ -336,7 +336,7 @@
 
           
           
-             <span id="/2018/10/22/菜鸟初学python爬虫/" class="leancloud_visitors" data-flag-title="菜鸟初学python爬虫">
+             <span id="/2018/10/26/爬取猫眼电影top100/" class="leancloud_visitors" data-flag-title="爬取猫眼电影top100">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  406
+                  822
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -399,15 +399,13 @@
       
 
       
-        <p>菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。<a href="http://www.mzitu.com/zipai/" target="_blank" rel="noopener">http://www.mzitu.com/zipai/</a></p>
-<h2 id="用到的模块"><a href="#用到的模块" class="headerlink" title="用到的模块"></a>用到的模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+        <p>昨天学了正则，有点膨胀，来爬爬猫眼电影top100试试看。<a href="http://maoyan.com/board/4" target="_blank" rel="noopener">http://maoyan.com/board/4</a></p>
+<h2 id="用到的模块"><a href="#用到的模块" class="headerlink" title="用到的模块"></a>用到的模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="找到当前页面图片地址"><a href="#找到当前页面图片地址" class="headerlink" title="找到当前页面图片地址"></a>找到当前页面图片地址</h2><p>首先打开网站，右键图片点击检查，发现图片地址在p标签下的img标签中储存。<br><img src="http://i4.bvimg.com/665720/11eb941007bbf352.png" alt="右键图片点击检查"><br>先用get方法获取页面内容，再用BeautifulSoup煲汤。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(<span class="string">'http://www.mzitu.com/zipai/'</span>)</span><br><span class="line">soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>) <span class="comment">#需要 pip install lxml</span></span><br><span class="line">list1 = []</span><br><span class="line">list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>然后再用for循环提取出img的属性<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list2 =[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">    list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">    print(i.get(<span class="string">'src'</span>))</span><br></pre></td></tr></table></figure></p>
-<h2 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">    img = requests.get(i)</span><br><span class="line">    filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(img.content)</span><br></pre></td></tr></table></figure>
-<h2 id="循环每个页面"><a href="#循环每个页面" class="headerlink" title="循环每个页面"></a>循环每个页面</h2><p>很容易可以观察到，地址的格式是”<a href="http://www.mzitu.com/zipai/comment-page-&quot;+" target="_blank" rel="noopener">http://www.mzitu.com/zipai/comment-page-&quot;+</a> 页数+”/#comments”<br>因此写个for循环即可遍历地址<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span></span><br></pre></td></tr></table></figure></p>
-<p>再把url传入上面的方法即可。</p>
-<h2 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h2><p>因为本人是单身狗，怠惰于面向对象编程，所以代码被我写在一团，实际可以定义几个函数，提升代码的可读性和美观性。<br>下面贴上完整代码，大佬勿喷，哈哈。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span> </span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>)</span><br><span class="line">    list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br><span class="line">    list2 =[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">        list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">        print(i.get(<span class="string">'src'</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">        img = requests.get(i)</span><br><span class="line">        filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(img.content)</span><br></pre></td></tr></table></figure></p>
+<h2 id="用正则表达式匹配下载当页信息"><a href="#用正则表达式匹配下载当页信息" class="headerlink" title="用正则表达式匹配下载当页信息"></a>用正则表达式匹配下载当页信息</h2><p>首先也是打开网页，右键霸王别姬检查元素，可以发现我们要提取的信息。<br><img src="http://i1.fuimg.com/665720/60804d00d7b1ebd8.png" alt="箭头就是我们要提取的内容"><br>接下来就是写代码用正则把内匹配下来<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;</span><br><span class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/6.2.4094.1 Safari/537.36'</span>&#125;</span><br><span class="line">r = requests.get(<span class="string">'http://maoyan.com/board/4?offset=0'</span>,headers=headers)</span><br><span class="line">results = re.findall(</span><br><span class="line">        <span class="string">'&lt;a.*?title="(.*?)".*?class="image-link".*?class="star"&gt;(.*?)&lt;/p&gt;.*?&lt;p class="releasetime"&gt;(.*?)&lt;/p&gt;.*?&lt;i class="integer"&gt;(.*?)&lt;/i&gt;&lt;i class="fraction"&gt;(.*?)&lt;/i&gt;&lt;/p&gt; '</span>,</span><br><span class="line">        r.text, re.S)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">findall方法会把匹配到的小括号里的一组内容加工成元组，再把所有元组以列表形式返回</span></span><br><span class="line"><span class="string">.*?可以非贪婪匹配任意除换行字符，只要把想提取的内容以.*?代替就好了，再加个小括号</span></span><br><span class="line"><span class="string">我们只需要写要提取的内容前面和后面的几个字符就好了，其他的冗长字符也可用.*?代替</span></span><br><span class="line"><span class="string">第二个参数是被匹配的文本，传入网页源代码即可</span></span><br><span class="line"><span class="string">因为标签之间还有好多换行，而.*?无法匹配换行，加上re.S这个参数，就可以匹配到了</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure></p>
+<p>再写个循环把提取到的内容写进txt文件即可<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> results:</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'top100.txt'</span>, <span class="string">'a'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(i[<span class="number">0</span>] + <span class="string">' '</span> + re.sub(<span class="string">'\n\s+'</span>, <span class="string">''</span>, str(i[<span class="number">1</span>])) + <span class="string">' '</span> + i[<span class="number">2</span>] + <span class="string">' '</span> + <span class="string">'评分：'</span> + i[<span class="number">3</span>] + i[<span class="number">4</span>] + <span class="string">'\n'</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">a表示追加写入，要加上encoding='utf-8'，不然会编码错误</span></span><br><span class="line"><span class="string">i[0] i[1]等表示当前列表里的某个元组的第几个内容</span></span><br><span class="line"><span class="string">我们会发现元组里的第二个内容有许多空格和换行，所以我们用sub方法拿''空字符替换掉，第一个参数是被替换字符，第二个参数是替换字符，第三个参数是被操作的文本，所以我们需要把元组的内容转换成字符串。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="写个循环爬取所有页面的内容"><a href="#写个循环爬取所有页面的内容" class="headerlink" title="写个循环爬取所有页面的内容"></a>写个循环爬取所有页面的内容</h2><p>我们发现网页的地址格式是<a href="http://maoyan.com/board/4?offset=" target="_blank" rel="noopener">http://maoyan.com/board/4?offset=</a> + 0,10,20,30…100<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">110</span>,<span class="number">10</span>):</span><br><span class="line">    url = <span class="string">'http://maoyan.com/board/4?offset='</span> + str(i)</span><br><span class="line"><span class="string">'''第三个参数是步长，即每次增加10，因为range里的两个数字是前闭后开，所以第二个参数要比100大，这样我们就得到0,10,20到100的数</span></span><br><span class="line"><span class="string">然后再把上面的代码写成函数，在这个循环里调用即可</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="这次我终于用上函数了"><a href="#这次我终于用上函数了" class="headerlink" title="这次我终于用上函数了"></a>这次我终于用上函数了</h2><p>附上全部代码,原谅小白的代码吧。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_information</span><span class="params">(url)</span>:</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/6.2.4094.1 Safari/537.36'</span>&#125;</span><br><span class="line">    r = requests.get(url,headers=headers)</span><br><span class="line">    result = re.findall(</span><br><span class="line">        <span class="string">'&lt;a.*?title="(.*?)".*?class="image-link".*?class="star"&gt;(.*?)&lt;/p&gt;.*?&lt;p class="releasetime"&gt;(.*?)&lt;/p&gt;.*?&lt;i class="integer"&gt;(.*?)&lt;/i&gt;&lt;i class="fraction"&gt;(.*?)&lt;/i&gt;&lt;/p&gt; '</span>,</span><br><span class="line">        r.text, re.S)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> result:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'top100.txt'</span>, <span class="string">'a'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(i[<span class="number">0</span>] + <span class="string">' '</span> + re.sub(<span class="string">'\n\s+'</span>, <span class="string">''</span>, str(i[<span class="number">1</span>])) + <span class="string">' '</span> + i[<span class="number">2</span>] + <span class="string">' '</span> + <span class="string">'评分：'</span> + i[<span class="number">3</span>] + i[<span class="number">4</span>] + <span class="string">'\n'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">110</span>,<span class="number">10</span>):</span><br><span class="line">    url = <span class="string">'http://maoyan.com/board/4?offset='</span> + str(i)</span><br><span class="line">    get_information(url)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -469,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/19/菜鸟初学web/" rel="next" title="菜鸟初学web">
-                <i class="fa fa-chevron-left"></i> 菜鸟初学web
+              <a href="/2018/10/22/菜鸟初学python爬虫/" rel="next" title="菜鸟初学python爬虫">
+                <i class="fa fa-chevron-left"></i> 菜鸟初学python爬虫
               </a>
             
           </div>
@@ -478,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/26/爬取猫眼电影top100/" rel="prev" title="爬取猫眼电影top100">
-                爬取猫眼电影top100 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -660,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的模块"><span class="nav-number">1.</span> <span class="nav-text">用到的模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找到当前页面图片地址"><span class="nav-number">2.</span> <span class="nav-text">找到当前页面图片地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载图片"><span class="nav-number">3.</span> <span class="nav-text">下载图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环每个页面"><span class="nav-number">4.</span> <span class="nav-text">循环每个页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小问题"><span class="nav-number">5.</span> <span class="nav-text">小问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的模块"><span class="nav-number">1.</span> <span class="nav-text">用到的模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用正则表达式匹配下载当页信息"><span class="nav-number">2.</span> <span class="nav-text">用正则表达式匹配下载当页信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写个循环爬取所有页面的内容"><span class="nav-number">3.</span> <span class="nav-text">写个循环爬取所有页面的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这次我终于用上函数了"><span class="nav-number">4.</span> <span class="nav-text">这次我终于用上函数了</span></a></li></ol></div>
             
 
           </div>
