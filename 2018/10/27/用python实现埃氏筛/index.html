@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,爬虫," />
+  <meta name="keywords" content="python,算法," />
 
 
 
@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
-<meta name="keywords" content="python,爬虫">
+<meta name="description" content="昨天实验课上，当我们还在对一个数取模判断质数的时候，打ACM的大佬刁老板对我说出埃氏筛，回到宿舍开始查，到现在整理完思路已经凌晨1点，在瑟瑟发抖中写下这篇博客。  埃拉托斯特尼筛法，简称埃氏筛或爱氏筛，是一种由希腊数学家埃拉托斯特尼所提出的一种简单检定素数的算法。要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的倍数剔除，剩下的就是素数。下面用python实现12345678910111">
+<meta name="keywords" content="python,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初学python爬虫">
-<meta property="og:url" content="http://yoursite.com/2018/10/22/菜鸟初学python爬虫/index.html">
+<meta property="og:title" content="用python实现埃氏筛">
+<meta property="og:url" content="http://yoursite.com/2018/10/27/用python实现埃氏筛/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
-<meta property="og:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
+<meta property="og:description" content="昨天实验课上，当我们还在对一个数取模判断质数的时候，打ACM的大佬刁老板对我说出埃氏筛，回到宿舍开始查，到现在整理完思路已经凌晨1点，在瑟瑟发抖中写下这篇博客。  埃拉托斯特尼筛法，简称埃氏筛或爱氏筛，是一种由希腊数学家埃拉托斯特尼所提出的一种简单检定素数的算法。要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的倍数剔除，剩下的就是素数。下面用python实现12345678910111">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
-<meta property="og:updated_time" content="2018-10-26T17:03:07.832Z">
+<meta property="og:updated_time" content="2018-10-26T17:34:12.134Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初学python爬虫">
-<meta name="twitter:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
-<meta name="twitter:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
+<meta name="twitter:title" content="用python实现埃氏筛">
+<meta name="twitter:description" content="昨天实验课上，当我们还在对一个数取模判断质数的时候，打ACM的大佬刁老板对我说出埃氏筛，回到宿舍开始查，到现在整理完思路已经凌晨1点，在瑟瑟发抖中写下这篇博客。  埃拉托斯特尼筛法，简称埃氏筛或爱氏筛，是一种由希腊数学家埃拉托斯特尼所提出的一种简单检定素数的算法。要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的倍数剔除，剩下的就是素数。下面用python实现12345678910111">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/22/菜鸟初学python爬虫/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/27/用python实现埃氏筛/"/>
 
 
 
 
 
-  <title>初学python爬虫 | 晨曦远的博客</title>
+  <title>用python实现埃氏筛 | 晨曦远的博客</title>
   
 
 
@@ -267,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/22/菜鸟初学python爬虫/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/27/用python实现埃氏筛/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="晨曦远">
@@ -284,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">初学python爬虫</h1>
+          <h1 class="post-title" itemprop="name headline">用python实现埃氏筛</h1>
         
 
         <div class="post-meta">
@@ -296,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T22:02:59+08:00">
-                2018-10-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T01:03:55+08:00">
+                2018-10-27
               </time>
             
 
@@ -319,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python初学笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">python初学笔记</span>
+                  <a href="/categories/python学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">python学习笔记</span>
                   </a>
                 </span>
 
@@ -336,7 +334,7 @@
 
           
           
-             <span id="/2018/10/22/菜鸟初学python爬虫/" class="leancloud_visitors" data-flag-title="初学python爬虫">
+             <span id="/2018/10/27/用python实现埃氏筛/" class="leancloud_visitors" data-flag-title="用python实现埃氏筛">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -362,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  406
+                  577
                 </span>
               
 
@@ -378,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -399,15 +397,11 @@
       
 
       
-        <p>菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。<a href="http://www.mzitu.com/zipai/" target="_blank" rel="noopener">http://www.mzitu.com/zipai/</a></p>
-<h2 id="用到的模块"><a href="#用到的模块" class="headerlink" title="用到的模块"></a>用到的模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="找到当前页面图片地址"><a href="#找到当前页面图片地址" class="headerlink" title="找到当前页面图片地址"></a>找到当前页面图片地址</h2><p>首先打开网站，右键图片点击检查，发现图片地址在p标签下的img标签中储存。<br><img src="http://i4.bvimg.com/665720/11eb941007bbf352.png" alt="右键图片点击检查"><br>先用get方法获取页面内容，再用BeautifulSoup煲汤。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(<span class="string">'http://www.mzitu.com/zipai/'</span>)</span><br><span class="line">soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>) <span class="comment">#需要 pip install lxml</span></span><br><span class="line">list1 = []</span><br><span class="line">list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>然后再用for循环提取出img的属性<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list2 =[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">    list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">    print(i.get(<span class="string">'src'</span>))</span><br></pre></td></tr></table></figure></p>
-<h2 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">    img = requests.get(i)</span><br><span class="line">    filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(img.content)</span><br></pre></td></tr></table></figure>
-<h2 id="循环每个页面"><a href="#循环每个页面" class="headerlink" title="循环每个页面"></a>循环每个页面</h2><p>很容易可以观察到，地址的格式是”<a href="http://www.mzitu.com/zipai/comment-page-&quot;+" target="_blank" rel="noopener">http://www.mzitu.com/zipai/comment-page-&quot;+</a> 页数+”/#comments”<br>因此写个for循环即可遍历地址<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span></span><br></pre></td></tr></table></figure></p>
-<p>再把url传入上面的方法即可。</p>
-<h2 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h2><p>因为本人是单身狗，怠惰于面向对象编程，所以代码被我写在一团，实际可以定义几个函数，提升代码的可读性和美观性。<br>下面贴上完整代码，大佬勿喷，哈哈。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span> </span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>)</span><br><span class="line">    list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br><span class="line">    list2 =[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">        list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">        print(i.get(<span class="string">'src'</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">        img = requests.get(i)</span><br><span class="line">        filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(img.content)</span><br></pre></td></tr></table></figure></p>
+        <p>昨天实验课上，当我们还在对一个数取模判断质数的时候，打ACM的大佬刁老板对我说出埃氏筛，回到宿舍开始查，到现在整理完思路已经凌晨1点，在瑟瑟发抖中写下这篇博客。</p>
+<hr>
+<p>埃拉托斯特尼筛法，简称埃氏筛或爱氏筛，是一种由希腊数学家埃拉托斯特尼所提出的一种简单检定素数的算法。要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的倍数剔除，剩下的就是素数。<br>下面用python实现<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">JudgePrimes</span><span class="params">(n)</span>:</span></span><br><span class="line">    primes = []</span><br><span class="line">    f = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>):<span class="comment">#这样写，可以把自然数和列表元素的序号对应起来。</span></span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">2</span> <span class="keyword">and</span> i%<span class="number">2</span> == <span class="number">0</span>:<span class="comment">#把从0到n的偶数筛掉。</span></span><br><span class="line">            f.append(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f.append(<span class="number">1</span>)</span><br><span class="line">    i = <span class="number">3</span></span><br><span class="line">    <span class="keyword">while</span> i*i &lt;= n: <span class="comment">#把不大于根号n的所有质数的倍数剔除,剩下的就是质数</span></span><br><span class="line">        <span class="keyword">if</span> f[i] == <span class="number">1</span>:<span class="comment">#判断是不是质数，若是质数，则筛掉其倍数</span></span><br><span class="line">            j = <span class="number">2</span>*i</span><br><span class="line">            <span class="keyword">while</span> j&lt;=n:<span class="comment">#把小于n的所有质数的倍数都筛掉</span></span><br><span class="line">                f[j] = <span class="number">0</span></span><br><span class="line">                j += i </span><br><span class="line">            </span><br><span class="line">        i += <span class="number">2</span></span><br><span class="line"> </span><br><span class="line">    primes.append(<span class="number">2</span>)<span class="comment">#2是质数</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> f[x] == <span class="number">1</span>:</span><br><span class="line">            primes.append(x)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> primes</span><br><span class="line"> </span><br><span class="line">n = int(input(<span class="string">"请输入大于1的正整数n："</span>))</span><br><span class="line">primes = JudgePrimes(n)</span><br><span class="line"><span class="keyword">print</span> (primes)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>算法可以进一步优化<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">JudgePrimes</span><span class="params">(n)</span>:</span></span><br><span class="line">    primes = []</span><br><span class="line">    f = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">2</span> <span class="keyword">and</span> i%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            f.append(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f.append(<span class="number">1</span>)</span><br><span class="line">    i = <span class="number">3</span></span><br><span class="line">    <span class="keyword">while</span> i*i &lt;= n: <span class="comment">#把不大于根号n的所有质数的倍数剔除,剩下的就是质数</span></span><br><span class="line">        <span class="keyword">if</span> f[i] == <span class="number">1</span>:<span class="comment">#判断是不是质数，若是质数，则筛掉其倍数</span></span><br><span class="line">            j = i*i <span class="comment">#直接从质数的平方后开始筛，因为质数的平方之前的数已经被上一个质数筛过了，此时j为奇数</span></span><br><span class="line">            <span class="keyword">while</span> j &lt;= n:</span><br><span class="line">                f[j] = <span class="number">0</span></span><br><span class="line">                j += <span class="number">2</span>*i <span class="comment">#如果只加一个i,j则为i的偶数倍是一个偶数已经被筛过了，所以加2个i筛掉i的奇数倍，小优化。</span></span><br><span class="line">        i += <span class="number">2</span></span><br><span class="line"> </span><br><span class="line">    primes.append(<span class="number">2</span>)<span class="comment">#2是质数</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>,n+<span class="number">1</span>,<span class="number">2</span>):<span class="comment">#步长为2，把偶数跳过,小优化。</span></span><br><span class="line">        <span class="keyword">if</span> f[x] == <span class="number">1</span>:</span><br><span class="line">            primes.append(x)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> primes</span><br><span class="line"> </span><br><span class="line">n = int(input(<span class="string">"请输入大于1的正整数n："</span>))</span><br><span class="line">primes = JudgePrimes(n)</span><br><span class="line"><span class="keyword">print</span> (primes)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -456,7 +450,7 @@
           
             <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -469,8 +463,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/19/菜鸟初学web/" rel="next" title="菜鸟初学web">
-                <i class="fa fa-chevron-left"></i> 菜鸟初学web
+              <a href="/2018/10/26/爬取猫眼电影top100/" rel="next" title="爬取猫眼电影top100">
+                <i class="fa fa-chevron-left"></i> 爬取猫眼电影top100
               </a>
             
           </div>
@@ -478,10 +472,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/26/爬取猫眼电影top100/" rel="prev" title="爬取猫眼电影top100">
-                爬取猫眼电影top100 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -538,17 +528,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -650,22 +631,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的模块"><span class="nav-number">1.</span> <span class="nav-text">用到的模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找到当前页面图片地址"><span class="nav-number">2.</span> <span class="nav-text">找到当前页面图片地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载图片"><span class="nav-number">3.</span> <span class="nav-text">下载图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环每个页面"><span class="nav-number">4.</span> <span class="nav-text">循环每个页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小问题"><span class="nav-number">5.</span> <span class="nav-text">小问题</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
