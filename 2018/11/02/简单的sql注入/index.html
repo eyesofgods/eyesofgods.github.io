@@ -89,14 +89,13 @@
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="感觉有点汗颜，因为线代、高数，以及我萌生了想学算法的念头，导致我没时间学习安全，今天下午没课我就练了几道简单的sql注入题。说来都是巧合，昨天我们c语言老师推荐了第四版的《加密与解密》，今天我就望着价钱瑟瑟发抖，然后看见这本书是由看雪论坛的大神写的，所以机缘巧合就看到了这个帖子。https://bbs.pediy.com/thread-218653.htm这个帖子里提供了几个云靶机。我就选择了OW">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i1.fuimg.com/665720/48e8b4b31167d7cbs.png">
 <meta property="og:image" content="http://i1.fuimg.com/665720/d3c609b2d711cc88.png">
 <meta property="og:image" content="http://i1.fuimg.com/665720/e71b70b1dcc2c017.png">
-<meta property="og:updated_time" content="2018-11-02T16:09:40.574Z">
+<meta property="og:updated_time" content="2018-11-02T16:17:29.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尝试简单的sql注入">
 <meta name="twitter:description" content="感觉有点汗颜，因为线代、高数，以及我萌生了想学算法的念头，导致我没时间学习安全，今天下午没课我就练了几道简单的sql注入题。说来都是巧合，昨天我们c语言老师推荐了第四版的《加密与解密》，今天我就望着价钱瑟瑟发抖，然后看见这本书是由看雪论坛的大神写的，所以机缘巧合就看到了这个帖子。https://bbs.pediy.com/thread-218653.htm这个帖子里提供了几个云靶机。我就选择了OW">
-<meta name="twitter:image" content="http://i1.fuimg.com/665720/48e8b4b31167d7cbs.png">
+<meta name="twitter:image" content="http://i1.fuimg.com/665720/d3c609b2d711cc88.png">
 
 
 
@@ -398,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  442
+                  442 字
                 </span>
               
 
@@ -414,7 +413,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  1 分钟
                 </span>
               
             </div>
@@ -436,7 +435,6 @@
 
       
         <p>感觉有点汗颜，因为线代、高数，以及我萌生了想学算法的念头，导致我没时间学习安全，今天下午没课我就练了几道简单的sql注入题。<br>说来都是巧合，昨天我们c语言老师推荐了第四版的《加密与解密》，今天我就望着价钱瑟瑟发抖，然后看见这本书是由看雪论坛的大神写的，所以机缘巧合就看到了这个帖子。<a href="https://bbs.pediy.com/thread-218653.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-218653.htm</a><br>这个帖子里提供了几个云靶机。我就选择了OWASP Bricks练手(我是菜鸟),这是地址<a href="http://43.247.91.228:83/login-pages.html" target="_blank" rel="noopener">http://43.247.91.228:83/login-pages.html</a><br><a id="more"></a><br>第一题在username输入以下语句都可以，只要让引号闭合并使语句成立就行，比如可以在后面加#，注释掉后面的语句<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1' or 1 <span class="comment">#</span></span><br><span class="line">1' or 1 or '</span><br><span class="line">' or 1 <span class="comment">#</span></span><br><span class="line">' or 1 or '</span><br><span class="line">1' or 1=1 <span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="http://i1.fuimg.com/665720/48e8b4b31167d7cbs.png" alt="第1题"></p>
 <hr>
 <p>第二题发现使用了js验证，加了黑名单禁止输入特殊字符。可以右键查看源代码看看js代码，然后打开开发者工具在console里修改该js函数，再使用注入语句就行了。<br><img src="http://i1.fuimg.com/665720/d3c609b2d711cc88.png" alt="第2题"><br><img src="http://i1.fuimg.com/665720/e71b70b1dcc2c017.png" alt="第2题"></p>
 <hr>
@@ -724,6 +722,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">晨曦远</span>
 
+   
+	<span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">4.7k</span>
   
 </div>
 
