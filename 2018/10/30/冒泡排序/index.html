@@ -84,14 +84,14 @@
 <meta name="description" content="c刚看到数组，只会写个简单的冒泡排序。发现自己还真是菜，抱着ljr老师的算法书半天都看不懂，没办法只能自己慢慢啃了。 算法原理(摘自百度百科) 比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素做同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一">
 <meta name="keywords" content="算法,python,c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="冒泡排序">
+<meta property="og:title" content="排序">
 <meta property="og:url" content="http://chenxiyuan.vip/2018/10/30/冒泡排序/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="c刚看到数组，只会写个简单的冒泡排序。发现自己还真是菜，抱着ljr老师的算法书半天都看不懂，没办法只能自己慢慢啃了。 算法原理(摘自百度百科) 比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素做同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-02T07:26:42.260Z">
+<meta property="og:updated_time" content="2018-11-29T10:12:12.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="冒泡排序">
+<meta name="twitter:title" content="排序">
 <meta name="twitter:description" content="c刚看到数组，只会写个简单的冒泡排序。发现自己还真是菜，抱着ljr老师的算法书半天都看不懂，没办法只能自己慢慢啃了。 算法原理(摘自百度百科) 比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素做同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一">
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>冒泡排序 | 晨曦远的博客</title>
+  <title>排序 | 晨曦远的博客</title>
   
 
 
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">冒泡排序</h1>
+          <h1 class="post-title" itemprop="name headline">排序</h1>
         
 
         <div class="post-meta">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-02T15:26:42+08:00">
-                2018-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-29T18:12:12+08:00">
+                2018-11-29
               </time>
             
           </span>
@@ -380,7 +380,7 @@
 
           
           
-             <span id="/2018/10/30/冒泡排序/" class="leancloud_visitors" data-flag-title="冒泡排序">
+             <span id="/2018/10/30/冒泡排序/" class="leancloud_visitors" data-flag-title="排序">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  457 字
+                  573 字
                 </span>
               
 
@@ -454,6 +454,8 @@
 <hr>
 <p>下面用python实现<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(nums)</span>:</span></span><br><span class="line">    n = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,n):  <span class="comment"># n个数，比较n-1趟</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n - i):<span class="comment">#n个数，去掉最后面排好序的(i-1)个数，剩余n-i+1个数比较n-1次，[0,n-i-1]每次判断到下标j=n-1-i即可，因为前闭后开，所以要+1</span></span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[j + <span class="number">1</span>]:</span><br><span class="line">                nums[j], nums[j + <span class="number">1</span>] = nums[j + <span class="number">1</span>], nums[j]</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">print(bubble_sort([<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">3</span>]))</span><br></pre></td></tr></table></figure></p>
 <p>下面用c实现<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100000</span></span><br><span class="line"><span class="keyword">int</span> a[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,n=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x)==<span class="number">1</span>) a[n++]=x;<span class="comment">//最后一次n又加1,所以,数组下标0到n-1 ,n个数 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)<span class="comment">//n个数,比较(n-1)趟</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=n-i<span class="number">-1</span>;j++)<span class="comment">//n个数,去掉最后面(i-1)个数,剩余n-i+1个数比较n-i次.每次判断到下标j=n-1-i即可 </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[j]&gt;a[j+<span class="number">1</span>]) </span><br><span class="line">			&#123;</span><br><span class="line">				a[j] = a[j]+a[j+<span class="number">1</span>];</span><br><span class="line">				a[j+<span class="number">1</span>] = a[j]-a[j+<span class="number">1</span>];</span><br><span class="line">				a[j]=a[j]-a[j+<span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		 &#125; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n<span class="number">-1</span>;i++)<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>学会选择法排序了<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> *pa,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> index,i,k,temp;</span><br><span class="line">	<span class="keyword">for</span>(k=<span class="number">0</span>;k&lt;n<span class="number">-1</span>;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		index=k;</span><br><span class="line">		<span class="keyword">for</span>(i=k+<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(pa[i]&lt;pa[index])index=i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(index!=k)</span><br><span class="line">		&#123;</span><br><span class="line">			temp=pa[index];</span><br><span class="line">			pa[index]=pa[k];</span><br><span class="line">			pa[k]=temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,i;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> a[n];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=n<span class="number">-1</span>;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	sort(a,n);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=n<span class="number">-1</span>;i++)<span class="built_in">printf</span>(<span class="string">"%d "</span>,*(a+i));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -498,7 +500,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2018/10/30/冒泡排序/">冒泡排序</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2018年10月30日 - 23:10 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2018年11月02日 - 15:11 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2018/10/30/冒泡排序/" title="冒泡排序">http://chenxiyuan.vip/2018/10/30/冒泡排序/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2018/10/30/冒泡排序/">排序</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2018年10月30日 - 23:10 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2018年11月29日 - 18:11 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2018/10/30/冒泡排序/" title="排序">http://chenxiyuan.vip/2018/10/30/冒泡排序/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -777,7 +779,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.6k</span>
+    <span title="Site words total count">5.8k</span>
   
 </div>
 
