@@ -90,7 +90,7 @@
 <meta property="og:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i4.bvimg.com/665720/11eb941007bbf352.png">
-<meta property="og:updated_time" content="2018-11-02T08:24:44.670Z">
+<meta property="og:updated_time" content="2019-03-03T12:59:59.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初学python爬虫">
 <meta name="twitter:description" content="菜鸟初学python爬虫，爬一个没有反爬的炒鸡简单的网站。http://www.mzitu.com/zipai/ 用到的模块123import requestsfrom bs4 import BeautifulSoupimport os">
@@ -346,8 +346,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-02T16:24:44+08:00">
-                2018-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-03T20:59:59+08:00">
+                2019-03-03
               </time>
             
           </span>
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  406 字
+                  343 字
                 </span>
               
 
@@ -453,8 +453,7 @@
 <h2 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">    img = requests.get(i)</span><br><span class="line">    filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(img.content)</span><br></pre></td></tr></table></figure>
 <h2 id="循环每个页面"><a href="#循环每个页面" class="headerlink" title="循环每个页面"></a>循环每个页面</h2><p>很容易可以观察到，地址的格式是”<a href="http://www.mzitu.com/zipai/comment-page-&quot;+" target="_blank" rel="noopener">http://www.mzitu.com/zipai/comment-page-&quot;+</a> 页数+”/#comments”<br>因此写个for循环即可遍历地址<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span></span><br></pre></td></tr></table></figure></p>
 <p>再把url传入上面的方法即可。</p>
-<h2 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h2><p>因为本人是单身狗，怠惰于面向对象编程，所以代码被我写在一团，实际可以定义几个函数，提升代码的可读性和美观性。<br>下面贴上完整代码，大佬勿喷，哈哈。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span> </span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>)</span><br><span class="line">    list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br><span class="line">    list2 =[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">        list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">        print(i.get(<span class="string">'src'</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">        img = requests.get(i)</span><br><span class="line">        filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(img.content)</span><br></pre></td></tr></table></figure></p>
-
+<h2 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.mkdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line">os.chdir(<span class="string">'D:/妹子图'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">365</span>):</span><br><span class="line">    url =<span class="string">"http://www.mzitu.com/zipai/comment-page-"</span>+ str(i)+<span class="string">"/#comments"</span> </span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    soup = BeautifulSoup(r.text,<span class="string">'lxml'</span>)</span><br><span class="line">    list1 = soup.select(<span class="string">'p &gt; img'</span>)</span><br><span class="line">    list2 =[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list1:    </span><br><span class="line">        list2.append(i.get(<span class="string">'src'</span>))</span><br><span class="line">        print(i.get(<span class="string">'src'</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list2:    </span><br><span class="line">        img = requests.get(i)</span><br><span class="line">        filename = i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(img.content)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -498,7 +497,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2018/10/22/初学python爬虫/">初学python爬虫</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2018年10月22日 - 22:10 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2018年11月02日 - 16:11 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2018/10/22/初学python爬虫/" title="初学python爬虫">http://chenxiyuan.vip/2018/10/22/初学python爬虫/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2018/10/22/初学python爬虫/">初学python爬虫</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2018年10月22日 - 22:10 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年03月03日 - 20:03 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2018/10/22/初学python爬虫/" title="初学python爬虫">http://chenxiyuan.vip/2018/10/22/初学python爬虫/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -622,7 +621,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -775,7 +774,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">6k</span>
+    <span title="Site words total count">6.2k</span>
   
 </div>
 
