@@ -1,3 +1,6 @@
+http://chenxiyuan.vip/2019/04/25/简单的代码审计/
+http://chenxiyuan.vip/2019/04/19/kali安装docker/
+http://chenxiyuan.vip/2019/04/07/西湖论剑2019/
 http://chenxiyuan.vip/2019/03/10/Pragyan-CTF19-webwp/
 http://chenxiyuan.vip/2018/12/10/bugku速度要快wp/
 http://chenxiyuan.vip/2018/11/27/nctf打卡题/

