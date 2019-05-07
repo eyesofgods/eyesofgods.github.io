@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="Cookie Monster 100Do prepare to see cookies lurking everywhere. http://159.89.166.12:13500/12345678910111213141516171819202122import requestsimport hashlibfrom itertools import *import stringflag = []">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-10T06:41:28.312Z">
+<meta property="og:updated_time" content="2019-05-07T12:46:59.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pragyan CTF19 webwp">
 <meta name="twitter:description" content="Cookie Monster 100Do prepare to see cookies lurking everywhere. http://159.89.166.12:13500/12345678910111213141516171819202122import requestsimport hashlibfrom itertools import *import stringflag = []">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T14:41:28+08:00">
-                2019-03-10
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-07T20:46:59+08:00">
+                2019-05-07
               </time>
             
           </span>
@@ -422,6 +422,7 @@
 
       
         <h2 id="Cookie-Monster-100"><a href="#Cookie-Monster-100" class="headerlink" title="Cookie Monster 100"></a>Cookie Monster 100</h2><p>Do prepare to see cookies lurking everywhere. <a href="http://159.89.166.12:13500/" target="_blank" rel="noopener">http://159.89.166.12:13500/</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line">flag = []</span><br><span class="line">wordlist = string.printable</span><br><span class="line"></span><br><span class="line">s = requests.session()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">40</span>):</span><br><span class="line">    cookie = s.get(<span class="string">'http://159.89.166.12:13500/'</span>).cookies[<span class="string">'flag'</span>]</span><br><span class="line">    flag.append(cookie)</span><br><span class="line"><span class="keyword">print</span> (flag)</span><br><span class="line"></span><br><span class="line">result= []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> flag:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> permutations(wordlist,<span class="number">2</span>):</span><br><span class="line">        guess = <span class="string">""</span>.join(j)</span><br><span class="line">        md5 = hashlib.md5(guess.encode(<span class="string">"utf8"</span>)).hexdigest()</span><br><span class="line">        <span class="keyword">if</span> md5 ==i:</span><br><span class="line">            result.append(guess)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"><span class="keyword">print</span> (result)</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="Game-of-Faces-100"><a href="#Game-of-Faces-100" class="headerlink" title="Game of Faces 100"></a>Game of Faces 100</h2><p>The Game of Faces, welcomes you. In this era, where AIs generate a lot of faces, we would like you to contribute to the same by uploading your image. Thank you for contributing, to continue.</p>
 <p><a href="http://159.89.166.12:15000/" target="_blank" rel="noopener">http://159.89.166.12:15000/</a><br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">把css删掉，发现一个假的提交，得到一个base64，解码得The_scroll_says=the_night_kingVSvalyrian.txt，然后直接访问。。。</span><br><span class="line"><span class="symbol">http:</span><span class="comment">//159.89.166.12:15000/the_night_kingVSvalyrian.txt</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Mandatory-PHP-125"><a href="#Mandatory-PHP-125" class="headerlink" title="Mandatory PHP 125"></a>Mandatory PHP 125</h2><p>PHP, PHP everywhere get the flag and earn your points there.</p>
@@ -472,7 +473,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/03/10/Pragyan-CTF19-webwp/">Pragyan CTF19 webwp</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年03月10日 - 14:03 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年03月10日 - 14:03 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/03/10/Pragyan-CTF19-webwp/" title="Pragyan CTF19 webwp">http://chenxiyuan.vip/2019/03/10/Pragyan-CTF19-webwp/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/03/10/Pragyan-CTF19-webwp/">Pragyan CTF19 webwp</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年03月10日 - 14:03 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年05月07日 - 20:05 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/03/10/Pragyan-CTF19-webwp/" title="Pragyan CTF19 webwp">http://chenxiyuan.vip/2019/03/10/Pragyan-CTF19-webwp/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -747,7 +748,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.1k</span>
+    <span title="Site words total count">7.9k</span>
   
 </div>
 

