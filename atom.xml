@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   <link href="%5Bobject%20Object%5D" rel="hub"/>
   <link href="http://chenxiyuan.vip/"/>
-  <updated>2019-07-16T09:47:38.795Z</updated>
+  <updated>2019-07-17T03:22:58.397Z</updated>
   <id>http://chenxiyuan.vip/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多线程爬斗图啦</title>
+    <link href="http://chenxiyuan.vip/2019/07/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E6%96%97%E5%9B%BE%E5%95%A6/"/>
+    <id>http://chenxiyuan.vip/2019/07/17/多线程爬斗图啦/</id>
+    <published>2019-07-17T03:14:47.000Z</published>
+    <updated>2019-07-17T03:22:58.397Z</updated>
+    
+    <content type="html"><![CDATA[<p>趁热打铁吧，再写一个爬虫练手，也是再次熟悉下BeautifulSoup库的使用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">dirs=<span class="string">"斗图"</span></span><br><span class="line">headers =&#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mkdir</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirs):</span><br><span class="line">        os.mkdir(dirs)</span><br><span class="line">        os.chdir(dirs)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"文件夹已存在"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_one_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    res = requests.get(url, headers=headers)</span><br><span class="line">    content = res.content</span><br><span class="line">    soup = BeautifulSoup(content, <span class="string">'lxml'</span>)</span><br><span class="line">    img_list = soup.find_all(<span class="string">'img'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'img-responsive lazy image_dta'</span>&#125;)</span><br><span class="line">    one_page_list =[]</span><br><span class="line">    <span class="keyword">for</span> img <span class="keyword">in</span> img_list:</span><br><span class="line">        t = (img[<span class="string">'alt'</span>],img[<span class="string">'data-original'</span>])</span><br><span class="line">        one_page_list.append(t)</span><br><span class="line">    <span class="keyword">return</span> one_page_list</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_img</span><span class="params">(img,name,suf,i)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(name+ <span class="string">"."</span>+suf, <span class="string">'wb+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        print(<span class="string">"正在下载"</span>+name)</span><br><span class="line">        f.write(img.content)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">"__main__"</span>:</span><br><span class="line">    mkdir()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">2605</span>):</span><br><span class="line">        one_page_list=get_one_page(<span class="string">'http://www.doutula.com/photo/list/?page='</span>+str(i))</span><br><span class="line">        threads=[]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> one_page_list:</span><br><span class="line">            name=re.sub(<span class="string">'[\/:*?"&lt;&gt;|_]'</span>,<span class="string">''</span>,j[<span class="number">0</span>])</span><br><span class="line">            suf=j[<span class="number">1</span>][<span class="number">-3</span>:]<span class="comment">#获取后缀</span></span><br><span class="line">            img = requests.get(j[<span class="number">1</span>])</span><br><span class="line">            t = threading.Thread(target=download_img,args=[img,name,suf,i])</span><br><span class="line">            threads.append(t)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(threads)<span class="number">-1</span>):</span><br><span class="line">            threads[i].start()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(threads) - <span class="number">1</span>):</span><br><span class="line">            threads[i].join()</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;趁热打铁吧，再写一个爬虫练手，也是再次熟悉下BeautifulSoup库的使用。&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/spa
+      
+    
+    </summary>
+    
+      <category term="python学习笔记" scheme="http://chenxiyuan.vip/categories/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="python" scheme="http://chenxiyuan.vip/tags/python/"/>
+    
+      <category term="爬虫" scheme="http://chenxiyuan.vip/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="多线程" scheme="http://chenxiyuan.vip/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>多线程爬妹子图</title>
@@ -474,30 +503,6 @@
       <category term="web安全" scheme="http://chenxiyuan.vip/tags/web%E5%AE%89%E5%85%A8/"/>
     
       <category term="sql注入" scheme="http://chenxiyuan.vip/tags/sql%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法上的一些术语</title>
-    <link href="http://chenxiyuan.vip/2018/11/02/%E7%AE%97%E6%B3%95%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD/"/>
-    <id>http://chenxiyuan.vip/2018/11/02/算法上的一些术语/</id>
-    <published>2018-11-02T03:00:30.000Z</published>
-    <updated>2018-11-02T07:23:23.027Z</updated>
-    
-    <content type="html"><![CDATA[<p>我发现了一个较严重问题，就是听不懂大佬说的一些名词，感受到了莫名的恐惧？？？于是我从网上找了一些术语，写在这里。<br><a id="more"></a></p><h2 id="OJ平台"><a href="#OJ平台" class="headerlink" title="OJ平台"></a>OJ平台</h2><table><thead><tr><th>简写</th><th>全称</th><th>中文称谓</th></tr></thead><tbody><tr><td>OJ</td><td>Online Judge</td><td>在线判题系统</td></tr><tr><td>AC</td><td>Accepted</td><td>通过</td></tr><tr><td>WA</td><td>Wrong Answer</td><td>答案错误</td></tr><tr><td>TLE</td><td>Time Limit Exceed</td><td>超时</td></tr><tr><td>OLE</td><td>Output Limit Exceed</td><td>超过输出限制</td></tr><tr><td>MLE</td><td>Memory Limit Exceed</td><td>超内存</td></tr><tr><td>RE</td><td>Runtime Error</td><td>运行时错误</td></tr><tr><td>PE</td><td>Presentation Error</td><td>格式错误</td></tr><tr><td>CE</td><td>Compile Error</td><td>无法编译</td></tr></tbody></table><hr><h2 id="算法常用术语英中对照"><a href="#算法常用术语英中对照" class="headerlink" title="算法常用术语英中对照"></a>算法常用术语英中对照</h2><table><thead><tr><th>英语</th><th>中文</th></tr></thead><tbody><tr><td>Approximate String Matching</td><td>模糊匹配</td></tr><tr><td>Arbitrary Precision Arithmetic</td><td>高精度计算</td></tr><tr><td>Bandwidth Reduction</td><td>带宽压缩</td></tr><tr><td>Bin Packing</td><td>装箱问题</td></tr><tr><td>Calendrical Calculations</td><td>日期</td></tr><tr><td>Clique</td><td>最大团</td></tr><tr><td>Combinatorial Problems</td><td>组合问题</td></tr><tr><td>Computational Geometry</td><td>计算几何</td></tr><tr><td>Connected Components</td><td>连通分支</td></tr><tr><td>Constrained and Unconstrained Optimization</td><td>最值问题</td></tr><tr><td>Convex Hull</td><td>凸包</td></tr><tr><td>Cryptography</td><td>密码</td></tr><tr><td>Data Structures</td><td>基本数据结构</td></tr><tr><td>Determinants and Permanents</td><td>行列式</td></tr><tr><td>Dictionaries</td><td>字典</td></tr><tr><td>Discrete Fourier Transform</td><td>离散Fourier变换</td></tr><tr><td>Drawing Graphs Nicely</td><td>图的描绘</td></tr><tr><td>Drawing Trees</td><td>树的描绘</td></tr><tr><td>Edge and Vertex Connectivity</td><td>割边/割点</td></tr><tr><td>Edge Coloring</td><td>边染色</td></tr><tr><td>Eulerian Cycle / Chinese Postman Euler</td><td>回路/中国邮路</td></tr><tr><td>Factoring and Primality Testing</td><td>因子分解/质数判定</td></tr><tr><td>Feedback Edge/Vertex Set</td><td>最大无环子图</td></tr><tr><td>Finite State Machine Minimization</td><td>有穷自动机简化</td></tr><tr><td>Generating Graphs</td><td>图的生成</td></tr><tr><td>Generating Partitions</td><td>划分生成</td></tr><tr><td>GeneratingPermutations</td><td>排列生成</td></tr><tr><td>GeneratingSubsets</td><td>子集生成</td></tr><tr><td>Graph Data Structures</td><td>图形数据结构</td></tr><tr><td>Graph Isomorphism</td><td>图同构</td></tr><tr><td>Graph Partition</td><td>图的划分</td></tr><tr><td>Graph Problems — hard</td><td>图论-NP问题</td></tr><tr><td>Graph Problems — polynomial</td><td>图论-多项式算法</td></tr><tr><td>Hamiltonian Cycle Hamilton</td><td>回路</td></tr><tr><td>Independent Set</td><td>独立集</td></tr><tr><td>Intersection Detection</td><td>碰撞测试</td></tr><tr><td>Job Scheduling</td><td>工程安排</td></tr><tr><td>Kd-Trees</td><td>线段树</td></tr><tr><td>Knapsack Problem</td><td>背包问题</td></tr><tr><td>Linear Programming</td><td>线性规划</td></tr><tr><td>Longest Common Substring</td><td>最长公共子串</td></tr><tr><td>Maintaining Line Arrangements</td><td>平面分割</td></tr><tr><td>Matching</td><td>匹配</td></tr><tr><td>Matrix Multiplication</td><td>矩阵乘法</td></tr><tr><td>Medial-Axis Transformation</td><td>中轴变换</td></tr><tr><td>Median and Selection</td><td>中位数</td></tr><tr><td>Minimum Spanning Tree</td><td>最小生成树</td></tr><tr><td>Minkowski Sum</td><td>Minkowski和</td></tr><tr><td>Motion Planning</td><td>运动规划</td></tr><tr><td>Nearest Neighbor Search</td><td>最近点对查询</td></tr><tr><td>Network Flow</td><td>网络流</td></tr><tr><td>Numerical Problems</td><td>数值问题</td></tr><tr><td>Planarity Detection and Embedding</td><td>平面性检测和嵌入</td></tr><tr><td>Point Location</td><td>位置查询</td></tr><tr><td>Polygon Partitioning</td><td>多边形分割</td></tr><tr><td>Priority Queues</td><td>优先队列</td></tr><tr><td>Random Number Generation</td><td>随机数生成</td></tr><tr><td>Range Search</td><td>范围查询</td></tr><tr><td>rate of convergence</td><td>收敛速度</td></tr><tr><td>robustness</td><td>鲁棒性</td></tr><tr><td>Satisfiability</td><td>可满足性</td></tr><tr><td>Searching</td><td>查找</td></tr><tr><td>Set and String Problems</td><td>集合与串的问题</td></tr><tr><td>Set Cover</td><td>集合覆盖</td></tr><tr><td>Set Data Structures</td><td>集合</td></tr><tr><td>Shape Similarity</td><td>相似多边形</td></tr><tr><td>Shortest Common Superstring</td><td>最短公共父串</td></tr><tr><td>Shortest Path</td><td>最短路径</td></tr><tr><td>Simplifying Polygons</td><td>多边形化简</td></tr><tr><td>Solving Linear Equations</td><td>线性方程组</td></tr><tr><td>Sorting</td><td>排序</td></tr><tr><td>Steiner Tree</td><td>Steiner树</td></tr><tr><td>String Matching</td><td>模式匹配</td></tr><tr><td>Text Compression</td><td>压缩</td></tr><tr><td>Topological Sorting</td><td>拓扑排序</td></tr><tr><td>Transitive Closure and Reduction</td><td>传递闭包</td></tr><tr><td>Traveling Salesman Problem</td><td>旅行商问题</td></tr><tr><td>Triangulation</td><td>三角剖分</td></tr><tr><td>Vertex Coloring</td><td>点染色</td></tr><tr><td>Vertex Cover</td><td>点覆盖</td></tr><tr><td>Voronoi Diagrams</td><td>Voronoi图</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我发现了一个较严重问题，就是听不懂大佬说的一些名词，感受到了莫名的恐惧？？？于是我从网上找了一些术语，写在这里。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="算法竞赛学习笔记" scheme="http://chenxiyuan.vip/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="算法" scheme="http://chenxiyuan.vip/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="术语" scheme="http://chenxiyuan.vip/tags/%E6%9C%AF%E8%AF%AD/"/>
     
   </entry>
   
