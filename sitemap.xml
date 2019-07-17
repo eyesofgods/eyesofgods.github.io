@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chenxiyuan.vip/2019/07/14/Django%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</loc>
+    
+    <lastmod>2019-07-17T15:12:41.027Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chenxiyuan.vip/2019/07/17/redis%E5%AD%A6%E4%B9%A0/</loc>
     
-    <lastmod>2019-07-17T14:49:50.279Z</lastmod>
+    <lastmod>2019-07-17T15:08:53.525Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://chenxiyuan.vip/2019/07/09/flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2019-07-16T06:35:24.236Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chenxiyuan.vip/2019/07/14/Django%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</loc>
-    
-    <lastmod>2019-07-16T06:35:15.382Z</lastmod>
     
   </url>
   

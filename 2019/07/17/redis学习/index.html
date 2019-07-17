@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="概述 redis:REmote DIctionary Server是一种nosql数据库，它的数据是保存在内存中，同时redis可以定时把内存数据同步到磁盘，即可以将数据持久化，并且它比memcached支持更多的数据结构(string,list列表[队列和栈],set[集合],sorted set[有序集合],hash(hash表)) 更多命令可以查看REDIS文档">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T14:49:50.279Z">
+<meta property="og:updated_time" content="2019-07-17T15:08:53.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis学习">
 <meta name="twitter:description" content="概述 redis:REmote DIctionary Server是一种nosql数据库，它的数据是保存在内存中，同时redis可以定时把内存数据同步到磁盘，即可以将数据持久化，并且它比memcached支持更多的数据结构(string,list列表[队列和栈],set[集合],sorted set[有序集合],hash(hash表)) 更多命令可以查看REDIS文档">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-17T22:49:50+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-17T23:08:53+08:00">
                 2019-07-17
               </time>
             
@@ -421,17 +421,16 @@
       
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li><code>redis</code>:<code>REmote DIctionary Server</code>是一种<code>nosql</code>数据库，它的数据是保存在内存中，同时<code>redis</code>可以定时把内存数据同步到磁盘，即可以将数据持久化，并且它比<code>memcached</code>支持更多的数据结构<code>(string,list列表[队列和栈],set[集合],sorted set[有序集合],hash(hash表))</code></li>
-<li>更多命令可以查看<a href="http://redisdoc.com/index.html" target="_blank" rel="noopener">REDIS文档</a><a id="more"></a>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2></li>
+<li>更多命令可以查看<a href="http://redisdoc.com/index.html" target="_blank" rel="noopener">REDIS文档</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
 <li>kali: <code>apt-get install redis-server</code></li>
 <li>启动: <code>service redis-server start</code></li>
-<li>查看: <code>ps aux|grep redis</code><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2></li>
-<li>连接:<code>redis-cli -h[ip] -p[port]</code></li>
+<li>查看: <code>ps aux|grep redis</code></li>
 </ul>
-<ol>
-<li>字符串操作</li>
-</ol>
-<ul>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ul>
+<li>连接:<code>redis-cli -h[ip] -p[port]</code><h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3></li>
 <li><p>添加:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set key value</span><br><span class="line">set username chenxiyuan</span><br><span class="line">set website &quot;chenxiyuan.vip&quot;</span><br><span class="line"># 默认过期时间永久。如果ket已经有其他值，则直接覆盖，无视其类型</span><br></pre></td></tr></table></figure>
 </li>
@@ -442,12 +441,7 @@
 </li>
 <li><p>查看过期时间:<code>ttl key</code></p>
 </li>
-<li>查看所有的key:<code>keys *</code></li>
-</ul>
-<ol start="2">
-<li>列表操作</li>
-</ol>
-<ul>
+<li>查看所有的key:<code>keys *</code><h3 id="列表操作"><a href="#列表操作" class="headerlink" title="列表操作"></a>列表操作</h3></li>
 <li><p>在列表左边添加元素:即插入表头</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpush key value</span><br></pre></td></tr></table></figure>
 </li>
@@ -464,12 +458,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lindex key index</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>获取列表的长度:<code>llen key</code></p>
-</li>
-</ul>
-<ol start="3">
-<li>set集合操作:</li>
-</ol>
-<ul>
+<h3 id="set集合操作"><a href="#set集合操作" class="headerlink" title="set集合操作:"></a>set集合操作:</h3></li>
 <li><p>添加元素:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sadd key member [member ...]</span><br><span class="line">sadd students xiaohong xiaoming</span><br></pre></td></tr></table></figure>
 </li>
@@ -492,10 +481,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sdiff key [key ...]</span><br><span class="line"># sdiff class1 class2</span><br><span class="line"># 1) &quot;xiaoming&quot;</span><br><span class="line"># sdiff class2 class1</span><br><span class="line"># 1) &quot;xiaole&quot;</span><br><span class="line"># 2) &quot;xiaotian&quot;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<ol start="3">
-<li>hash哈希操作:</li>
-</ol>
-<ul>
+<h3 id="hash哈希操作"><a href="#hash哈希操作" class="headerlink" title="hash哈希操作:"></a>hash哈希操作:</h3><ul>
 <li><p>添加一个新值:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hset key field value</span><br><span class="line">#hset blog chenxiyuan chenxiyuan.vip</span><br></pre></td></tr></table></figure>
 </li>
@@ -523,9 +509,9 @@
 <li><code>exec</code>: 执行所有事务块内的命令。假如某个(或某些) key 正处于 WATCH 命令的监视之下，且事务块中有和这个(或这些) key 相关的命令，那么 EXEC 命令只在这个(或这些) key 没有被其他命令所改动的情况下执行并生效，否则该事务被打断(abort)。</li>
 <li><code>discard</code>: 取消事务，放弃执行事务块内的所有命令。<br>如果正在使用 WATCH 命令监视某个(或某些) key，那么取消所有监视，等同于执行命令 UNWATCH 。</li>
 <li><code>watch</code>: 监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。</li>
-<li><code>unwatch</code>: 取消 WATCH 命令对所有 key 的监视。<br>如果在执行 WATCH 命令之后， EXEC 命令或 DISCARD 命令先被执行了的话，那么就不需要再执行 UNWATCH 了。<br>因为 EXEC 命令会执行事务，因此 WATCH 命令的效果已经产生了；而 DISCARD 命令在取消事务的同时也会取消所有对 key 的监视，因此这两个命令执行之后，就没有必要执行 UNWATCH 了。<h2 id="发布和订阅操作"><a href="#发布和订阅操作" class="headerlink" title="发布和订阅操作"></a>发布和订阅操作</h2></li>
+<li><code>unwatch</code>: 取消 WATCH 命令对所有 key 的监视。<br>如果在执行 WATCH 命令之后， EXEC 命令或 DISCARD 命令先被执行了的话，那么就不需要再执行 UNWATCH 了。<br>因为 EXEC 命令会执行事务，因此 WATCH 命令的效果已经产生了；而 DISCARD 命令在取消事务的同时也会取消所有对 key 的监视，因此这两个命令执行之后，就没有必要执行 UNWATCH 了。</li>
 </ul>
-<ol>
+<h2 id="发布和订阅操作"><a href="#发布和订阅操作" class="headerlink" title="发布和订阅操作"></a>发布和订阅操作</h2><ol>
 <li>我用的是kali,然后再用xshell连接kali虚拟机，也用redis-cli连接上。<br>注:用xshell连接kali，需要执行以下操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -557,7 +543,8 @@
 <td>开启关闭</td>
 <td>开启：默认开启。关闭：把配置文件中所有的save都注释，就是关闭了。</td>
 <td>开启：在配置文件中appendonly yes即开启了aof，为no关闭。</td>
-<td></td>
+</tr>
+<tr>
 <td>同步机制</td>
 <td>可以指定某个时间内发生多少个命令进行同步。比如1分钟内发生了2次命令，就做一次同步。</td>
 <td>每秒同步或者每次发生命令后同步</td>
@@ -597,22 +584,11 @@
 </li>
 </ol>
 <p>重新启动服务即可</p>
-<ol start="2">
-<li>其他机器连接本机redis<br>这里我又开了一台ubuntu:192.168.91.134<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/redis/redis.conf </span><br><span class="line">#注释掉 bind 127.0.0.1 那行，再重启服务</span><br><span class="line">#或者bind 127.0.0.1 192.168.91.134 注意这里是ubuntu的ip地址，如果填的是kali的，则redis服务根本起不来。</span><br><span class="line">sudo service redis-server restart</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<h3 id="其他机器连接本机redis"><a href="#其他机器连接本机redis" class="headerlink" title="其他机器连接本机redis"></a>其他机器连接本机redis</h3><p>这里我又开了一台ubuntu:192.168.91.134<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/redis/redis.conf </span><br><span class="line">#注释掉 bind 127.0.0.1 那行，再重启服务</span><br><span class="line">#或者bind 127.0.0.1 192.168.91.134 注意这里是ubuntu的ip地址，如果填的是kali的，则redis服务根本起不来。</span><br><span class="line">sudo service redis-server restart</span><br></pre></td></tr></table></figure></p>
 <p>然后kali:192.168.91.134连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 6379 -h 192.168.91.134</span><br><span class="line">192.168.91.134:6379&gt; ping</span><br><span class="line">(error) NOAUTH Authentication required.</span><br><span class="line">192.168.91.134:6379&gt; auth chenxiyuan</span><br><span class="line">OK</span><br><span class="line">192.168.91.134:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line"># 成功，ubunturedis服务器一定要设置密码，不然会有protected mode 默认是开的，会拒绝访问。</span><br></pre></td></tr></table></figure></p>
-<h2 id="python操作redis"><a href="#python操作redis" class="headerlink" title="python操作redis"></a>python操作redis</h2><ol>
-<li><p>安装redis</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install redis</span><br><span class="line">#因为我的kali有两个版本的python，而默认是python2，所以我这样安装</span><br><span class="line">python3 -m pip install redis</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>连接redis<br>因为python操作redis的方法与redis-cli操作方法基本类似，就不赘述了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from redis import Redis</span><br><span class="line">&gt;&gt;&gt; cache=Redis(host=&apos;127.0.0.1&apos;,port=6379,password=&apos;chenxiyuan&apos;)</span><br><span class="line">&gt;&gt;&gt; cache.set(&apos;username&apos;,&apos;chenxiyuan&apos;)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; cache.get(&apos;username&apos;)</span><br><span class="line">b&apos;chenxiyuan&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>事务操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义一个管道实例</span></span><br><span class="line">pip = cache.pipeline()</span><br><span class="line"><span class="comment"># 做第一步操作，给BankA自增长1</span></span><br><span class="line">pip.incr(<span class="string">'BankA'</span>)</span><br><span class="line"><span class="comment"># 做第二步操作，给BankB自减少1</span></span><br><span class="line">pip.desc(<span class="string">'BankB'</span>)</span><br><span class="line"><span class="comment"># 执行事务</span></span><br><span class="line">pip.execute()</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<h2 id="python操作redis"><a href="#python操作redis" class="headerlink" title="python操作redis"></a>python操作redis</h2><h3 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install redis</span><br><span class="line">#因为我的kali有两个版本的python，而默认是python2，所以我这样安装</span><br><span class="line">python3 -m pip install redis</span><br></pre></td></tr></table></figure>
+<h3 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a>连接redis</h3><p>因为python操作redis的方法与redis-cli操作方法基本类似，就不赘述了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from redis import Redis</span><br><span class="line">&gt;&gt;&gt; cache=Redis(host=&apos;127.0.0.1&apos;,port=6379,password=&apos;chenxiyuan&apos;)</span><br><span class="line">&gt;&gt;&gt; cache.set(&apos;username&apos;,&apos;chenxiyuan&apos;)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; cache.get(&apos;username&apos;)</span><br><span class="line">b&apos;chenxiyuan&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="事务操作"><a href="#事务操作" class="headerlink" title="事务操作"></a>事务操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义一个管道实例</span></span><br><span class="line">pip = cache.pipeline()</span><br><span class="line"><span class="comment"># 做第一步操作，给BankA自增长1</span></span><br><span class="line">pip.incr(<span class="string">'BankA'</span>)</span><br><span class="line"><span class="comment"># 做第二步操作，给BankB自减少1</span></span><br><span class="line">pip.desc(<span class="string">'BankB'</span>)</span><br><span class="line"><span class="comment"># 执行事务</span></span><br><span class="line">pip.execute()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -657,7 +633,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/17/redis学习/">redis学习</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月17日 - 11:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月17日 - 22:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/17/redis学习/" title="redis学习">http://chenxiyuan.vip/2019/07/17/redis学习/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/17/redis学习/">redis学习</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月17日 - 11:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月17日 - 23:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/17/redis学习/" title="redis学习">http://chenxiyuan.vip/2019/07/17/redis学习/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -892,7 +868,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">4.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布和订阅操作"><span class="nav-number">5.</span> <span class="nav-text">发布和订阅操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">6.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端与服务器"><span class="nav-number">7.</span> <span class="nav-text">客户端与服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置密码"><span class="nav-number">7.1.</span> <span class="nav-text">设置密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python操作redis"><span class="nav-number">8.</span> <span class="nav-text">python操作redis</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串操作"><span class="nav-number">3.1.</span> <span class="nav-text">字符串操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表操作"><span class="nav-number">3.2.</span> <span class="nav-text">列表操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set集合操作"><span class="nav-number">3.3.</span> <span class="nav-text">set集合操作:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash哈希操作"><span class="nav-number">3.4.</span> <span class="nav-text">hash哈希操作:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">4.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布和订阅操作"><span class="nav-number">5.</span> <span class="nav-text">发布和订阅操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">6.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端与服务器"><span class="nav-number">7.</span> <span class="nav-text">客户端与服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置密码"><span class="nav-number">7.1.</span> <span class="nav-text">设置密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他机器连接本机redis"><span class="nav-number">7.2.</span> <span class="nav-text">其他机器连接本机redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python操作redis"><span class="nav-number">8.</span> <span class="nav-text">python操作redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装redis"><span class="nav-number">8.1.</span> <span class="nav-text">安装redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接redis"><span class="nav-number">8.2.</span> <span class="nav-text">连接redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务操作"><span class="nav-number">8.3.</span> <span class="nav-text">事务操作</span></a></li></ol></li></ol></div>
             
 
           </div>

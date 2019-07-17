@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="搭建虚拟环境安装virtualenv1pip3 install virtualenv  开辟虚拟空间 123virtualenv Django#也可以通过-p参数指定python解释器virtualenv -p C:\Python27\python.exe [virtualenv name]  激活虚拟环境 123linux/mac: source Django/bin/activatewindo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-16T06:35:15.382Z">
+<meta property="og:updated_time" content="2019-07-17T15:12:41.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django框架学习">
 <meta name="twitter:description" content="搭建虚拟环境安装virtualenv1pip3 install virtualenv  开辟虚拟空间 123virtualenv Django#也可以通过-p参数指定python解释器virtualenv -p C:\Python27\python.exe [virtualenv name]  激活虚拟环境 123linux/mac: source Django/bin/activatewindo">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-16T14:35:15+08:00">
-                2019-07-16
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-17T23:12:41+08:00">
+                2019-07-17
               </time>
             
           </span>
@@ -501,7 +501,10 @@
 </li>
 </ul>
 <h2 id="Django模板"><a href="#Django模板" class="headerlink" title="Django模板"></a>Django模板</h2><h3 id="模板介绍"><a href="#模板介绍" class="headerlink" title="模板介绍"></a>模板介绍</h3><ul>
-<li><code>DTL</code>: <code>Django Template Language</code><h3 id="模板渲染"><a href="#模板渲染" class="headerlink" title="模板渲染"></a>模板渲染</h3>模板渲染有多种方式，这里列两种常用方式。</li>
+<li><code>DTL</code>: <code>Django Template Language</code></li>
+</ul>
+<h3 id="模板渲染"><a href="#模板渲染" class="headerlink" title="模板渲染"></a>模板渲染</h3><p>模板渲染有多种方式，这里列两种常用方式。</p>
+<ul>
 <li><p><code>render_to_string</code>:找到模板，然后将模板编译后渲染成Python的字符串格式，最后再通过<code>HttpResponse</code>类包装成一个<code>HttpResponse</code>对象返回。示例代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.template.loader <span class="keyword">import</span>  render_to_string</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    html=render_to_string(<span class="string">"index.html"</span>)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(html)</span><br></pre></td></tr></table></figure>
 </li>
@@ -516,9 +519,9 @@
 </li>
 <li><p><code>APP_DIRS</code>:默认为True，会在INSTALLED_APPS的安装了的app下的templates文件中查找模板。</p>
 </li>
-<li>查找顺序:首先在<code>DIRS</code>，然后是在当前视图所处的app下的templates文件夹中查找(已经在INSTALLED_APPS中添加)，最后是在其他已经安装了的app中查找。<h3 id="模板变量"><a href="#模板变量" class="headerlink" title="模板变量"></a>模板变量</h3></li>
+<li>查找顺序:首先在<code>DIRS</code>，然后是在当前视图所处的app下的templates文件夹中查找(已经在INSTALLED_APPS中添加)，最后是在其他已经安装了的app中查找。</li>
 </ul>
-<ol>
+<h3 id="模板变量"><a href="#模板变量" class="headerlink" title="模板变量"></a>模板变量</h3><ol>
 <li>模板中使用变量，需要将变量放到<code></code>中。</li>
 </ol>
 <ul>
@@ -667,7 +670,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/14/Django框架学习/">Django框架学习</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月14日 - 01:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月16日 - 14:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/14/Django框架学习/" title="Django框架学习">http://chenxiyuan.vip/2019/07/14/Django框架学习/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/14/Django框架学习/">Django框架学习</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月14日 - 01:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月17日 - 23:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/14/Django框架学习/" title="Django框架学习">http://chenxiyuan.vip/2019/07/14/Django框架学习/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
