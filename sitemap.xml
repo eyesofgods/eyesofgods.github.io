@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://chenxiyuan.vip/2019/07/14/Django%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://chenxiyuan.vip/2019/07/17/redis%E5%AD%A6%E4%B9%A0/</loc>
     
-    <lastmod>2019-07-17T15:12:41.027Z</lastmod>
+    <lastmod>2019-07-18T09:25:14.151Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chenxiyuan.vip/2019/07/17/redis%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://chenxiyuan.vip/2019/04/19/kali%E5%AE%89%E8%A3%85docker/</loc>
     
-    <lastmod>2019-07-17T15:08:53.525Z</lastmod>
+    <lastmod>2019-07-18T06:30:22.495Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chenxiyuan.vip/2019/07/14/Django%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</loc>
+    
+    <lastmod>2019-07-17T15:12:41.027Z</lastmod>
     
   </url>
   
@@ -131,13 +138,6 @@
     <loc>http://chenxiyuan.vip/2019/03/10/Pragyan-CTF19-webwp/</loc>
     
     <lastmod>2019-05-07T12:46:59.073Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chenxiyuan.vip/2019/04/19/kali%E5%AE%89%E8%A3%85docker/</loc>
-    
-    <lastmod>2019-04-19T00:46:21.718Z</lastmod>
     
   </url>
   

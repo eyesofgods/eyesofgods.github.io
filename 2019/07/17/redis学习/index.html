@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="概述 redis:REmote DIctionary Server是一种nosql数据库，它的数据是保存在内存中，同时redis可以定时把内存数据同步到磁盘，即可以将数据持久化，并且它比memcached支持更多的数据结构(string,list列表[队列和栈],set[集合],sorted set[有序集合],hash(hash表)) 更多命令可以查看REDIS文档">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T15:08:53.525Z">
+<meta property="og:updated_time" content="2019-07-18T09:25:14.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis学习">
 <meta name="twitter:description" content="概述 redis:REmote DIctionary Server是一种nosql数据库，它的数据是保存在内存中，同时redis可以定时把内存数据同步到磁盘，即可以将数据持久化，并且它比memcached支持更多的数据结构(string,list列表[队列和栈],set[集合],sorted set[有序集合],hash(hash表)) 更多命令可以查看REDIS文档">
@@ -342,12 +342,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-17T23:08:53+08:00">
-                2019-07-17
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-18T17:25:14+08:00">
+                2019-07-18
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -382,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.1k 字
+                  2.3k 字
                 </span>
               
 
@@ -398,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -585,11 +607,16 @@
 </ol>
 <p>重新启动服务即可</p>
 <h3 id="其他机器连接本机redis"><a href="#其他机器连接本机redis" class="headerlink" title="其他机器连接本机redis"></a>其他机器连接本机redis</h3><p>这里我又开了一台ubuntu:192.168.91.134<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/redis/redis.conf </span><br><span class="line">#注释掉 bind 127.0.0.1 那行，再重启服务</span><br><span class="line">#或者bind 127.0.0.1 192.168.91.134 注意这里是ubuntu的ip地址，如果填的是kali的，则redis服务根本起不来。</span><br><span class="line">sudo service redis-server restart</span><br></pre></td></tr></table></figure></p>
-<p>然后kali:192.168.91.134连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 6379 -h 192.168.91.134</span><br><span class="line">192.168.91.134:6379&gt; ping</span><br><span class="line">(error) NOAUTH Authentication required.</span><br><span class="line">192.168.91.134:6379&gt; auth chenxiyuan</span><br><span class="line">OK</span><br><span class="line">192.168.91.134:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line"># 成功，ubunturedis服务器一定要设置密码，不然会有protected mode 默认是开的，会拒绝访问。</span><br></pre></td></tr></table></figure></p>
+<p>然后kali:192.168.91.133连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 6379 -h 192.168.91.134</span><br><span class="line">192.168.91.134:6379&gt; ping</span><br><span class="line">(error) NOAUTH Authentication required.</span><br><span class="line">192.168.91.134:6379&gt; auth chenxiyuan</span><br><span class="line">OK</span><br><span class="line">192.168.91.134:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line"># 成功，ubunturedis服务器一定要设置密码，不然会有protected mode 默认是开的，会拒绝访问。</span><br></pre></td></tr></table></figure></p>
 <h2 id="python操作redis"><a href="#python操作redis" class="headerlink" title="python操作redis"></a>python操作redis</h2><h3 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install redis</span><br><span class="line">#因为我的kali有两个版本的python，而默认是python2，所以我这样安装</span><br><span class="line">python3 -m pip install redis</span><br></pre></td></tr></table></figure>
 <h3 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a>连接redis</h3><p>因为python操作redis的方法与redis-cli操作方法基本类似，就不赘述了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from redis import Redis</span><br><span class="line">&gt;&gt;&gt; cache=Redis(host=&apos;127.0.0.1&apos;,port=6379,password=&apos;chenxiyuan&apos;)</span><br><span class="line">&gt;&gt;&gt; cache.set(&apos;username&apos;,&apos;chenxiyuan&apos;)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; cache.get(&apos;username&apos;)</span><br><span class="line">b&apos;chenxiyuan&apos;</span><br></pre></td></tr></table></figure></p>
 <h3 id="事务操作"><a href="#事务操作" class="headerlink" title="事务操作"></a>事务操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义一个管道实例</span></span><br><span class="line">pip = cache.pipeline()</span><br><span class="line"><span class="comment"># 做第一步操作，给BankA自增长1</span></span><br><span class="line">pip.incr(<span class="string">'BankA'</span>)</span><br><span class="line"><span class="comment"># 做第二步操作，给BankB自减少1</span></span><br><span class="line">pip.desc(<span class="string">'BankB'</span>)</span><br><span class="line"><span class="comment"># 执行事务</span></span><br><span class="line">pip.execute()</span><br></pre></td></tr></table></figure>
-
+<h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><h3 id="建立"><a href="#建立" class="headerlink" title="建立"></a>建立</h3><p>ubuntu:192.168.91.134<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; info replication</span><br><span class="line"># Replication</span><br><span class="line">role:master</span><br></pre></td></tr></table></figure></p>
+<p>kali:192.168.91.133<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; slaveof 192.168.91.134 6379</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; info replication</span><br><span class="line"># Replication</span><br><span class="line">role:slave</span><br><span class="line">master_host:192.168.91.134</span><br><span class="line">master_port:6379</span><br><span class="line">master_link_status:up</span><br><span class="line">master_last_io_seconds_ago:9</span><br><span class="line">master_sync_in_progress:0</span><br><span class="line">slave_repl_offset:195</span><br><span class="line">slave_priority:100</span><br><span class="line">slave_read_only:1</span><br><span class="line">connected_slaves:0</span><br><span class="line">master_replid:589b79b1011b3c7e933cefc0fb4a8ae8190696b9</span><br><span class="line">master_replid2:0000000000000000000000000000000000000000</span><br><span class="line">master_repl_offset:195</span><br><span class="line">second_repl_offset:-1</span><br><span class="line">repl_backlog_active:1</span><br><span class="line">repl_backlog_size:1048576</span><br><span class="line">repl_backlog_first_byte_offset:114</span><br><span class="line">repl_backlog_histlen:82</span><br></pre></td></tr></table></figure></p>
+<h3 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h3><p>从机是无法写的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set username chenxiyuan</span><br><span class="line">(error) READONLY You can&apos;t write against a read only replica.</span><br></pre></td></tr></table></figure></p>
+<h3 id="主机死掉"><a href="#主机死掉" class="headerlink" title="主机死掉"></a>主机死掉</h3><p>ubuntu: shutdown<br>kali: 还是slave，当主机重新连入写数据，从机还是可以读数据。</p>
+<h3 id="从机死掉"><a href="#从机死掉" class="headerlink" title="从机死掉"></a>从机死掉</h3><p>kali: shutdown,重新连入后为master，除非写入配置。只要再slaveof，还是可以读到主机的所有数据</p>
+<h3 id="反客为主"><a href="#反客为主" class="headerlink" title="反客为主"></a>反客为主</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof no one</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -633,7 +660,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/17/redis学习/">redis学习</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月17日 - 11:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月17日 - 23:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/17/redis学习/" title="redis学习">http://chenxiyuan.vip/2019/07/17/redis学习/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/17/redis学习/">redis学习</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月17日 - 11:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月18日 - 17:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/17/redis学习/" title="redis学习">http://chenxiyuan.vip/2019/07/17/redis学习/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -760,7 +787,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -868,7 +895,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串操作"><span class="nav-number">3.1.</span> <span class="nav-text">字符串操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表操作"><span class="nav-number">3.2.</span> <span class="nav-text">列表操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set集合操作"><span class="nav-number">3.3.</span> <span class="nav-text">set集合操作:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash哈希操作"><span class="nav-number">3.4.</span> <span class="nav-text">hash哈希操作:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">4.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布和订阅操作"><span class="nav-number">5.</span> <span class="nav-text">发布和订阅操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">6.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端与服务器"><span class="nav-number">7.</span> <span class="nav-text">客户端与服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置密码"><span class="nav-number">7.1.</span> <span class="nav-text">设置密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他机器连接本机redis"><span class="nav-number">7.2.</span> <span class="nav-text">其他机器连接本机redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python操作redis"><span class="nav-number">8.</span> <span class="nav-text">python操作redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装redis"><span class="nav-number">8.1.</span> <span class="nav-text">安装redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接redis"><span class="nav-number">8.2.</span> <span class="nav-text">连接redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务操作"><span class="nav-number">8.3.</span> <span class="nav-text">事务操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串操作"><span class="nav-number">3.1.</span> <span class="nav-text">字符串操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表操作"><span class="nav-number">3.2.</span> <span class="nav-text">列表操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set集合操作"><span class="nav-number">3.3.</span> <span class="nav-text">set集合操作:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash哈希操作"><span class="nav-number">3.4.</span> <span class="nav-text">hash哈希操作:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">4.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布和订阅操作"><span class="nav-number">5.</span> <span class="nav-text">发布和订阅操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">6.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端与服务器"><span class="nav-number">7.</span> <span class="nav-text">客户端与服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置密码"><span class="nav-number">7.1.</span> <span class="nav-text">设置密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他机器连接本机redis"><span class="nav-number">7.2.</span> <span class="nav-text">其他机器连接本机redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python操作redis"><span class="nav-number">8.</span> <span class="nav-text">python操作redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装redis"><span class="nav-number">8.1.</span> <span class="nav-text">安装redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接redis"><span class="nav-number">8.2.</span> <span class="nav-text">连接redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务操作"><span class="nav-number">8.3.</span> <span class="nav-text">事务操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主从复制"><span class="nav-number">9.</span> <span class="nav-text">主从复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立"><span class="nav-number">9.1.</span> <span class="nav-text">建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写分离"><span class="nav-number">9.2.</span> <span class="nav-text">读写分离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主机死掉"><span class="nav-number">9.3.</span> <span class="nav-text">主机死掉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从机死掉"><span class="nav-number">9.4.</span> <span class="nav-text">从机死掉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反客为主"><span class="nav-number">9.5.</span> <span class="nav-text">反客为主</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -910,7 +937,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.1k</span>
+    <span title="Site words total count">19.4k</span>
   
 </div>
 
