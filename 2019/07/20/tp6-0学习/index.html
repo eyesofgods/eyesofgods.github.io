@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="composer因为我用的是phpstudy，首先要切换到php7以上要安装vc14，结果安装失败，原因是因为我安装了VS2017，然后我就有了VC2017的版本，我在控制面板把64版本的VC2017卸载，然后重新安装vc14成功。phpstudy2016自带composer1.2版本，开启openssl扩展，执行composer self-update报错:123456Updating to v">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-21T13:16:34.591Z">
+<meta property="og:updated_time" content="2019-07-21T13:20:20.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="thinkphp框架学习">
 <meta name="twitter:description" content="composer因为我用的是phpstudy，首先要切换到php7以上要安装vc14，结果安装失败，原因是因为我安装了VS2017，然后我就有了VC2017的版本，我在控制面板把64版本的VC2017卸载，然后重新安装vc14成功。phpstudy2016自带composer1.2版本，开启openssl扩展，执行composer self-update报错:123456Updating to v">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-21T21:16:34+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-21T21:20:20+08:00">
                 2019-07-21
               </time>
             
@@ -474,9 +474,130 @@
 <li><p>判断</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;if (条件)&#125;</span><br><span class="line">...</span><br><span class="line">&#123;/if&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>其他内置标签<br>|  标签名    | 作用    | 包含属性  |<br>| — | — | — |<br>|include|包含外部模板文件（闭合）|    file|<br>|load|导入资源文件（闭合 包括js css import别名）|    file,href,type,value,basepath|<br>|volist|    循环数组数据输出    |name,id,offset,length,key,mod|<br>|foreach    |数组或对象遍历输出    |name,item,key|<br>|for    |For循环数据输出|    name,from,to,before,step|<br>|switch    |分支判断输出|    name|<br>|case|    分支判断输出（必须和switch配套使用）    |value,break|<br>|default    |默认情况输出（闭合 必须和switch配套使用）    |无|<br>|compare|比较输出（包括eq neq lt gt egt elt heq nheq等别名）|    name,value,type|<br>|range    |范围判断输出（包括in notin between notbetween别名）|    name,value,type|<br>|present|    判断是否赋值    |name|<br>|notpresent    |判断是否尚未赋值    |name|<br>|empty    |判断数据是否为空    |name|<br>|notempty    |判断数据是否不为空    |name|<br>|defined    |判断常量是否定义    |name|<br>|notdefined    |判断常量是否未定义    |name|<br>|define    |常量定义（闭合）    |name,value|<br>|assign    |变量赋值（闭合）    |name,value|<br>|if    |条件判断输出    |condition|<br>|elseif    |条件判断输出（闭合 必须和if标签配套使用）    |condition|<br>|else    |条件不成立输出（闭合 可用于其他标签）    |无|<br>|php    |使用php代码    |无|</p>
+<li><p>其他内置标签</p>
 </li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>标签名</th>
+<th>作用</th>
+<th>包含属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>include</td>
+<td>包含外部模板文件（闭合）</td>
+<td>file</td>
+</tr>
+<tr>
+<td>load</td>
+<td>导入资源文件（闭合 包括js css import别名）</td>
+<td>file,href,type,value,basepath</td>
+</tr>
+<tr>
+<td>volist</td>
+<td>循环数组数据输出</td>
+<td>name,id,offset,length,key,mod</td>
+</tr>
+<tr>
+<td>foreach</td>
+<td>数组或对象遍历输出</td>
+<td>name,item,key</td>
+</tr>
+<tr>
+<td>for</td>
+<td>For循环数据输出</td>
+<td>name,from,to,before,step</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>分支判断输出</td>
+<td>name</td>
+</tr>
+<tr>
+<td>case</td>
+<td>分支判断输出（必须和switch配套使用）</td>
+<td>value,break</td>
+</tr>
+<tr>
+<td>default</td>
+<td>默认情况输出（闭合 必须和switch配套使用）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>compare</td>
+<td>比较输出（包括eq neq lt gt egt elt heq nheq等别名）</td>
+<td>name,value,type</td>
+</tr>
+<tr>
+<td>range</td>
+<td>范围判断输出（包括in notin between notbetween别名）</td>
+<td>name,value,type</td>
+</tr>
+<tr>
+<td>present</td>
+<td>判断是否赋值</td>
+<td>name</td>
+</tr>
+<tr>
+<td>notpresent</td>
+<td>判断是否尚未赋值</td>
+<td>name</td>
+</tr>
+<tr>
+<td>empty</td>
+<td>判断数据是否为空</td>
+<td>name</td>
+</tr>
+<tr>
+<td>notempty</td>
+<td>判断数据是否不为空</td>
+<td>name</td>
+</tr>
+<tr>
+<td>defined</td>
+<td>判断常量是否定义</td>
+<td>name</td>
+</tr>
+<tr>
+<td>notdefined</td>
+<td>判断常量是否未定义</td>
+<td>name</td>
+</tr>
+<tr>
+<td>define</td>
+<td>常量定义（闭合）</td>
+<td>name,value</td>
+</tr>
+<tr>
+<td>assign</td>
+<td>变量赋值（闭合）</td>
+<td>name,value</td>
+</tr>
+<tr>
+<td>if</td>
+<td>条件判断输出</td>
+<td>condition</td>
+</tr>
+<tr>
+<td>elseif</td>
+<td>条件判断输出（闭合 必须和if标签配套使用）</td>
+<td>condition</td>
+</tr>
+<tr>
+<td>else</td>
+<td>条件不成立输出（闭合 可用于其他标签）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>php</td>
+<td>使用php代码</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
 <h3 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h3><p><code>{block} {/block}</code>组成区块，子模板可以对区块进行重载</p>
 <ul>
 <li><p>base.html</p>
