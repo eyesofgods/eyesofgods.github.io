@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   <link href="%5Bobject%20Object%5D" rel="hub"/>
   <link href="http://chenxiyuan.vip/"/>
-  <updated>2019-07-22T14:12:33.330Z</updated>
+  <updated>2019-07-23T06:40:14.498Z</updated>
   <id>http://chenxiyuan.vip/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python多版本共存</title>
+    <link href="http://chenxiyuan.vip/2019/07/23/python%E5%A4%9A%E7%89%88%E6%9C%AC%E5%85%B1%E5%AD%98/"/>
+    <id>http://chenxiyuan.vip/2019/07/23/python多版本共存/</id>
+    <published>2019-07-23T06:33:06.000Z</published>
+    <updated>2019-07-23T06:40:14.498Z</updated>
+    
+    <content type="html"><![CDATA[<p>很多情况下,python2和python3我都要用到,那么多版本共存也是很简单的,记住命令就好了.</p><ul><li>windows:cmd<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">py -3  </span><br><span class="line">py -2</span><br></pre></td></tr></table></figure></li></ul><p>如果要使用指定版本的pip就加个m参数.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">py -3 -m pip install multiprocessing</span><br><span class="line">py -2 -m pip install multiprocessing</span><br></pre></td></tr></table></figure></p><ul><li>macos:terminal<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line">python2</span><br></pre></td></tr></table></figure></li></ul><p>如果要使用pip,也是加上m参数.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;很多情况下,python2和python3我都要用到,那么多版本共存也是很简单的,记住命令就好了.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;windows:cmd&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="python学习笔记" scheme="http://chenxiyuan.vip/categories/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="python" scheme="http://chenxiyuan.vip/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>BUUCTF web writeup</title>
@@ -415,9 +442,9 @@
     
       <category term="web安全" scheme="http://chenxiyuan.vip/tags/web%E5%AE%89%E5%85%A8/"/>
     
-      <category term="代码审计" scheme="http://chenxiyuan.vip/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
       <category term="php" scheme="http://chenxiyuan.vip/tags/php/"/>
+    
+      <category term="代码审计" scheme="http://chenxiyuan.vip/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
   </entry>
   
@@ -482,30 +509,6 @@
     
     </summary>
     
-    
-      <category term="web安全" scheme="http://chenxiyuan.vip/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bugku速度要快wp</title>
-    <link href="http://chenxiyuan.vip/2018/12/10/bugku%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%ABwp/"/>
-    <id>http://chenxiyuan.vip/2018/12/10/bugku速度要快wp/</id>
-    <published>2018-12-10T14:57:01.000Z</published>
-    <updated>2018-12-10T15:06:49.866Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://123.206.87.240:8002/web6/" target="_blank" rel="noopener">http://123.206.87.240:8002/web6/</a><br>这道题我首先在headers里发现flag，base64解码然后提交失败，发现是需要post得到的数据，然后试了半天都不对，结果发现需要post的是两次解码后的得到的数字。。。<br>无语，上代码</p><a id="more"></a><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">url=<span class="string">'http://123.206.87.240:8002/web6/'</span></span><br><span class="line">s = requests.Session()<span class="comment">#创建session对象，保存Cookie值</span></span><br><span class="line">r = s.get(url)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">txt1 = re.search("flag': '(.*?)',",str(r.headers),re.S)</span></span><br><span class="line"><span class="string">txt2=re.search(".*?: (.*?)'",str(base64.b64decode(txt1.group(1))),re.S)</span></span><br><span class="line"><span class="string">这个是我刚开始绕的弯路,基础功不扎实</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">txt1=r.headers[<span class="string">'flag'</span>]</span><br><span class="line">txt2=re.search(<span class="string">".*?: (.*?)'"</span>,str(base64.b64decode(txt1)),re.S)</span><br><span class="line">flag=base64.b64decode(txt2.group(<span class="number">1</span>))</span><br><span class="line">d=&#123;<span class="string">"margin"</span>:flag&#125;</span><br><span class="line">print(s.post(url,data=d).text)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;http://123.206.87.240:8002/web6/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://123.206.87.240:8002/web6/&lt;/a&gt;&lt;br&gt;这道题我首先在headers里发现flag，base64解码然后提交失败，发现是需要post得到的数据，然后试了半天都不对，结果发现需要post的是两次解码后的得到的数字。。。&lt;br&gt;无语，上代码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="web安全学习笔记" scheme="http://chenxiyuan.vip/categories/web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="python" scheme="http://chenxiyuan.vip/tags/python/"/>
     
       <category term="web安全" scheme="http://chenxiyuan.vip/tags/web%E5%AE%89%E5%85%A8/"/>
     
