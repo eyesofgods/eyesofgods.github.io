@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="也学了挺久的python了,是时候对关于python安全的一些问题做个研究并记录下来了.参考这里python_Sec. Python Sandbox Bypass沙箱逃逸,就是在给我们的一个代码执行环境下(Oj或使用socat生成的交互式终端),脱离种种过滤和限制,最终成功拿到shell权限的过程. 任意代码或者命令执行一些常用的的函数方法: os1234import osos.system(&apos;l">
+<meta name="description" content="也学了挺久的python了,是时候对关于python安全的一些问题做个研究并记录下来了.参考这里python_Sec.">
 <meta name="keywords" content="python,python安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python安全学习笔记">
 <meta property="og:url" content="http://chenxiyuan.vip/2019/07/24/python安全/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
-<meta property="og:description" content="也学了挺久的python了,是时候对关于python安全的一些问题做个研究并记录下来了.参考这里python_Sec. Python Sandbox Bypass沙箱逃逸,就是在给我们的一个代码执行环境下(Oj或使用socat生成的交互式终端),脱离种种过滤和限制,最终成功拿到shell权限的过程. 任意代码或者命令执行一些常用的的函数方法: os1234import osos.system(&apos;l">
+<meta property="og:description" content="也学了挺久的python了,是时候对关于python安全的一些问题做个研究并记录下来了.参考这里python_Sec.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-24T10:39:32.337Z">
+<meta property="og:updated_time" content="2019-07-24T16:16:58.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python安全学习笔记">
-<meta name="twitter:description" content="也学了挺久的python了,是时候对关于python安全的一些问题做个研究并记录下来了.参考这里python_Sec. Python Sandbox Bypass沙箱逃逸,就是在给我们的一个代码执行环境下(Oj或使用socat生成的交互式终端),脱离种种过滤和限制,最终成功拿到shell权限的过程. 任意代码或者命令执行一些常用的的函数方法: os1234import osos.system(&apos;l">
+<meta name="twitter:description" content="也学了挺久的python了,是时候对关于python安全的一些问题做个研究并记录下来了.参考这里python_Sec.">
 
 
 
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-24T18:39:32+08:00">
-                2019-07-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-25T00:16:58+08:00">
+                2019-07-25
               </time>
             
           </span>
@@ -441,7 +441,7 @@
       
 
       
-        <p>也学了挺久的python了,是时候对关于python安全的一些问题做个研究并记录下来了.参考这里<a href="https://github.com/bit4woo/python_sec" target="_blank" rel="noopener">python_Sec</a>.</p>
+        <p>也学了挺久的python了,是时候对关于python安全的一些问题做个研究并记录下来了.参考这里<a href="https://github.com/bit4woo/python_sec" target="_blank" rel="noopener">python_Sec</a>.<br><a id="more"></a></p>
 <h2 id="Python-Sandbox-Bypass"><a href="#Python-Sandbox-Bypass" class="headerlink" title="Python Sandbox Bypass"></a>Python Sandbox Bypass</h2><p>沙箱逃逸,就是在给我们的一个代码执行环境下(Oj或使用socat生成的交互式终端),脱离种种过滤和限制,最终成功拿到shell权限的过程.</p>
 <h3 id="任意代码或者命令执行"><a href="#任意代码或者命令执行" class="headerlink" title="任意代码或者命令执行"></a>任意代码或者命令执行</h3><p>一些常用的的函数方法:</p>
 <h4 id="os"><a href="#os" class="headerlink" title="os"></a>os</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">'ls'</span>)</span><br><span class="line">os.popen(<span class="string">'ls'</span>).read()</span><br></pre></td></tr></table></figure>
@@ -524,7 +524,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/24/python安全/">python安全学习笔记</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月24日 - 11:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月24日 - 18:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/24/python安全/" title="python安全学习笔记">http://chenxiyuan.vip/2019/07/24/python安全/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/24/python安全/">python安全学习笔记</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月24日 - 11:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月25日 - 00:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/24/python安全/" title="python安全学习笔记">http://chenxiyuan.vip/2019/07/24/python安全/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -559,6 +559,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/25/Laravel框架学习/" rel="prev" title="Laravel框架学习">
+                Laravel框架学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -642,7 +646,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -664,7 +668,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -803,7 +807,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">28k</span>
+    <span title="Site words total count">29.7k</span>
   
 </div>
 
