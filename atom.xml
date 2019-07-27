@@ -168,6 +168,31 @@
   </entry>
   
   <entry>
+    <title>docker笔记</title>
+    <link href="http://chenxiyuan.vip/2019/07/18/docker%E7%AC%94%E8%AE%B0/"/>
+    <id>http://chenxiyuan.vip/2019/07/18/docker笔记/</id>
+    <published>2019-07-18T09:22:12.000Z</published>
+    <updated>2019-07-27T16:27:32.587Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>ubuntu使用官方脚本自动安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br></pre></td></tr></table></figure></p><h2 id="加入用户组"><a href="#加入用户组" class="headerlink" title="加入用户组"></a>加入用户组</h2><ul><li><p>创建docker用户组</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br></pre></td></tr></table></figure></li><li><p>加入docker用户组</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $&#123;USER&#125;</span><br><span class="line">``` </span><br><span class="line">* 重启docker服务</span><br></pre></td></tr></table></figure></li></ul><p>sudo service docker restart<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 切换或者退出当前账户再从新登入</span><br></pre></td></tr></table></figure></p><p>su root             切换到root用户<br>su ${USER}          再切换到原来的应用用户以上配置才生效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## docker镜像加速器</span><br><span class="line">[阿里云镜像加速器](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)</span><br><span class="line">## 镜像</span><br><span class="line">* 列出本机所有image文件</span><br></pre></td></tr></table></figure></p><p>docker image ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 删除image文件</span><br></pre></td></tr></table></figure></p><p>docker image rm [imageName]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## 容器</span><br><span class="line">* 先pull一个镜像</span><br></pre></td></tr></table></figure></p><p>docker pull training/webapp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 产生一个容器</span><br></pre></td></tr></table></figure></p><p>docker run -d -P training/webapp python app.py</p><p>#-d:让容器在后台运行。</p><p>#-P:将容器内部使用的网络端口映射到我们使用的主机上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 列出[所有]容器</span><br></pre></td></tr></table></figure></p><p>docker ps [-a]</p><p>#CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                     NAMES</p><p>#43c2ddf7ba86        training/webapp     “python app.py”     7 minutes ago       Up 7 minutes        0.0.0.0:32768-&gt;5000/tcp   relaxed_jepsen</p><p>#现在访问192.168.91.134:32768，就可以看到hello world<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 也可以自己指定端口</span><br></pre></td></tr></table></figure></p><p>docker run -d -p 5000:5000 training/webapp python app.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 查看 WEB 应用程序日志</span><br><span class="line">docker logs [ID或者名字] 可以查看容器内部的标准输出。</span><br></pre></td></tr></table></figure></p><p>docker logs 8b64b668a789</p><ul><li>Running on <a href="http://0.0.0.0:5000/" target="_blank" rel="noopener">http://0.0.0.0:5000/</a> (Press CTRL+C to quit)<br>192.168.91.1 - - [18/Jul/2019 10:38:28] “GET / HTTP/1.1” 200 -<br>192.168.91.1 - - [18/Jul/2019 10:38:28] “GET /favicon.ico HTTP/1.1” 404 -<br>#使用docker logs -f 8b64b668a789，可以持续查看日志<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 查看WEB应用程序容器的进程</span><br></pre></td></tr></table></figure></li></ul><p>docker top 8b64b668a789</p><p>#UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</p><p>#root                15091               15063               0                   18:36               ?                   00:00:00            python app.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 停用并删除所用容器</span><br></pre></td></tr></table></figure></p><p>docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)<br><code>`</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;ubuntu使用官方脚本自动安装&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cla
+      
+    
+    </summary>
+    
+      <category term="杂项" scheme="http://chenxiyuan.vip/categories/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+      <category term="docker" scheme="http://chenxiyuan.vip/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>redis学习</title>
     <link href="http://chenxiyuan.vip/2019/07/17/redis%E5%AD%A6%E4%B9%A0/"/>
     <id>http://chenxiyuan.vip/2019/07/17/redis学习/</id>
@@ -493,31 +518,6 @@
       <category term="代码审计" scheme="http://chenxiyuan.vip/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
       <category term="php" scheme="http://chenxiyuan.vip/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>kali安装docker</title>
-    <link href="http://chenxiyuan.vip/2019/04/19/kali%E5%AE%89%E8%A3%85docker/"/>
-    <id>http://chenxiyuan.vip/2019/04/19/kali安装docker/</id>
-    <published>2019-04-19T00:42:49.000Z</published>
-    <updated>2019-07-18T06:30:22.495Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">apt-get update</span><br><span class="line"></span><br><span class="line">apt-get install -y apt-transport-https ca-certificates</span><br><span class="line"></span><br><span class="line">apt-get install dirmngr</span><br></pre></td></tr></table></figure><h1 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &apos;deb https://apt.dockerproject.org/repo debian-stretch main&apos; &gt; /etc/apt/sources.list.d/docker.list</span><br></pre></td></tr></table></figure><h1 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">apt-get update</span><br><span class="line"></span><br><span class="line">apt-get install docker-engine</span><br></pre></td></tr></table></figure><h1 id="使用aliyun镜像"><a href="#使用aliyun镜像" class="headerlink" title="使用aliyun镜像"></a>使用aliyun镜像</h1><p>我之前下载速度就像一滴一滴，还经常断掉，使用了阿里云镜像后，就像水管一样，一下就好了。<a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">阿里云镜像加速器</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;第一步&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s
-      
-    
-    </summary>
-    
-      <category term="kali" scheme="http://chenxiyuan.vip/categories/kali/"/>
-    
-    
-      <category term="docker" scheme="http://chenxiyuan.vip/tags/docker/"/>
     
   </entry>
   
