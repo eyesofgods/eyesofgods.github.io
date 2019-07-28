@@ -1577,7 +1577,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-28T00:27:32+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-28T16:11:35+08:00">
                 2019-07-28
               </time>
             
@@ -1639,7 +1639,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  431 字
+                  425 字
                 </span>
               
 
@@ -1684,31 +1684,46 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>加入docker用户组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $&#123;USER&#125;</span><br><span class="line">``` </span><br><span class="line">* 重启docker服务</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $&#123;USER&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启docker服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换或者退出当前账户再从新登入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su root             切换到root用户</span><br><span class="line">su $&#123;USER&#125;          再切换到原来的应用用户以上配置才生效</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>sudo service docker restart<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 切换或者退出当前账户再从新登入</span><br></pre></td></tr></table></figure></p>
-<p>su root             切换到root用户<br>su ${USER}          再切换到原来的应用用户以上配置才生效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## docker镜像加速器</span><br><span class="line">[阿里云镜像加速器](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)</span><br><span class="line">## 镜像</span><br><span class="line">* 列出本机所有image文件</span><br></pre></td></tr></table></figure></p>
-<p>docker image ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 删除image文件</span><br></pre></td></tr></table></figure></p>
-<p>docker image rm [imageName]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## 容器</span><br><span class="line">* 先pull一个镜像</span><br></pre></td></tr></table></figure></p>
-<p>docker pull training/webapp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 产生一个容器</span><br></pre></td></tr></table></figure></p>
-<p>docker run -d -P training/webapp python app.py</p>
-<p>#-d:让容器在后台运行。</p>
-<p>#-P:将容器内部使用的网络端口映射到我们使用的主机上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 列出[所有]容器</span><br></pre></td></tr></table></figure></p>
-<p>docker ps [-a]</p>
-<p>#CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                     NAMES</p>
-<p>#43c2ddf7ba86        training/webapp     “python app.py”     7 minutes ago       Up 7 minutes        0.0.0.0:32768-&gt;5000/tcp   relaxed_jepsen</p>
-<p>#现在访问192.168.91.134:32768，就可以看到hello world<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 也可以自己指定端口</span><br></pre></td></tr></table></figure></p>
-<p>docker run -d -p 5000:5000 training/webapp python app.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 查看 WEB 应用程序日志</span><br><span class="line">docker logs [ID或者名字] 可以查看容器内部的标准输出。</span><br></pre></td></tr></table></figure></p>
-<p>docker logs 8b64b668a789</p>
-<ul>
-<li>Running on <a href="http://0.0.0.0:5000/" target="_blank" rel="noopener">http://0.0.0.0:5000/</a> (Press CTRL+C to quit)<br>192.168.91.1 - - [18/Jul/2019 10:38:28] “GET / HTTP/1.1” 200 -<br>192.168.91.1 - - [18/Jul/2019 10:38:28] “GET /favicon.ico HTTP/1.1” 404 -<br>#使用docker logs -f 8b64b668a789，可以持续查看日志<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 查看WEB应用程序容器的进程</span><br></pre></td></tr></table></figure>
+<h2 id="docker镜像加速器"><a href="#docker镜像加速器" class="headerlink" title="docker镜像加速器"></a>docker镜像加速器</h2><p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">阿里云镜像加速器</a></p>
+<h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><ul>
+<li><p>列出本机所有image文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除image文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image rm [imageName]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>docker top 8b64b668a789</p>
-<p>#UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</p>
-<p>#root                15091               15063               0                   18:36               ?                   00:00:00            python app.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 停用并删除所用容器</span><br></pre></td></tr></table></figure></p>
-<p>docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)<br><code>`</code></p>
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><ul>
+<li><p>先pull一个镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull training/webapp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>产生一个容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -P training/webapp python app.py</span><br><span class="line">#-d:让容器在后台运行。</span><br><span class="line">#-P:将容器内部使用的网络端口映射到我们使用的主机上。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出[所有]容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker ps [-a]</span><br><span class="line">#CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">#43c2ddf7ba86        training/webapp     &quot;python app.py&quot;     7 minutes ago       Up 7 minutes        0.0.0.0:32768-&gt;5000/tcp   relaxed_jepsen</span><br><span class="line">#现在访问192.168.91.134:32768，就可以看到hello world</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以自己指定端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5000:5000 training/webapp python app.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 WEB 应用程序日志<br>docker logs [ID或者名字] 可以查看容器内部的标准输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker logs 8b64b668a789</span><br><span class="line">Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)</span><br><span class="line">192.168.91.1 - - [18/Jul/2019 10:38:28] &quot;GET / HTTP/1.1&quot; 200 -</span><br><span class="line">192.168.91.1 - - [18/Jul/2019 10:38:28] &quot;GET /favicon.ico HTTP/1.1&quot; 404 -</span><br><span class="line">#使用docker logs -f 8b64b668a789，可以持续查看日志</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看WEB应用程序容器的进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker top 8b64b668a789</span><br><span class="line">#UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</span><br><span class="line">#root                15091               15063               0                   18:36               ?                   00:00:00            python app.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停用并删除所用容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure></li>
+</ul>
 
           
         
@@ -2149,7 +2164,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.4k</span>
+    <span title="Site words total count">31.3k</span>
   
 </div>
 
