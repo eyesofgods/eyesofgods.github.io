@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://i1.fuimg.com/665720/31dabd63d3da31e4.png">
 <meta property="og:image" content="http://i1.fuimg.com/665720/e1ce684a4312e688.png">
 <meta property="og:image" content="http://i1.fuimg.com/665720/49c5b1c2cc10daab.png">
-<meta property="og:updated_time" content="2019-07-30T06:14:32.643Z">
+<meta property="og:updated_time" content="2019-07-30T06:32:02.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="哈希长度扩展攻击">
 <meta name="twitter:description" content="之前做web题碰到md5加密,都是直接用并不了解生成原理.做实验吧让我进来这道题利用了hash长度扩展攻击,那就来好好学习下吧.">
@@ -347,7 +347,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-30T14:14:32+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-30T14:32:02+08:00">
                 2019-07-30
               </time>
             
@@ -451,7 +451,7 @@
 <ol>
 <li><p>我要对字符串<code>chenxiyuan</code>进行MD5计算,首先转换成16进制</p>
 </li>
-<li><p>补位<br>消息必须进行补位,满足消息长度对512取模榆448.这里我要把补位到448bit,补位规则二进制下后面添一个1和n个0直到满足条件:<code>len(message) % 512 == 448</code>.那么16进制下就是先补<code>80</code>即<code>10000000</code>,要补够448bit就是<code>448/8==56</code>,56byte.<br><img src="http://i1.fuimg.com/665720/31dabd63d3da31e4.png" alt="Markdown"></p>
+<li><p>补位<br>消息必须进行补位,满足消息长度对512取模于448.这里我要把补位到448bit,补位规则二进制下后面添一个1和n个0直到满足条件:<code>len(message) % 512 == 448</code>.那么16进制下就是先补<code>80</code>即<code>10000000</code>,要补够448bit就是<code>448/8==56</code>,56byte.<br><img src="http://i1.fuimg.com/665720/31dabd63d3da31e4.png" alt="Markdown"></p>
 </li>
 <li><p>补长度<br>补位过后,还要继续填充8byte,储存的是补位之前的消息长度.<code>chenxiyuan</code>是10个字节,80bit,换算成16进制为0x50,然后再填7个字节的0x00.<br><img src="http://i1.fuimg.com/665720/e1ce684a4312e688.png" alt="Markdown"></p>
 </li>
@@ -542,6 +542,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/07/30/spring-boot学习/" rel="prev" title="spring boot学习">
+                spring boot学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -624,7 +628,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -646,7 +650,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -785,7 +789,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.2k</span>
+    <span title="Site words total count">34.9k</span>
   
 </div>
 
