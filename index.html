@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-14T14:27:23+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-14T17:30:13+08:00">
                 2019-09-14
               </time>
             
@@ -443,31 +443,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h2 id="logrotate"><a href="#logrotate" class="headerlink" title="logrotate"></a>logrotate</h2><p>logrotate是个十分有用的工具,它可以自动对日志进行截断(或轮循),压缩以及删除旧的日志文件.<br>仔细观察log文件,会发现有许多<code>*.log</code>,<code>*.log.1</code>等.这其实就是logrotate的轮循,它的运行流程如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一次:log	-&gt;	log.1</span><br><span class="line">第二次:log(新的log)	-&gt;	log.1(第一次的log)	-&gt;	log.2(第一次的log.1)</span><br><span class="line">第三次:log	-&gt;	log.1	-&gt;	log.2	-&gt;	log.3</span><br><span class="line">第四次:log	-&gt;	log.1	-&gt;	log.2	-&gt;	log.3	-&gt;	log.4</span><br><span class="line">第五次:log	-&gt;	log.1	-&gt;	log.2	-&gt;	log.3	-&gt;	log.4(第四次的log.4被删除,因为默认是4循环,即保留四个日志)</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>配置文件在<code>/etc/logrotate.conf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># see &quot;man logrotate&quot; for details</span><br><span class="line"># rotate log files weekly</span><br><span class="line">weekly #默认每个礼拜对登录文件进行一次 rotate 的工作</span><br><span class="line"></span><br><span class="line"># use the syslog group by default, since this is the owning group</span><br><span class="line"># of /var/log/syslog.</span><br><span class="line">su root syslog</span><br><span class="line"></span><br><span class="line"># keep 4 weeks worth of backlogs</span><br><span class="line">rotate 4 #保留几个登录文件</span><br><span class="line"></span><br><span class="line"># create new (empty) log files after rotating old ones</span><br><span class="line">create #由於登录文件被更名，因此创建一个新的来继续储存之意</span><br><span class="line"></span><br><span class="line"># uncomment this if you want your log files compressed</span><br><span class="line">#compress #被更动的登录文件是否需要压缩？如果登录文件太大则可考虑此参数启动</span><br><span class="line"></span><br><span class="line"># packages drop log rotation information into this directory</span><br><span class="line">include /etc/logrotate.d #将 /etc/logrotate.d/ 这个目录中的所有文件都读进来运行 rotate 的工作！</span><br><span class="line"></span><br><span class="line"># no packages own wtmp, or btmp -- we&apos;ll rotate them here</span><br><span class="line">/var/log/wtmp &#123; #仅针对 /var/log/wtmp 所配置的参数</span><br><span class="line">    missingok #如果日志文件丢失，不要显示错误</span><br><span class="line">    monthly</span><br><span class="line">    create 0664 root utmp #指定新建文件的权限与所属帐号/群组</span><br></pre></td></tr></table></figure></p>
-<p>其他参数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">compress             --&gt; 压缩日志文件的所有非当前版本</span><br><span class="line">daily,weekly,monthly --&gt; 按指定计划轮换日志文件</span><br><span class="line">delaycompress        --&gt; 压缩所有版本，除了当前和下一个最近的</span><br><span class="line">endscript            --&gt; 标记 prerotate 或 postrotate 脚本的结束</span><br><span class="line">errors &quot;emailid&quot;     --&gt; 给指定邮箱发送错误通知</span><br><span class="line">missingok            --&gt; 如果日志文件丢失，不要显示错误</span><br><span class="line">notifempty           --&gt; 如果日志文件为空，则不轮换日志文件</span><br><span class="line">olddir &quot;dir&quot;         --&gt; 指定日志文件的旧版本放在 “dir” 中</span><br><span class="line">postrotate           --&gt; 引入一个在日志被轮换后执行的脚本</span><br><span class="line">prerotate            --&gt; 引入一个在日志被轮换前执行的脚本</span><br><span class="line">rotate &apos;n&apos;           --&gt; 在轮换方案中包含日志的 n 个版本</span><br><span class="line">sharedscripts        --&gt; 对于整个日志组只运行一次脚本</span><br><span class="line">size=&apos;logsize&apos;       --&gt; 在日志大小大于 logsize（例如 100K，4M）时轮换</span><br></pre></td></tr></table></figure></p>
-<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>grep是一个最初用于Unix操作系统的命令行工具.在给出文件列表或标准输入后,grep会对匹配一个或多个正则表达式的文本进行搜索,并只输出匹配(或者不匹配)的行或文本.<br>输出所有ssh连接失败的记录:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;Failed password for root&quot; /var/log/secure</span><br></pre></td></tr></table></figure></p>
-<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>awk是一种处理文本文件的语言,是一个强大的文本分析工具.<br>awk是以列为划分计数的,$0表示所有列,$1表示第一列,$2表示第二列.</p>
-<ul>
-<li><p>输出列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &apos;&#123;print $1,$4&#125;&apos; log.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>指定变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -va=1 &apos;&#123;print $1,$1+a&#125;&apos; log.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>指定脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -f cal.awk log.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用正则</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &apos;/re/ &apos; log.txt #输出包含re的行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="找出ssh攻击者"><a href="#找出ssh攻击者" class="headerlink" title="找出ssh攻击者"></a>找出ssh攻击者</h3><p>先筛选登陆失败的ip排序后去重计数再排序.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;Failed password for root&quot; /var/log/secure | awk &apos;&#123;print $11&#125;&apos; | sort | uniq -c | sort -nr | more</span><br><span class="line"></span><br><span class="line">998 47.101.42.58</span><br><span class="line">     12 41.232.216.155</span><br><span class="line">      5 47.101.155.144</span><br></pre></td></tr></table></figure></p>
-<p>sort -n:以数字大小排序<br>sort -r:以相反顺序排序<br>uniq -c:去重并计数</p>
-
-          
+          <h2 id="logrotate"><a href="#logrotate" class="headerlink" title="logrotate"></a>logrotate</h2><p>logrotate是个十分有用的工具,它可以自动对日志进行截断(或轮循),压缩以及删除旧的日志文件.<br>仔细观察log文件,会发现有许多<code>*.log</code>,<code>*.log.1</code>等.这其实就是logrotate的轮循,它的运行流程如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一次:log	-&gt;	log.1</span><br><span class="line">第二次:log(新的log)	-&gt;	log.1(第一次的log)	-&gt;	log.2(第一次的log.1)</span><br><span class="line">第三次:log	-&gt;	log.1	-&gt;	log.2	-&gt;	log.3</span><br><span class="line">第四次:log	-&gt;	log.1	-&gt;	log.2	-&gt;	log.3	-&gt;	log.4</span><br><span class="line">第五次:log	-&gt;	log.1	-&gt;	log.2	-&gt;	log.3	-&gt;	log.4(第四次的log.4被删除,因为默认是4循环,即保留四个日志)</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/13/shell命令分析web日志/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -766,7 +749,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-14T16:34:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-14T17:02:01+08:00">
                 2019-09-14
               </time>
             
