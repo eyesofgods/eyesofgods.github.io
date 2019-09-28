@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="晨曦远的博客">
 <meta property="og:description" content="前言最近接了一个日志分析的培训,那么就趁着这次机会系统的总结一下.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-14T09:02:01.416Z">
+<meta property="og:updated_time" content="2019-09-16T04:01:26.044Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web服务器环境搭建及日志">
 <meta name="twitter:description" content="前言最近接了一个日志分析的培训,那么就趁着这次机会系统的总结一下.">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-14T17:02:01+08:00">
-                2019-09-14
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-16T12:01:26+08:00">
+                2019-09-16
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7.5k 字
+                  7.4k 字
                 </span>
               
 
@@ -450,7 +450,7 @@
 <h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>修改配置监听9000端口来处理nginx的请求(这种方法一般在windows上使用),另一种方法linux下使用sock方法速度会更快,这个地方也可以不修改,直接使用里面<code>/run/php/php7.2-fpm.sock</code>这样的路径,后面nginx也要设置成这种格式<code>fastcgi_pass unix:/run/php/php7.2-fpm.sock;</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/php/7.2/fpm/pool.d/www.conf</span><br><span class="line"></span><br><span class="line">listen = /run/php/php7.2-fpm.sock</span><br><span class="line">;listen = 127.0.0.1:9000</span><br></pre></td></tr></table></figure>
 <p>修改权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /run/php/php7.2-fpm.sock</span><br></pre></td></tr></table></figure></p>
-<p>配置nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-available/default</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80; #监听80端口，接收http请求</span><br><span class="line">    server_name  www.example.com; #就是网站地址</span><br><span class="line">    root /usr/local/etc/nginx/www/huxintong_admin; # 准备存放代码工程的路径</span><br><span class="line">    #路由到网站根目录www.example.com时候的处理</span><br><span class="line">    location / &#123;</span><br><span class="line">        index index.php; #跳转到www.example.com/index.php</span><br><span class="line">        autoindex on;</span><br><span class="line">    &#125;  </span><br><span class="line">    #当请求网站下php文件的时候，反向代理到php-fpm</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">        #fastcgi_pass 127.0.0.1:9000;#nginx fastcgi进程监听的IP地址和端口</span><br><span class="line">        fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-available/default</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80; </span><br><span class="line">    server_name  _; </span><br><span class="line">    root /var/www/html; </span><br><span class="line">    </span><br><span class="line">    #当请求网站下php文件的时候，反向代理到php-fpm</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">        #fastcgi_pass 127.0.0.1:9000;#nginx fastcgi进程监听的IP地址和端口</span><br><span class="line">        fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然而nginx和phpfpm之间有个bug,我在网上搜了一下.网站中的静态页面<code>*.html</code>都能正常访问,而<code>*.php</code>文件虽然会返回200状态码,但实际输出给浏览器的页面内容却是空白.简而言之,原因是nginx无法正确的将<code>*.php</code>文件的地址传递给php-fpm去解析,相当于php-fpm接受到了请求,但这请求却指向一个不存在的文件,于是返回空结果.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/fastcgi_params</span><br><span class="line">添加以下两行</span><br><span class="line">fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">fastcgi_param PATH_INFO                $fastcgi_script_name;</span><br></pre></td></tr></table></figure></p>
 <p>最后重启nginx,就可以成功解析php了.</p>
 <h3 id="启动php-fpm"><a href="#启动php-fpm" class="headerlink" title="启动php-fpm"></a>启动php-fpm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service php7.2-fpm start</span><br></pre></td></tr></table></figure>
@@ -587,7 +587,7 @@
 
     
       <div>
-         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/09/10/web日志分析/">web服务器环境搭建及日志</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年09月10日 - 18:09 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年09月14日 - 17:09 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/09/10/web日志分析/" title="web服务器环境搭建及日志">http://chenxiyuan.vip/2019/09/10/web日志分析/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
+         <ul class="post-copyright"> <li class="post-copyright-author"> <strong>本文标题:</strong> <a href="/2019/09/10/web日志分析/">web服务器环境搭建及日志</a> </li> <li class="post-copyright-author"> <strong>本文作者：</strong>晨曦远 </li> <li class="post-copyright-author"> <strong>发布时间:</strong>2019年09月10日 - 18:09 </li> <li class="post-copyright-author"> <strong>最后更新:</strong>2019年09月16日 - 12:09 </li> <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://chenxiyuan.vip/2019/09/10/web日志分析/" title="web服务器环境搭建及日志">http://chenxiyuan.vip/2019/09/10/web日志分析/</a> </li> <li class="post-copyright-license"> <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！ </li> </ul> 
 
 
 
@@ -709,7 +709,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
